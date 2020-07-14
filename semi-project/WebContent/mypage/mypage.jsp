@@ -21,7 +21,7 @@
 
 <!-- Custom styles for this template -->
 <link href="css/shop-homepage.css" rel="stylesheet">
-<link rel="stylesheet" href="carousel.css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath }/css/carousel.css" />
 </head>
 <style>
 	.container{
@@ -41,7 +41,7 @@
 			<!-- 관심사 carousel 영역-->
 			<div class="col-lg-12">
 				<h4 class="my-4 ml-5">최근 관심사</h4>
-				<jsp:include page="carousel.jsp"></jsp:include>
+				<jsp:include page="../include/carousel.jsp"></jsp:include>
 			<div>
 			<!--내가 쓴 리뷰,내가 쓴 댓글 row-->
 				<div class="row">
