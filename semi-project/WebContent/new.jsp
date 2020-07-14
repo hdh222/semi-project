@@ -1,10 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <link rel="stylesheet" href="css/bootstrap.min.css">
+
   <style>
     .carousel {
       margin: 0;
@@ -15,8 +9,7 @@
         padding: 0;
     }
 </style>
-</head>
-<body>
+
   <div id="carouselExampleControls" class="carousel slide card p-5" data-ride="carousel">
     <div class="carousel-inner mb-0">
       <div class="carousel-item active">
@@ -56,13 +49,6 @@
       <span class="sr-only">Next</span>
     </a>
   </div>
-
-  <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-</body>
-</html>
-
-
 
 
 
