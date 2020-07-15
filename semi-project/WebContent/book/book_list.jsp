@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+
+<%
+	
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,6 +30,7 @@
 .container {
 	font-family: 'Arita-buri-SemiBold';
 }
+
 </style>
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
@@ -94,36 +99,52 @@
 		</div>
 		<div class="container my-5 card">
 			<ul class="list-unstyled">
-				<li class="media my-4"><img
+				
+				<li class="media my-4 border list_info"><img
 					src="http://image.kyobobook.co.kr/images/book/xlarge/796/x9791188331796.jpg"
-					class="mr-5 list_img" alt="...">
+					class="mr-5 list_img border-right pr-5" alt="...">
 					<div class="media-body">
-						<h5 class="mt-0 mb-1">List-based media object</h5>
-						Cras sit amet nibh libero, in gravida nulla. Nulla vel metus
-						scelerisque ante sollicitudin. Cras purus odio, vestibulum in
-						vulputate at, tempus viverra turpis. Fusce condimentum nunc ac
-						nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-					</div></li>
+						<h4 class="mt-0 mb-1 mx-3 mt-4"><a href="#" class="text-dark">돈의속성</a></h4>
+						<span class="small ml-3 font-weight-light">저자 : 홍길동 , 출판사 :
+							길벗 , 출간일 : 0000.00.00</span>
+						<div class="row">
+							<div class="col-3 text-truncate mx-2 my-4">
+								유튜브 1,100만 명이 시청한 〈돈의 속성〉 완결판『돈의 속성』. 맨손에서 만들어낸 종잣돈으로 돈 버는 방법을 알려준다. 부모에게 받은 유산은커녕, 30대 후반까지 낡은 자동차에 그날 판매할 과일을 싣고 다니던 어느 가난한 이민 가장이 이룬 진짜 부에 대한 모든 방법이 담겼다. 종잣돈 천만 원을 만들고 그 돈을 1억 원, 10억 원, 100억 원, 수천억 원이 될 때까지 돈을 관리하며 터득한 ‘돈’이 가진 속성을 정리한 안내서다. ‘진짜 부자’가 된 실제 인물이 말해주는 ‘진짜 돈’만들기에 대한 책이다.
+							</div>
+						</div>
+					</div>
+				</li>
 				<br>
-				<li class="media my-4"><img
+				
+				<li class="media my-4 border list_info"><img
 					src="http://image.kyobobook.co.kr/images/book/xlarge/796/x9791188331796.jpg"
-					class="mr-5 list_img" alt="...">
+					class="mr-5 list_img border-right pr-5" alt="...">
 					<div class="media-body">
-						<h3 class="mt-0 mb-1">돈의속성</h3>
-						<span class="small my-1"><span class="small">저자 :
-								홍길동 , 출판사 : 길벗 , 출간일 : 0000.00.00</span>
-					</div></li>
+						<h4 class="mt-0 mb-1 mx-3 mt-4"><a href="#" class="text-dark">돈의속성</a></h4>
+						<span class="small ml-3 font-weight-light">저자 : 홍길동 , 출판사 :
+							길벗 , 출간일 : 0000.00.00</span>
+						<div class="row">
+							<div class="col-3 text-truncate mx-2 my-4">
+								유튜브 1,100만 명이 시청한 〈돈의 속성〉 완결판『돈의 속성』. 맨손에서 만들어낸 종잣돈으로 돈 버는 방법을 알려준다. 부모에게 받은 유산은커녕, 30대 후반까지 낡은 자동차에 그날 판매할 과일을 싣고 다니던 어느 가난한 이민 가장이 이룬 진짜 부에 대한 모든 방법이 담겼다. 종잣돈 천만 원을 만들고 그 돈을 1억 원, 10억 원, 100억 원, 수천억 원이 될 때까지 돈을 관리하며 터득한 ‘돈’이 가진 속성을 정리한 안내서다. ‘진짜 부자’가 된 실제 인물이 말해주는 ‘진짜 돈’만들기에 대한 책이다.
+							</div>
+						</div>
+					</div>
+				</li>
+				<br><li class="media my-4 border list_info"><img
+					src="http://image.kyobobook.co.kr/images/book/xlarge/796/x9791188331796.jpg"
+					class="mr-5 list_img border-right pr-5" alt="...">
+					<div class="media-body">
+						<h4 class="mt-0 mb-1 mx-3 mt-4"><a href="#" class="text-dark">돈의속성</a></h4>
+						<span class="small ml-3 font-weight-light">저자 : 홍길동 , 출판사 :
+							길벗 , 출간일 : 0000.00.00</span>
+						<div class="row">
+							<div class="col-3 text-truncate mx-2 my-4">
+								유튜브 1,100만 명이 시청한 〈돈의 속성〉 완결판『돈의 속성』. 맨손에서 만들어낸 종잣돈으로 돈 버는 방법을 알려준다. 부모에게 받은 유산은커녕, 30대 후반까지 낡은 자동차에 그날 판매할 과일을 싣고 다니던 어느 가난한 이민 가장이 이룬 진짜 부에 대한 모든 방법이 담겼다. 종잣돈 천만 원을 만들고 그 돈을 1억 원, 10억 원, 100억 원, 수천억 원이 될 때까지 돈을 관리하며 터득한 ‘돈’이 가진 속성을 정리한 안내서다. ‘진짜 부자’가 된 실제 인물이 말해주는 ‘진짜 돈’만들기에 대한 책이다.
+							</div>
+						</div>
+					</div>
+				</li>
 				<br>
-				<li class="media my-4"><img
-					src="http://image.kyobobook.co.kr/images/book/xlarge/796/x9791188331796.jpg"
-					class="mr-5 list_img" alt="...">
-					<div class="media-body">
-						<h5 class="mt-0 mb-1">List-based media object</h5>
-						Cras sit amet nibh libero, in gravida nulla. Nulla vel metus
-						scelerisque ante sollicitudin. Cras purus odio, vestibulum in
-						vulputate at, tempus viverra turpis. Fusce condimentum nunc ac
-						nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-					</div></li>
 			</ul>
 			<div class="">
 				<nav aria-label="책 리스트 페이지네이션">
@@ -140,6 +161,15 @@
 			</div>
 
 		</div>
+		<footer class="blog-footer">
+		<p>
+			Blog template built for <a href="https://getbootstrap.com/">Bootstrap</a>
+			by <a href="https://twitter.com/mdo">@mdo</a>.
+		</p>
+		<p>
+			<a href="#">Back to top</a>
+		</p>
+	</footer>
 
 	</div>
 </body>
