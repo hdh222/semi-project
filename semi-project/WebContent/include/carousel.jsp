@@ -1,12 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
+
 <div id="wrap">
-        <ul class="slide">
+        <ul class="slide" id="slide">
             <li>
                 <div class="card" style="width: 18rem;">
                     <picture>
-                        <source srcset="book.PNG" type="image/svg+xml">
-                        <img src="book.PNG" class="img-fluid img-thumbnail" alt="...">
+                        <source srcset="${pageContext.request.contextPath}/image/book.PNG" type="image/svg+xml">
+                        <img src="${pageContext.request.contextPath}/image/book.PNG" class="img-fluid img-thumbnail" alt="...">
                     </picture>
                     <div class="card-body">
                       <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
@@ -16,8 +17,8 @@
             <li>
                 <div class="card" style="width: 18rem;">
                     <picture>
-                        <source srcset="book.PNG" type="image/svg+xml">
-                        <img src="book.PNG" class="img-fluid img-thumbnail" alt="...">
+                        <source srcset="${pageContext.request.contextPath}/image/book.PNG" type="image/svg+xml">
+                        <img src="${pageContext.request.contextPath}/image/book.PNG" class="img-fluid img-thumbnail" alt="...">
                     </picture>
                     <div class="card-body">
                       <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
@@ -27,8 +28,8 @@
             <li>
                 <div class="card" style="width: 18rem;">
                     <picture>
-                        <source srcset="book.PNG" type="image/svg+xml">
-                        <img src="book.PNG" class="img-fluid img-thumbnail" alt="...">
+                        <source srcset="${pageContext.request.contextPath}/image/book.PNG" type="image/svg+xml">
+                        <img src="${pageContext.request.contextPath}/image/book.PNG" class="img-fluid img-thumbnail" alt="...">
                     </picture>
                     <div class="card-body">
                       <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
@@ -38,8 +39,8 @@
             <li>
                 <div class="card" style="width: 18rem;">
                     <picture>
-                        <source srcset="book.PNG" type="image/svg+xml">
-                        <img src="book.PNG" class="img-fluid img-thumbnail" alt="...">
+                        <source srcset="${pageContext.request.contextPath}/image/book.PNG" type="image/svg+xml">
+                        <img src="${pageContext.request.contextPath}/image/book.PNG" class="img-fluid img-thumbnail" alt="...">
                     </picture>
                     <div class="card-body">
                       <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
@@ -49,8 +50,8 @@
             <li>
                 <div class="card" style="width: 18rem;">
                     <picture>
-                        <source srcset="book.PNG" type="image/svg+xml">
-                        <img src="book.PNG" class="img-fluid img-thumbnail" alt="...">
+                        <source srcset="${pageContext.request.contextPath}/image/book.PNG" type="image/svg+xml">
+                        <img src="${pageContext.request.contextPath}/image/book.PNG" class="img-fluid img-thumbnail" alt="...">
                     </picture>
                     <div class="card-body">
                       <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
@@ -60,8 +61,8 @@
             <li>
                 <div class="card" style="width: 18rem;">
                     <picture>
-                        <source srcset="book.PNG" type="image/svg+xml">
-                        <img src="book.PNG" class="img-fluid img-thumbnail" alt="...">
+                        <source srcset="${pageContext.request.contextPath}/image/book.PNG" type="image/svg+xml">
+                        <img src="${pageContext.request.contextPath}/image/book.PNG" class="img-fluid img-thumbnail" alt="...">
                     </picture>
                     <div class="card-body">
                       <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
@@ -71,8 +72,8 @@
             <li>
                 <div class="card" style="width: 18rem;">
                     <picture>
-                        <source srcset="book.PNG" type="image/svg+xml">
-                        <img src="book.PNG" class="img-fluid img-thumbnail" alt="...">
+                        <source srcset="${pageContext.request.contextPath}/image/book.PNG" type="image/svg+xml">
+                        <img src="${pageContext.request.contextPath}/image/book.PNG" class="img-fluid img-thumbnail" alt="...">
                     </picture>
                     <div class="card-body">
                       <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
@@ -93,5 +94,3 @@
           </svg>
     </div>
 </div>
-    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
-    <script src="carousel.js"></script>

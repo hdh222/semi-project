@@ -49,7 +49,7 @@
 <body>
 	<jsp:include page="/include/header.jsp"></jsp:include>
 	<div class="container">
-		<div class="input-group mb-3 w-50 container">
+		<div class="input-group my-3 w-50 container">
 			<input type="text" class="form-control"
 				placeholder="Recipient's username" aria-label="Recipient's username"
 				aria-describedby="button-addon2">
@@ -67,9 +67,10 @@
 				</button>
 			</div>
 		</div>
-
+		
+		<label></label>
 		<div id="wrap">
-			<ul class="slide">
+			<ul class="slide" id="slide">
 				<li>
 					<div class="card" style="width: 18rem;">
 						<picture class="shadow">
@@ -265,7 +266,7 @@
 
 		</div>
 
-		<div class="row mb-3">
+		<div class="row my-3">
 			<div class="col">
 				<button>
 					<img src="${pageContext.request.contextPath }/image/link.PNG"
@@ -303,15 +304,7 @@
 	</div>
 	<!-- /.container -->
 
-	<footer class="blog-footer">
-		<p>
-			Blog template built for <a href="https://getbootstrap.com/">Bootstrap</a>
-			by <a href="https://twitter.com/mdo">@mdo</a>.
-		</p>
-		<p>
-			<a href="#">Back to top</a>
-		</p>
-	</footer>
+	<jsp:include page="include/footer.jsp"></jsp:include>
 
 	<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 	<script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
