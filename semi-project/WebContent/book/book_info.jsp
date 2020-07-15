@@ -43,6 +43,17 @@
 		margin-top:100px;
 		border:1px soild red;
 	}
+	#story{
+		width:470px;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		display: -webkit-box;
+		-webkit-line-clamp: 9; /* 라인수 */
+		-webkit-box-orient: vertical;
+		word-wrap:break-word; 
+		line-height: 1.5em;
+		height: 13.5em; /* line-height 가 1.2em 이고 3라인을 자르기 때문에 height는 1.2em * 3 = 3.6em */
+	}
 	
 </style>
 
@@ -70,9 +81,9 @@
 					<div class="col-xl-6 ">
 						<div class="right mt-5">
 							<h2><strong><%=dto.getBname() %></strong></h2>
-							<p class="border-bottom border-success"><%=dto.getBcompany()%>, <%=dto.getBdate()%></p>
+							<p class="border-bottom border-success" ><%=dto.getBcompany()%>, <%=dto.getBdate()%></p>
 							<h3 >줄거리</h3>
-							<p class="font-weight-light" style="font-size:12px"><%=dto.getBstory() %></p>
+							<p class="font-weight-light" style="font-size:12px" id="story"><%=dto.getBstory() %></p>
 							
 							<h3 class="border-bottom border-success">리뷰</h3>
 							<div style=" width:480px; height:286px; line-height:2em;overflow:auto; margin:0;">
