@@ -20,6 +20,19 @@
 <link href="${pageContext.request.contextPath }/css/bootstrap.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath }/css/bootstrap.min.css" rel="stylesheet">
 <style>
+.ml-60 {
+	margin-left:60px;
+}
+.ml-70 {
+	margin-left:70px;
+}
+.page-width {
+	width:980px;
+}
+
+.width-970 {
+	width:965px;
+}
 .bd-placeholder-img {
 	font-size: 1.125rem;
 	text-anchor: middle;
@@ -48,7 +61,10 @@
 
 <body>
 	<jsp:include page="/include/header.jsp"></jsp:include>
-	<div class="container">
+	
+	
+	<div class="container-sm">
+	
 		<div class="input-group my-3 w-50 container">
 			<input type="text" class="form-control"
 				placeholder="Recipient's username" aria-label="Recipient's username"
@@ -68,8 +84,8 @@
 			</div>
 		</div>
 		
-		<h3 class="p-0 mt-5">추천도서</h3>
-		<hr />
+		<h3 class="p-0 mt-5 page-width ml-70">추천도서</h3>
+		<hr class=" page-width ml-70"/>
 		<div id="wrap" class="my-5">
 			<ul class="slide" id="slide">
 				<li>
@@ -191,8 +207,9 @@
 			</div>
 		</div>
 
-		<div class="row mb-2">
-			<div class="col-6">
+		<div class="row mb-2  page-width ml-70 ">
+		
+			<div class="col-md-6">
 				<!--케러셀-->
 				<div class="card">
 					<legend class="p-2">
@@ -211,7 +228,7 @@
 					<jsp:include page="new.jsp"></jsp:include>
 				</div>
 				<!--케러셀-->
-			</div>
+			</div> <!-- cotainer -->
 
 			<div class="col-md-6">
 				<div class="card">
@@ -267,8 +284,7 @@
 
 		</div>
 
-		<div class="row my-5">
-			<div class="col"></div>
+		<div class="row my-5 width-970 ml-60">
 			<div class="col">
 				<button class="btn btn-sm">
 					<img src="${pageContext.request.contextPath }/image/link.PNG"
@@ -299,7 +315,6 @@
 						alt="...">
 				</button>
 			</div>
-			<div class="col"></div>
 		</div>
 
 
