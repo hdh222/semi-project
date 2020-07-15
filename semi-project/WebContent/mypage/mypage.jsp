@@ -31,7 +31,8 @@
 </style>
 <body>
 
-
+	<!-- 헤더 -->
+	<jsp:include page="../include/header.jsp"></jsp:include>
 	<!-- Page Content -->
 	<div class="container my-4">
 		<!-- 상단로우 -->
@@ -110,13 +111,7 @@
 	<!-- /.container -->
 
 	<!-- Footer -->
-	<footer class="py-5 bg-dark">
-		<div class="container">
-			<p class="m-0 text-center text-white">Copyright &copy; Your
-				Website 2020</p>
-		</div>
-		<!-- /.container -->
-	</footer>
+	<jsp:include page="../include/footer.jsp"></jsp:include>
 
 	<!-- Bootstrap core JavaScript -->
 	<script src="${pageContext.request.contextPath}/js/jquery-3.5.1.min.js"></script>

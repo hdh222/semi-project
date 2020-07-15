@@ -7,15 +7,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css" />
-    
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css">
 </head>
 
 <body>
 	
 	<jsp:include page="../include/header.jsp"></jsp:include> 
 	
+<<<<<<< HEAD
     <div class="container my-5 py-5">
+=======
+    <div class="container">
+>>>>>>> refs/remotes/UpStream/master
         <h3 class="p-2">LOGIN</h3>
         <hr class="mt-0" />
 
@@ -58,8 +61,11 @@
             </div>
         </div>
     </div>
+<<<<<<< HEAD
 
 	<jsp:include page="../include/footer.jsp"></jsp:include>
+=======
+>>>>>>> refs/remotes/UpStream/master
 
     <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
     <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
