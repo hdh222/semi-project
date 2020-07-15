@@ -68,8 +68,9 @@
 			</div>
 		</div>
 		
-		<label></label>
-		<div id="wrap">
+		<h3 class="p-0 mt-5">추천도서</h3>
+		<hr />
+		<div id="wrap" class="my-5">
 			<ul class="slide" id="slide">
 				<li>
 					<div class="card" style="width: 18rem;">
@@ -266,37 +267,39 @@
 
 		</div>
 
-		<div class="row my-3">
+		<div class="row my-5">
+			<div class="col"></div>
 			<div class="col">
-				<button>
+				<button class="btn btn-sm">
 					<img src="${pageContext.request.contextPath }/image/link.PNG"
 						alt="...">
 				</button>
 			</div>
 			<div class="col">
-				<button>
+				<button class="btn btn-sm">
 					<img src="${pageContext.request.contextPath }/image/link.PNG"
 						alt="...">
 				</button>
 			</div>
 			<div class="col">
-				<button>
+				<button class="btn btn-sm">
 					<img src="${pageContext.request.contextPath }/image/link.PNG"
 						alt="...">
 				</button>
 			</div>
 			<div class="col">
-				<button>
+				<button class="btn btn-sm">
 					<img src="${pageContext.request.contextPath }/image/link.PNG"
 						alt="...">
 				</button>
 			</div>
 			<div class="col">
-				<button>
+				<button class="btn btn-sm">
 					<img src="${pageContext.request.contextPath }/image/link.PNG"
 						alt="...">
 				</button>
 			</div>
+			<div class="col"></div>
 		</div>
 
 

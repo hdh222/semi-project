@@ -15,7 +15,7 @@
 }
 </style>
 
-<footer class="blog-footer">
+<footer class="blog-footer mt-5">
 	<p>
 		Blog template built for <a href="https://getbootstrap.com/">Bootstrap</a>
 		by <a href="https://twitter.com/mdo">@mdo</a>.

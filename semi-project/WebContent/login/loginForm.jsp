@@ -15,7 +15,7 @@
 	
 	<jsp:include page="../include/header.jsp"></jsp:include> 
 	
-    <div class="container my-5">
+    <div class="container my-5 py-5">
         <h3 class="p-2">LOGIN</h3>
         <hr class="mt-0" />
 
@@ -58,8 +58,7 @@
             </div>
         </div>
     </div>
-	
-	<div class="mt-5"></div>
+
 	<jsp:include page="../include/footer.jsp"></jsp:include>
 
     <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
