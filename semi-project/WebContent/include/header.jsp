@@ -1,20 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
-<style>
-.blog-header {
-	line-height: 1;
-	border-bottom: 1px solid #e5e5e5;
-}
-
-.blog-header-logo {
-	font-family: "Playfair Display", Georgia, "Times New Roman", serif;
-	font-size: 2.25rem;
-}
-
-.blog-header-logo:hover {
-	text-decoration: none;
-}
-</style>
 
 <div class="container">
 	<header class="blog-header py-3">

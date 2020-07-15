@@ -10,8 +10,8 @@
 
         #wrap {
             /*占쎌겱占쎌삺 癰귣똻�뵠占쎈뮉 �⑤끃�벥 占쎄쾿疫뀐옙 獄쏉옙 癰귣똻�뵠占쎈뮉 甕곕뗄�맄 占쎄퐬占쎌젟*/
-            width: 990px;
-            margin: 20px auto;
+            width: 980px;
+            margin: 0;
             position: relative;
             /*占쎌맄燁삼옙 癰귨옙野껓옙 揶쏉옙占쎈뮟*/
             overflow: hidden;
@@ -30,14 +30,14 @@
             /*�룯占� 占쎄섐�뜮占� 3000px*/
             position: relative;
             /*占쎌맄燁삼옙 癰귨옙野껓옙 揶쏉옙占쎈뮟*/
-            margin-left: -330px;
+            margin-left: -340px;
         }
 
-        .slide>li {
+        .slide>li>.card {
             /*占쎌뵠沃섎챷占� 占쎄쾿疫뀐옙 獄쏉옙 占쎌뇢筌잛럥占쏙옙苑� 筌△뫀占쏙옙占썸에占� 筌�袁⑼옙*/
             width: 300px;
             float: left;
-            margin-left: 30px;
+            margin-right: 40px;
             /*占쎌뇢筌잞옙 �겫占쏙옙苑� 筌�袁⑼옙*/
             height: 350px;
         }
@@ -68,28 +68,30 @@
             position: absolute;
             top: 55%;
             left: 0;
-            -webkit-transform: translate(32px, -50%);
-            -ms-transform: translate(32px, -50%);
-            -o-transform: translate(32px, -50%);
-            transform: translate(32px, -50%);
+            -webkit-transform: translate(0px, -50%);
+            -ms-transform: translate(0px, -50%);
+            -o-transform: translate(0px, -50%);
+            transform: translate(0px, -50%);
             opacity: 0.2;
         }
-        .prev:hover,.next:hover{
-            opacity: 0.8;
-        }
+       
         .next {
             width: 30px;
             height: 100px;
             position: absolute;
             top: 55%;
             right: 0;
-            -webkit-transform: translate(-16px, -50%);
-            -ms-transform: translate(-16px, -50%);
-            -o-transform: translate(-16px, -50%);
-            transform: translate(-16px, -50%);
+            -webkit-transform: translate(0px, -50%);
+            -ms-transform: translate(0px, -50%);
+            -o-transform: translate(0px, -50%);
+            transform: translate(0px, -50%);
             opacity: 0.2;
         }
 
+		 .prev:hover,.next:hover{
+            opacity: 0.8;
+        }
+        
         picture {
             margin: 0 auto;
             margin-top: 20px;

@@ -20,19 +20,6 @@
 <link href="${pageContext.request.contextPath }/css/bootstrap.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath }/css/bootstrap.min.css" rel="stylesheet">
 <style>
-.ml-60 {
-	margin-left:60px;
-}
-.ml-70 {
-	margin-left:70px;
-}
-.page-width {
-	width:980px;
-}
-
-.width-970 {
-	width:965px;
-}
 .bd-placeholder-img {
 	font-size: 1.125rem;
 	text-anchor: middle;
@@ -63,7 +50,7 @@
 	<jsp:include page="/include/header.jsp"></jsp:include>
 	
 	
-	<div class="container-sm">
+	<div class="w-980 mx-auto px-0">
 	
 		<div class="input-group my-3 w-50 container">
 			<input type="text" class="form-control"
@@ -84,12 +71,12 @@
 			</div>
 		</div>
 		
-		<h3 class="p-0 mt-5 page-width ml-70">추천도서</h3>
-		<hr class=" page-width ml-70"/>
+		<h3 class="p-0 mt-5">추천도서</h3>
+		<hr/>
 		<div id="wrap" class="my-5">
 			<ul class="slide" id="slide">
 				<li>
-					<div class="card" style="width: 18rem;">
+					<div class="card" style="width: 300px">
 						<picture class="shadow">
 						<source
 							srcset="${pageContext.request.contextPath }/image/book.PNG"
@@ -103,7 +90,7 @@
 					</div>
 				</li>
 				<li>
-					<div class="card" style="width: 18rem;">
+					<div class="card">
 						<picture class="shadow">
 						<source
 							srcset="${pageContext.request.contextPath }/image/book.PNG"
@@ -117,7 +104,7 @@
 					</div>
 				</li>
 				<li>
-					<div class="card" style="width: 18rem;">
+					<div class="card">
 						<picture class="shadow">
 						<source
 							srcset="${pageContext.request.contextPath }/image/book.PNG"
@@ -131,7 +118,7 @@
 					</div>
 				</li>
 				<li>
-					<div class="card" style="width: 18rem;">
+					<div class="card">
 						<picture class="shadow">
 						<source
 							srcset="${pageContext.request.contextPath }/image/book.PNG"
@@ -145,7 +132,7 @@
 					</div>
 				</li>
 				<li>
-					<div class="card" style="width: 18rem;">
+					<div class="card">
 						<picture class="shadow">
 						<source
 							srcset="${pageContext.request.contextPath }/image/book.PNG"
@@ -159,7 +146,7 @@
 					</div>
 				</li>
 				<li>
-					<div class="card" style="width: 18rem;">
+					<div class="card">
 						<picture class="shadow">
 						<source
 							srcset="${pageContext.request.contextPath }/image/book.PNG"
@@ -173,7 +160,7 @@
 					</div>
 				</li>
 				<li>
-					<div class="card" style="width: 18rem;">
+					<div class="card">
 						<picture class="shadow">
 						<source
 							srcset="${pageContext.request.contextPath }/image/book.PNG"
@@ -193,21 +180,19 @@
 				<svg width="2em" height="2em" viewBox="0 0 16 16"
 					class="bi bi-caret-left-fill" fill="currentColor"
 					xmlns="http://www.w3.org/2000/svg">
-          <path
-						d="M3.86 8.753l5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z" />
+          <path d="M3.86 8.753l5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z" />
         </svg>
 			</div>
 			<div class="next">
 				<svg width="2em" height="2em" viewBox="0 0 16 16"
 					class="bi bi-caret-right-fill bi-light" fill="currentColor"
 					xmlns="http://www.w3.org/2000/svg">
-          <path
-						d="M12.14 8.753l-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z" />
+          <path d="M12.14 8.753l-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z" />
         </svg>
 			</div>
 		</div>
 
-		<div class="row mb-2  page-width ml-70 ">
+		<div class="row mb-2">
 		
 			<div class="col-md-6">
 				<!--케러셀-->
@@ -284,15 +269,9 @@
 
 		</div>
 
-		<div class="row my-5 width-970 ml-60">
+		<div class="row my-5">
 			<div class="col">
-				<button class="btn btn-sm">
-					<img src="${pageContext.request.contextPath }/image/link.PNG"
-						alt="...">
-				</button>
-			</div>
-			<div class="col">
-				<button class="btn btn-sm">
+				<button class="btn btn-sm mx-0">
 					<img src="${pageContext.request.contextPath }/image/link.PNG"
 						alt="...">
 				</button>

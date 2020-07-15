@@ -8,22 +8,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/blog.css" />
 </head>
 
 <body>
 	
 	<jsp:include page="../include/header.jsp"></jsp:include> 
 	
-<<<<<<< HEAD
-    <div class="container my-5 py-5">
-=======
-    <div class="container">
->>>>>>> refs/remotes/UpStream/master
+    <div class="my-5 py-5 w-980 mx-auto">
         <h3 class="p-2">LOGIN</h3>
         <hr class="mt-0" />
 
         <div class="row">
-            <div class="col-6 card p-5">
+            <div class="col-md-6 card py-5">
                 <form>
                     <div class="form-group m-0">
                         <label for="email">ID</label>
@@ -44,7 +41,7 @@
                 <a  href="#">회원이 아니신가요? 회원가입</a>
                 <a  href="#">비밀번호를 잊으셨나요?</a>
             </div>
-            <div class="col-6">
+            <div class="col-md-6">
                 <div id="carouselExampleSlidesOnly" class="carousel slide card" data-ride="carousel" data-interval="2000">
                     <div class="carousel-inner">
                         <div class="carousel-item active">
@@ -61,11 +58,9 @@
             </div>
         </div>
     </div>
-<<<<<<< HEAD
 
 	<jsp:include page="../include/footer.jsp"></jsp:include>
-=======
->>>>>>> refs/remotes/UpStream/master
+
 
     <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
     <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
