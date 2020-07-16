@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,25 +8,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/blog.css" />
 </head>
 
 <body>
 	
 	<jsp:include page="../include/header.jsp"></jsp:include> 
-	
-<<<<<<< HEAD
-    <div class="container my-5 py-5">
-=======
-    <div class="container">
->>>>>>> refs/remotes/UpStream/master
+	<div class="container">
+    <div class="my-5 py-5">
         <h3 class="p-2">LOGIN</h3>
         <hr class="mt-0" />
 
         <div class="row">
-            <div class="col-6 card p-5">
+            <div class="col-md-6 card py-5">
                 <form>
                     <div class="form-group m-0">
                         <label for="email">ID</label>
+                        
                         <input type="email" class="form-control col-10" id="email" name="email"
                             aria-describedby="emailHelp" placeholder="example@email.com" />
                     </div>
@@ -36,15 +34,15 @@
                     </div>
                     <div class="form-group form-check">
                         <input type="checkbox" class="form-check-input" id="idCheck" name="idCheck" value="1">
-                        <label class="form-check-label" for="idCheck">ID ÀúÀå</label>
+                        <label class="form-check-label" for="idCheck">ID ì €ì¥</label>
                     </div>
-                    <button type="submit" class="btn btn-primary">·Î±×ÀÎ</button>
+                    <button type="submit" class="btn btn-primary">ë¡œê·¸ì¸</button>
                 </form>
                 <hr />
-                <a  href="#">È¸¿øÀÌ ¾Æ´Ï½Å°¡¿ä? È¸¿ø°¡ÀÔ</a>
-                <a  href="#">ºñ¹Ğ¹øÈ£¸¦ ÀØÀ¸¼Ì³ª¿ä?</a>
+                <a  href="#">íšŒì›ì´ ì•„ë‹ˆì‹ ê°€ìš”? íšŒì›ê°€ì…</a>
+                <a  href="#">ë¹„ë°€ë²ˆí˜¸ë¥¼ ìŠìœ¼ì…¨ë‚˜ìš”?</a>
             </div>
-            <div class="col-6">
+            <div class="col-md-6 py-5">
                 <div id="carouselExampleSlidesOnly" class="carousel slide card" data-ride="carousel" data-interval="2000">
                     <div class="carousel-inner">
                         <div class="carousel-item active">
@@ -61,11 +59,9 @@
             </div>
         </div>
     </div>
-<<<<<<< HEAD
-
+	</div>
 	<jsp:include page="../include/footer.jsp"></jsp:include>
-=======
->>>>>>> refs/remotes/UpStream/master
+
 
     <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
     <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>

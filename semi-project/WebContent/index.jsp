@@ -1,5 +1,5 @@
 <%@page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+	pageEncoding="UTF-8"%>
 <!doctype html>
 <html lang="en">
 
@@ -22,6 +22,7 @@
 <style>
 .bd-placeholder-img {
 	font-size: 1.125rem;
+	
 	text-anchor: middle;
 	-webkit-user-select: none;
 	-moz-user-select: none;
@@ -48,7 +49,10 @@
 
 <body>
 	<jsp:include page="/include/header.jsp"></jsp:include>
+	
 	<div class="container">
+	<!-- <div class="w-980 mx-md-auto px-0"> -->
+	
 		<div class="input-group my-3 w-50 container">
 			<input type="text" class="form-control"
 				placeholder="Recipient's username" aria-label="Recipient's username"
@@ -68,12 +72,12 @@
 			</div>
 		</div>
 		
-		<h3 class="p-0 mt-5">√ﬂ√µµµº≠</h3>
-		<hr />
+		<h3 class="p-0 mt-5">Ï∂îÏ≤úÎèÑÏÑú</h3>
+		<hr/>
 		<div id="wrap" class="my-5">
 			<ul class="slide" id="slide">
 				<li>
-					<div class="card" style="width: 18rem;">
+					<div class="card" style="width: 300px">
 						<picture class="shadow">
 						<source
 							srcset="${pageContext.request.contextPath }/image/book.PNG"
@@ -87,7 +91,7 @@
 					</div>
 				</li>
 				<li>
-					<div class="card" style="width: 18rem;">
+					<div class="card">
 						<picture class="shadow">
 						<source
 							srcset="${pageContext.request.contextPath }/image/book.PNG"
@@ -101,7 +105,7 @@
 					</div>
 				</li>
 				<li>
-					<div class="card" style="width: 18rem;">
+					<div class="card">
 						<picture class="shadow">
 						<source
 							srcset="${pageContext.request.contextPath }/image/book.PNG"
@@ -115,7 +119,7 @@
 					</div>
 				</li>
 				<li>
-					<div class="card" style="width: 18rem;">
+					<div class="card">
 						<picture class="shadow">
 						<source
 							srcset="${pageContext.request.contextPath }/image/book.PNG"
@@ -129,7 +133,7 @@
 					</div>
 				</li>
 				<li>
-					<div class="card" style="width: 18rem;">
+					<div class="card">
 						<picture class="shadow">
 						<source
 							srcset="${pageContext.request.contextPath }/image/book.PNG"
@@ -143,7 +147,7 @@
 					</div>
 				</li>
 				<li>
-					<div class="card" style="width: 18rem;">
+					<div class="card">
 						<picture class="shadow">
 						<source
 							srcset="${pageContext.request.contextPath }/image/book.PNG"
@@ -157,7 +161,7 @@
 					</div>
 				</li>
 				<li>
-					<div class="card" style="width: 18rem;">
+					<div class="card">
 						<picture class="shadow">
 						<source
 							srcset="${pageContext.request.contextPath }/image/book.PNG"
@@ -177,26 +181,25 @@
 				<svg width="2em" height="2em" viewBox="0 0 16 16"
 					class="bi bi-caret-left-fill" fill="currentColor"
 					xmlns="http://www.w3.org/2000/svg">
-          <path
-						d="M3.86 8.753l5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z" />
+          <path d="M3.86 8.753l5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z" />
         </svg>
 			</div>
 			<div class="next">
 				<svg width="2em" height="2em" viewBox="0 0 16 16"
 					class="bi bi-caret-right-fill bi-light" fill="currentColor"
 					xmlns="http://www.w3.org/2000/svg">
-          <path
-						d="M12.14 8.753l-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z" />
+          <path d="M12.14 8.753l-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z" />
         </svg>
 			</div>
 		</div>
 
 		<div class="row mb-2">
-			<div class="col-6">
-				<!--ƒ…∑Øºø-->
+		
+			<div class="col-md-6">
+				<!--ÏºÄÎü¨ÏÖÄ-->
 				<div class="card">
 					<legend class="p-2">
-						Ω≈∞£ µµº≠
+						Ïã†Í∞Ñ ÎèÑÏÑú
 						<button class="btn btn-outline-secondary btn-sm float-right mr-3">
 							<svg width="1em" height="1em" viewBox="0 0 16 16"
 								class="bi bi-plus" fill="currentColor"
@@ -210,14 +213,14 @@
 					</legend>
 					<jsp:include page="new.jsp"></jsp:include>
 				</div>
-				<!--ƒ…∑Øºø-->
-			</div>
+				<!--ÏºÄÎü¨ÏÖÄ-->
+			</div> <!-- cotainer -->
 
 			<div class="col-md-6">
 				<div class="card">
 					<table class="table table-hover mb-0">
 						<legend class="p-2">
-							√÷±Ÿ ∏Æ∫‰
+							ÏµúÍ∑º Î¶¨Î∑∞
 							<button class="btn btn-outline-secondary btn-sm float-right mr-3">
 								<svg width="1em" height="1em" viewBox="0 0 16 16"
 									class="bi bi-plus" fill="currentColor"
@@ -268,9 +271,8 @@
 		</div>
 
 		<div class="row my-5">
-			<div class="col"></div>
 			<div class="col">
-				<button class="btn btn-sm">
+				<button class="btn btn-sm mx-0">
 					<img src="${pageContext.request.contextPath }/image/link.PNG"
 						alt="...">
 				</button>
@@ -293,19 +295,13 @@
 						alt="...">
 				</button>
 			</div>
-			<div class="col">
-				<button class="btn btn-sm">
-					<img src="${pageContext.request.contextPath }/image/link.PNG"
-						alt="...">
-				</button>
-			</div>
-			<div class="col"></div>
 		</div>
 
 
 
 	</div>
-	<!-- /.container -->
+	<!--</div>
+	 /.container -->
 
 	<jsp:include page="include/footer.jsp"></jsp:include>
 
