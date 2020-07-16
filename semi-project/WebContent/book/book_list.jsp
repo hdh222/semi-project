@@ -50,14 +50,15 @@
 </style>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css" />
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/blog.css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/bookList.css" />
 </head>
 <body>
 	<jsp:include page="/include/header.jsp"></jsp:include>
 	
 	<div class="container">
 		<div class="container card my-4">
-			<div class="row mt-4 mb-4 ml-4">
-				<div class="col-md-2">
+			<div class="row mt-5 mb-4" id="article">
+				<div class="col-2">
 					<button class="btn btn-link">
 						<img class="menu_icon"
 							src="https://image.flaticon.com/icons/svg/867/867746.svg" alt="" />
@@ -65,7 +66,7 @@
 					</button>
 				</div>
 
-				<div class="col-md-2">
+				<div class="col-2">
 					<button class="btn btn-link">
 						<img class="menu_icon"
 							src="https://image.flaticon.com/icons/svg/3164/3164118.svg"
@@ -74,7 +75,7 @@
 					</button>
 				</div>
 
-				<div class="col-md-2">
+				<div class="col-2">
 					<button class="btn btn-link">
 						<img class="menu_icon"
 							src="https://image.flaticon.com/icons/svg/2970/2970729.svg"
@@ -83,7 +84,7 @@
 					</button>
 				</div>
 
-				<div class="col-md-2">
+				<div class="col-2">
 					<button class="btn btn-link">
 						<img class="menu_icon"
 							src="https://image.flaticon.com/icons/svg/841/841988.svg" alt="" />
@@ -91,7 +92,7 @@
 					</button>
 				</div>
 
-				<div class="col-md-2">
+				<div class="col-2">
 					<button class="btn btn-link">
 						<img class="menu_icon"
 							src="https://cdn3.iconfinder.com/data/icons/eldorado-stroke-buildings/40/church-512.png"
@@ -100,7 +101,7 @@
 					</button>
 				</div>
 
-				<div class="col-md-2">
+				<div class="col-2">
 					<button class="btn btn-link">
 						<img class="menu_icon"
 							src="https://cdns.iconmonstr.com/wp-content/assets/preview/2017/240/iconmonstr-time-17.png"
@@ -163,5 +164,6 @@
 		
 	</div>
 	<jsp:include page="../include/footer.jsp"></jsp:include>
+	
 </body>
 </html>

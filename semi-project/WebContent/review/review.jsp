@@ -90,7 +90,7 @@
 									class="float-right">작성일 : 0000.00.00</span>
 							</p>
 							<!-- review_menu -->
-							<ul class="nav nav-tabs mt-5" id="myTab" role="tablist">
+							<ul class="nav nav-tabs mt-lg-5" id="myTab" role="tablist">
 								<li class="nav-item" role="presentation"><a
 									class="nav-link active" id="home-tab" data-toggle="tab"
 									href="#home" role="tab" aria-controls="home"
@@ -103,21 +103,21 @@
 							<div class="tab-content" id="myTabContent">
 								<div class="tab-pane fade show active" id="home" role="tabpanel"
 									aria-labelledby="home-tab">
-									<p id="review_content" class="my-5">택배로 온 책을 보고 두꺼워서 조금
+									<p id="review_content" class="my-lg-5">택배로 온 책을 보고 두꺼워서 조금
 										놀랐는데, 1/2권 분책이 가능한 형태였다. 두께로만 봐도 내용이 정말 많겠다는 생각이 들었고, 읽어보니 정말
 										많은 내용을 넣으려는 노력을 했음을 알 수 있었다. 1권은 자바의 기본 문법과 간단한 oop에 해당하는 부분이라
 										읽고 넘어갔는데, 일단 읽으면서 받은 첫 인상은 소스코드가 자세히 나와있어 좋았고, 설명도 비교적 세부적인
 										부분까지 기술한 듯해서 괜찮았다. 장점 소스코드와 설명이 자세하다. api에 대해 사용방법을 바로알고 싶을 때
 										매우 유용하다 단점 초급대상이지만 간단하게라도 설명이 있으면 좋을 중요한 부분들이 빠진경우가 있다.</p>
 										
-									<p class="mt-3 float-right" >저자 : 홍길동,&nbsp;&nbsp;출판사 : 길벗,&nbsp;&nbsp; 출간일 : 0000.00.00</p>	
+									<p class="float-right" >저자 : 홍길동,&nbsp;&nbsp;출판사 : 길벗,&nbsp;&nbsp; 출간일 : 0000.00.00</p>	
 								</div>
 								<div class="tab-pane fade" id="profile" role="tabpanel"
 									aria-labelledby="profile-tab">
-									<table class = "table table-light my-3 border-bottom border-success">
+									<table class = "table table-light my-lg-3 border-bottom border-success">
 										<thead class ="table">
 											<tr class="">
-												<th class = "text-center border-bottom border-success">추천수</th>
+												<th class = "text-center border-bottom border-success">추천</th>
 												<th class = "text-center border-bottom border-success">아이디</th>
 												<th class = "text-center border-bottom border-success">댓글 내용</th>
 												<th class = "text-center border-bottom border-success">날짜</th>	
@@ -146,8 +146,8 @@
 										</tbody>
 										
 									</table>
-									<div style=" position: fixed; bottom: 0; width:35%;" class="mb-5">
-										<textarea class="form-control mt-5"  name="review_comment" id=""></textarea>
+									<div class="mb-lg-5 w-100">
+										<textarea class="form-control mt-lg-5 mb-lg-2"  name="review_comment" id=""></textarea>
 										<button class = "btn btn-primary float-right mt-3">작성</button>
 										<button class = "btn btn-primary float-right mt-3 mr-2">지우기</button>
 									</div>
@@ -171,5 +171,7 @@
 		src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
 		integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
 		crossorigin="anonymous"></script>
+		
+	<script src="${pageContext.request.contextPath}/js/review.js"></script>
 </body>
 </html>

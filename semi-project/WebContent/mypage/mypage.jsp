@@ -79,7 +79,7 @@
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-10 my-5 border boder-secondary mx-auto">
+			<div class="col-10 my-sm-5 border boder-secondary mx-auto">
 				<form class="w-50 mb-2 mt-2 mx-auto">
 					<h4 class="my-3">회원정보수정</h4>
 					<div class="form-group">

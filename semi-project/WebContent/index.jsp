@@ -210,7 +210,7 @@
               </svg>
 						</button>
 					</legend>
-					<jsp:include page="new.jsp"></jsp:include>
+					<jsp:include page="include/carousel2.jsp"></jsp:include>
 				</div>
 				<!--케러셀-->
 			</div>

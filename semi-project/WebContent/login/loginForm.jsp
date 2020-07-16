@@ -9,7 +9,6 @@
     <title>Document</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/blog.css" />
-	
 </head>
 
 <body>
@@ -21,7 +20,7 @@
         <hr class="mt-0" />
 
         <div class="row">
-            <div class="col-md-6 card py-5">
+            <div class="col-lg-6 card py-5">
                 <form>
                     <div class="form-group m-0">
                         <label for="email">ID</label>
@@ -43,8 +42,8 @@
                 <a  href="#">회원이 아니신가요? 회원가입</a>
                 <a  href="#">비밀번호를 잊으셨나요?</a>
             </div>
-            <div class="col-md-6 py-5">
-                <div id="carouselExampleSlidesOnly" class="carousel slide card" data-ride="carousel" data-interval="2000">
+            <div class="col-md-6 p-0" id="carousel">
+                <div id="carouselExampleSlidesOnly" class="carousel slide card px-2 py-5" data-ride="carousel" data-interval="2000">
                     <div class="carousel-inner">
                         <div class="carousel-item active">
                             <img src="${pageContext.request.contextPath}/image/img.jpg" class="d-block w-100" alt="...">
@@ -64,8 +63,9 @@
 	<jsp:include page="../include/footer.jsp"></jsp:include>
 
 
-    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
+    <script src="${pageContext.request.contextPath}/js/login.js"></script>
 </body>
 
 </html>

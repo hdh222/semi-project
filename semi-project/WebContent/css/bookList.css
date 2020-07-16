@@ -1,0 +1,13 @@
+@media ( min-width : 0px) {
+	#article {
+		overflow-x: auto;
+		overflow-y: hidden;
+	}
+}
+
+@media ( min-width : 740px) {
+	#article {
+		overflow-x: hidden;
+		overflow-y: hidden;
+	}
+}
