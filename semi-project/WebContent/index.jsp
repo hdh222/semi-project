@@ -213,7 +213,7 @@
 					<jsp:include page="new.jsp"></jsp:include>
 				</div>
 				<!--케러셀-->
-			</div> <!-- cotainer -->
+			</div>
 
 			<div class="col-md-6">
 				<div class="card">
@@ -268,7 +268,7 @@
 			</div>
 
 		</div>
-
+		
 		<div class="row my-5">
 			<div class="col">
 				<button class="btn btn-sm mx-0">
