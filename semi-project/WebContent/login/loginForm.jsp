@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,8 +14,8 @@
 <body>
 	
 	<jsp:include page="../include/header.jsp"></jsp:include> 
-	
-    <div class="my-5 py-5 w-980 mx-auto">
+	<div class="container">
+    <div class="my-5 py-5">
         <h3 class="p-2">LOGIN</h3>
         <hr class="mt-0" />
 
@@ -24,6 +24,7 @@
                 <form>
                     <div class="form-group m-0">
                         <label for="email">ID</label>
+                        
                         <input type="email" class="form-control col-10" id="email" name="email"
                             aria-describedby="emailHelp" placeholder="example@email.com" />
                     </div>
@@ -33,15 +34,15 @@
                     </div>
                     <div class="form-group form-check">
                         <input type="checkbox" class="form-check-input" id="idCheck" name="idCheck" value="1">
-                        <label class="form-check-label" for="idCheck">ID ����</label>
+                        <label class="form-check-label" for="idCheck">ID 저장</label>
                     </div>
-                    <button type="submit" class="btn btn-primary">�α���</button>
+                    <button type="submit" class="btn btn-primary">로그인</button>
                 </form>
                 <hr />
-                <a  href="#">ȸ���� �ƴϽŰ���? ȸ������</a>
-                <a  href="#">��й�ȣ�� �����̳���?</a>
+                <a  href="#">회원이 아니신가요? 회원가입</a>
+                <a  href="#">비밀번호를 잊으셨나요?</a>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-6 py-5">
                 <div id="carouselExampleSlidesOnly" class="carousel slide card" data-ride="carousel" data-interval="2000">
                     <div class="carousel-inner">
                         <div class="carousel-item active">
@@ -58,7 +59,7 @@
             </div>
         </div>
     </div>
-
+	</div>
 	<jsp:include page="../include/footer.jsp"></jsp:include>
 
 

@@ -1,5 +1,5 @@
 <%@page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+	pageEncoding="UTF-8"%>
 <!doctype html>
 <html lang="en">
 
@@ -72,7 +72,7 @@
 			</div>
 		</div>
 		
-		<h3 class="p-0 mt-5">√ﬂ√µµµº≠</h3>
+		<h3 class="p-0 mt-5">Ï∂îÏ≤úÎèÑÏÑú</h3>
 		<hr/>
 		<div id="wrap" class="my-5">
 			<ul class="slide" id="slide">
@@ -196,10 +196,10 @@
 		<div class="row mb-2">
 		
 			<div class="col-md-6">
-				<!--ƒ…∑Øºø-->
+				<!--ÏºÄÎü¨ÏÖÄ-->
 				<div class="card">
 					<legend class="p-2">
-						Ω≈∞£ µµº≠
+						Ïã†Í∞Ñ ÎèÑÏÑú
 						<button class="btn btn-outline-secondary btn-sm float-right mr-3">
 							<svg width="1em" height="1em" viewBox="0 0 16 16"
 								class="bi bi-plus" fill="currentColor"
@@ -213,14 +213,14 @@
 					</legend>
 					<jsp:include page="new.jsp"></jsp:include>
 				</div>
-				<!--ƒ…∑Øºø-->
+				<!--ÏºÄÎü¨ÏÖÄ-->
 			</div> <!-- cotainer -->
 
 			<div class="col-md-6">
 				<div class="card">
 					<table class="table table-hover mb-0">
 						<legend class="p-2">
-							√÷±Ÿ ∏Æ∫‰
+							ÏµúÍ∑º Î¶¨Î∑∞
 							<button class="btn btn-outline-secondary btn-sm float-right mr-3">
 								<svg width="1em" height="1em" viewBox="0 0 16 16"
 									class="bi bi-plus" fill="currentColor"
