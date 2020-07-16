@@ -14,11 +14,7 @@
 <title>MYpage</title>
 
 <!-- Bootstrap core CSS -->
-<link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
-	integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
-	crossorigin="anonymous">
-
+<link rel="stylesheet" href="../css/bootstrap.min.css" />
 <!-- Custom styles for this template -->
 <link href="css/shop-homepage.css" rel="stylesheet">
 <link rel="stylesheet" href="${pageContext.request.contextPath }/css/carousel.css" />
@@ -28,26 +24,27 @@
 		border:1px solid tomato;
 		
 	}
+
 </style>
 <body>
 
 	<!-- 헤더 -->
 	<jsp:include page="../include/header.jsp"></jsp:include>
 	<!-- Page Content -->
-	<div class="container my-4">
+	<div class="container my-4 ">
 		<!-- 상단로우 -->
 		<div class="row">
 			<!--제목 -->
 			<h1 class="mx-3 my-3">MY PAGE</h1>
 			<!-- 관심사 carousel 영역-->
-			<div class="col-lg-12">
-				<h4 class="my-4 ml-5">최근 관심사</h4>
+			<div class="col-lg-12 px-0">
+				<h4 class="my-4 ml-5" >최근 관심사</h4>
 				<jsp:include page="../include/carousel.jsp"></jsp:include>
 			<div>
 			<!--내가 쓴 리뷰,내가 쓴 댓글 row-->
-				<div class="row">
-					<div class="col-lg-6 col-md-6 mb-6">
-						<div class="card h-100">
+				<div class="row my-4">
+					<div class="col-lg-6 col-md-6 mb-6" id="listBox">
+						<div class="card">
 							<div class="card-body">
 								<h4 class="card-title">
 									<a href="#">내가 쓴 리뷰</a>
@@ -65,8 +62,8 @@
 						</div>
 					</div>
 
-					<div class="col-lg-6 col-md-6 mb-6">
-						<div class="card h-100">
+					<div class="col-lg-6 col-md-6 mb-6" id="listBox">
+						<div class="card">
 							<div class="card-body">
 								<h4 class="card-title">
 									<a href="#">내가 쓴 댓글</a>
