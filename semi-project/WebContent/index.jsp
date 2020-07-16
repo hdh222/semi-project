@@ -22,6 +22,7 @@
 <style>
 .bd-placeholder-img {
 	font-size: 1.125rem;
+	
 	text-anchor: middle;
 	-webkit-user-select: none;
 	-moz-user-select: none;
@@ -49,8 +50,8 @@
 <body>
 	<jsp:include page="/include/header.jsp"></jsp:include>
 	
-	
-	<div class="w-980 mx-auto px-0">
+	<div class="container">
+	<!-- <div class="w-980 mx-md-auto px-0"> -->
 	
 		<div class="input-group my-3 w-50 container">
 			<input type="text" class="form-control"
@@ -299,7 +300,8 @@
 
 
 	</div>
-	<!-- /.container -->
+	<!--</div>
+	 /.container -->
 
 	<jsp:include page="include/footer.jsp"></jsp:include>
 

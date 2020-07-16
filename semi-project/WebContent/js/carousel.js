@@ -19,12 +19,13 @@ function Rslide() {
             Rslide();
         });
         //setInterval(Lslide, 3000);
+        /*
         $(window).resize(function() {
             if(window.innerWidth>990) {
-                $('#wrap').css({ width: '980px' });
+                $('#wrap').css({ width: '980px'});
             }else if (window.innerWidth > 740) {
                 $('#wrap').css({ width: '640px' });
             } else {
                 $('#wrap').css({ width: '300px' });
             }
-        });
+        });*/

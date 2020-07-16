@@ -4,7 +4,7 @@
 <div id="wrap">
         <ul class="slide" id="slide">
             <li>
-                <div class="card" style="width: 18rem;">
+                <div class="card">
                     <picture>
                         <source srcset="${pageContext.request.contextPath}/image/book.PNG" type="image/svg+xml">
                         <img src="${pageContext.request.contextPath}/image/book.PNG" class="img-fluid img-thumbnail" alt="...">
@@ -15,7 +15,7 @@
                 </div>
             </li>
             <li>
-                <div class="card" style="width: 18rem;">
+                <div class="card">
                     <picture>
                         <source srcset="${pageContext.request.contextPath}/image/book.PNG" type="image/svg+xml">
                         <img src="${pageContext.request.contextPath}/image/book.PNG" class="img-fluid img-thumbnail" alt="...">
@@ -26,7 +26,7 @@
                 </div>
             </li>
             <li>
-                <div class="card" style="width: 18rem;">
+                <div class="card">
                     <picture>
                         <source srcset="${pageContext.request.contextPath}/image/book.PNG" type="image/svg+xml">
                         <img src="${pageContext.request.contextPath}/image/book.PNG" class="img-fluid img-thumbnail" alt="...">
@@ -37,7 +37,7 @@
                 </div>
             </li>
             <li>
-                <div class="card" style="width: 18rem;">
+                <div class="card">
                     <picture>
                         <source srcset="${pageContext.request.contextPath}/image/book.PNG" type="image/svg+xml">
                         <img src="${pageContext.request.contextPath}/image/book.PNG" class="img-fluid img-thumbnail" alt="...">
@@ -48,7 +48,7 @@
                 </div>
             </li>
             <li>
-                <div class="card" style="width: 18rem;">
+                <div class="card">
                     <picture>
                         <source srcset="${pageContext.request.contextPath}/image/book.PNG" type="image/svg+xml">
                         <img src="${pageContext.request.contextPath}/image/book.PNG" class="img-fluid img-thumbnail" alt="...">
@@ -59,7 +59,7 @@
                 </div>
             </li>
             <li>
-                <div class="card" style="width: 18rem;">
+                <div class="card">
                     <picture>
                         <source srcset="${pageContext.request.contextPath}/image/book.PNG" type="image/svg+xml">
                         <img src="${pageContext.request.contextPath}/image/book.PNG" class="img-fluid img-thumbnail" alt="...">
@@ -70,7 +70,7 @@
                 </div>
             </li>
             <li>
-                <div class="card" style="width: 18rem;">
+                <div class="card">
                     <picture>
                         <source srcset="${pageContext.request.contextPath}/image/book.PNG" type="image/svg+xml">
                         <img src="${pageContext.request.contextPath}/image/book.PNG" class="img-fluid img-thumbnail" alt="...">
