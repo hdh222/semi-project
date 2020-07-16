@@ -1,53 +1,63 @@
 * {
-            margin: 0;
-            padding: 0;
-        }
+	margin: 0;
+	padding: 0;
+}
 
-        li {
-            list-style: none;
-            /*占쎈링占쎈퓠 �눧紐꾨펶 占쎄텢占쎌뵬筌욑옙*/
-        }
+li {
+	list-style: none;
+	/*占쎈링占쎈퓠 �눧紐꾨펶 占쎄텢占쎌뵬筌욑옙*/
+}
 
-        #wrap {
-            /*占쎌겱占쎌삺 癰귣똻�뵠占쎈뮉 �⑤끃�벥 占쎄쾿疫뀐옙 獄쏉옙 癰귣똻�뵠占쎈뮉 甕곕뗄�맄 占쎄퐬占쎌젟*/
-            width: 990px;
-            margin: 20px auto;
-            position: relative;
-            /*占쎌맄燁삼옙 癰귨옙野껓옙 揶쏉옙占쎈뮟*/
-            overflow: hidden;
-            /*占쎄땀�겫占� 占쎄묶域밸㈇占� 占쎄퐜燁살쥓釉� 占쎈선占쎈섯野껓옙 癰귣똻�뵬繹먲옙 占쎄퐬占쎌젟 (overflow)
-            visible(default): 占쎈뼄癰귣똻肉э쭪占� 
-            hidden: 占쎄퐜燁살꼶�뮉 �겫占썽겫袁⑹뱽 占쎌삋占쎌뵬 占쎈툧癰귣똻�뵠野껓옙
-            scroll: 占쎈뮞占쎄쾿嚥∽옙 �빊遺쏙옙 
-            auto: 占쎄쾿疫꿸퀣肉� 占쎈뎡占쎌뵬占쎄퐣 占쎌쁽占쎈짗占쎌몵嚥∽옙 占쎈뮞占쎄쾿嚥∽옙 �빊遺쏙옙
-            */
+#wrap {
+	width: 100%;
+	margin-right: auto;
+	margin-left: auto;
+	position: relative;
+	overflow: hidden;
+}
 
-        }
+@media ( min-width : 500px) {
+	#wrap {
+		max-width: 300px;
+	}
+}
 
-        .slide {
-            /*占쎈뮩占쎌뵬占쎌뵠占쎈굡 占쎄쾿疫뀐옙 獄쏉옙 占쎌맄燁삼옙 癰귨옙野껋럩苑뺧옙�젟*/
-            width: 3000px;
-            /*�룯占� 占쎄섐�뜮占� 3000px*/
-            position: relative;
-            /*占쎌맄燁삼옙 癰귨옙野껓옙 揶쏉옙占쎈뮟*/
-            margin-left: -330px;
-        }
+@media ( min-width : 800px) {
+	#wrap {
+		max-width: 640px;
+	}
+}
 
-        .slide>li {
-            /*占쎌뵠沃섎챷占� 占쎄쾿疫뀐옙 獄쏉옙 占쎌뇢筌잛럥占쏙옙苑� 筌△뫀占쏙옙占썸에占� 筌�袁⑼옙*/
-            width: 300px;
-            float: left;
-            margin-left: 30px;
-            /*占쎌뇢筌잞옙 �겫占쏙옙苑� 筌�袁⑼옙*/
-            height: 350px;
-        }
+@media ( min-width : 1200px) {
+	#wrap {
+		max-width: 980px;
+	}
+}
 
-        .slide>li>img,.card {
-            /*占쎌뵠沃섎챷占� 占쎄쾿疫꿸퀣�쒙옙�젟*/
-            width: 100%;
-            height: 100%;
-        }
-        /*
+.slide {
+	/*占쎈뮩占쎌뵬占쎌뵠占쎈굡 占쎄쾿疫뀐옙 獄쏉옙 占쎌맄燁삼옙 癰귨옙野껋럩苑뺧옙�젟*/
+	width: 3000px;
+	/*�룯占� 占쎄섐�뜮占� 3000px*/
+	position: relative;
+	/*占쎌맄燁삼옙 癰귨옙野껓옙 揶쏉옙占쎈뮟*/
+	margin-left: -340px;
+}
+
+.slide>li>.card {
+	/*占쎌뵠沃섎챷占� 占쎄쾿疫뀐옙 獄쏉옙 占쎌뇢筌잛럥占쏙옙苑� 筌△뫀占쏙옙占썸에占� 筌�袁⑼옙*/
+	width: 300px;
+	float: left;
+	margin-right: 40px;
+	/*占쎌뇢筌잞옙 �겫占쏙옙苑� 筌�袁⑼옙*/
+	height: 350px;
+}
+
+.slide>li>img, .card {
+	/*占쎌뵠沃섎챷占� 占쎄쾿疫꿸퀣�쒙옙�젟*/
+	width: 100%;
+	height: 100%;
+}
+/*
         #wrap>p {
             占쎈�볩옙�뮞占쎈뱜
             position: absolute;
@@ -61,36 +71,37 @@
             padding: 10px 20px;
             font-size: 24px;
         }*/
+.prev {
+	width: 30px;
+	height: 100px;
+	position: absolute;
+	top: 55%;
+	left: 0;
+	-webkit-transform: translate(0px, -50%);
+	-ms-transform: translate(0px, -50%);
+	-o-transform: translate(0px, -50%);
+	transform: translate(0px, -50%);
+	opacity: 0.2;
+}
 
-        .prev {
-            width: 30px;
-            height: 100px;
-            position: absolute;
-            top: 55%;
-            left: 0;
-            -webkit-transform: translate(32px, -50%);
-            -ms-transform: translate(32px, -50%);
-            -o-transform: translate(32px, -50%);
-            transform: translate(32px, -50%);
-            opacity: 0.2;
-        }
-        .prev:hover,.next:hover{
-            opacity: 0.8;
-        }
-        .next {
-            width: 30px;
-            height: 100px;
-            position: absolute;
-            top: 55%;
-            right: 0;
-            -webkit-transform: translate(-16px, -50%);
-            -ms-transform: translate(-16px, -50%);
-            -o-transform: translate(-16px, -50%);
-            transform: translate(-16px, -50%);
-            opacity: 0.2;
-        }
+.next {
+	width: 30px;
+	height: 100px;
+	position: absolute;
+	top: 55%;
+	right: 0;
+	-webkit-transform: translate(0px, -50%);
+	-ms-transform: translate(0px, -50%);
+	-o-transform: translate(0px, -50%);
+	transform: translate(0px, -50%);
+	opacity: 0.2;
+}
 
-        picture {
-            margin: 0 auto;
-            margin-top: 20px;
-        }
+.prev:hover, .next:hover {
+	opacity: 0.8;
+}
+
+picture {
+	margin: 0 auto;
+	margin-top: 20px;
+}

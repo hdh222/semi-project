@@ -62,7 +62,9 @@ h1, h2, h3, h4, h5, h6 {
   -ms-flex: 0 0 auto;
   flex: 0 0 auto;
 }
-
+.ml-60 { margin-left: 60px; }
+.ml-70 { margin-left: 70px; }
+.w-980 { width: 980px;}
 .h-250 { height: 250px; }
 @media (min-width: 768px) {
   .h-md-250 { height: 250px; }
