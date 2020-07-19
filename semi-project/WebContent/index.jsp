@@ -17,8 +17,10 @@
 	href="https://getbootstrap.com/docs/4.5/examples/blog/">
 
 <!-- Bootstrap core CSS -->
-<link href="${pageContext.request.contextPath }/css/bootstrap.css" rel="stylesheet">
-<link href="${pageContext.request.contextPath }/css/bootstrap.min.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath }/css/bootstrap.css"
+	rel="stylesheet">
+<link href="${pageContext.request.contextPath }/css/bootstrap.min.css"
+	rel="stylesheet">
 <style>
 .bd-placeholder-img {
 	font-size: 1.125rem;
@@ -48,10 +50,10 @@
 
 <body>
 	<jsp:include page="/include/header.jsp"></jsp:include>
-	
+
 	<div class="container">
-	<!-- <div class="w-980 mx-md-auto px-0"> -->
-	
+		<!-- <div class="w-980 mx-md-auto px-0"> -->
+
 		<div class="input-group my-3 w-50 container">
 			<input type="text" class="form-control"
 				placeholder="Recipient's username" aria-label="Recipient's username"
@@ -70,9 +72,9 @@
 				</button>
 			</div>
 		</div>
-		
+
 		<h3 class="p-0 mt-5">추천도서</h3>
-		<hr/>
+		<hr />
 		<div id="wrap" class="my-5">
 			<ul class="slide" id="slide">
 				<li>
@@ -180,20 +182,22 @@
 				<svg width="2em" height="2em" viewBox="0 0 16 16"
 					class="bi bi-caret-left-fill" fill="currentColor"
 					xmlns="http://www.w3.org/2000/svg">
-          <path d="M3.86 8.753l5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z" />
+          <path
+						d="M3.86 8.753l5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z" />
         </svg>
 			</div>
 			<div class="next">
 				<svg width="2em" height="2em" viewBox="0 0 16 16"
 					class="bi bi-caret-right-fill bi-light" fill="currentColor"
 					xmlns="http://www.w3.org/2000/svg">
-          <path d="M12.14 8.753l-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z" />
+          <path
+						d="M12.14 8.753l-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z" />
         </svg>
 			</div>
 		</div>
 
 		<div class="row mb-2">
-		
+
 			<div class="col-md-6">
 				<!--케러셀-->
 				<div class="card">
@@ -269,35 +273,36 @@
 
 		</div>
 		
+		
 		<div class="row my-5">
-			<div class="col">
+			<div class="col-md">
 				<button class="btn btn-sm mx-0">
 					<img src="${pageContext.request.contextPath }/image/link.PNG"
 						alt="...">
 				</button>
 			</div>
-			<div class="col">
+			<div class="col-md">
 				<button class="btn btn-sm">
 					<img src="${pageContext.request.contextPath }/image/link.PNG"
 						alt="...">
 				</button>
 			</div>
-			<div class="col">
+			<div class="col-md">
 				<button class="btn btn-sm">
 					<img src="${pageContext.request.contextPath }/image/link.PNG"
 						alt="...">
 				</button>
 			</div>
-			<div class="col">
+			<div class="col-md">
 				<button class="btn btn-sm">
 					<img src="${pageContext.request.contextPath }/image/link.PNG"
 						alt="...">
 				</button>
 			</div>
 		</div>
+		 
 
-
-
+		
 	</div>
 	<!--</div>
 	 /.container -->
