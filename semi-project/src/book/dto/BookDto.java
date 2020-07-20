@@ -8,9 +8,14 @@ public class BookDto {
 	private String bcompany;
 	private int bsort;
 	private String bimg;
+	
+	//페이징 처리를 하기 위한 필드 
+	private int startRowNum;
+	private int endRowNum;
 	public BookDto () {}
-	public BookDto(int bnum, String bname, String bstory, String bdate, String bcompany, int bsort, String bimg) {
-		
+	public BookDto(int bnum, String bname, String bstory, String bdate, String bcompany, int bsort, String bimg,
+			int startRowNum, int endRowNum) {
+		super();
 		this.bnum = bnum;
 		this.bname = bname;
 		this.bstory = bstory;
@@ -18,6 +23,8 @@ public class BookDto {
 		this.bcompany = bcompany;
 		this.bsort = bsort;
 		this.bimg = bimg;
+		this.startRowNum = startRowNum;
+		this.endRowNum = endRowNum;
 	}
 	public int getBnum() {
 		return bnum;
@@ -60,6 +67,18 @@ public class BookDto {
 	}
 	public void setBimg(String bimg) {
 		this.bimg = bimg;
+	}
+	public int getStartRowNum() {
+		return startRowNum;
+	}
+	public void setStartRowNum(int startRowNum) {
+		this.startRowNum = startRowNum;
+	}
+	public int getEndRowNum() {
+		return endRowNum;
+	}
+	public void setEndRowNum(int endRowNum) {
+		this.endRowNum = endRowNum;
 	}
 	
 	
