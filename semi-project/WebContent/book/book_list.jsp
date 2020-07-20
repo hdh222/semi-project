@@ -1,3 +1,6 @@
+<%@page import="java.util.List"%>
+<%@page import="book.dto.BookDto"%>
+<%@page import="book.dao.BookDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
@@ -31,38 +34,82 @@
 	font-family: 'Arita-buri-SemiBold';
 }
 
-#story{
-		width:100%;
-		overflow: hidden;
-		text-overflow: ellipsis;
-		display: -webkit-box;
-		-webkit-line-clamp: 3; /* 라인수 */
-		-webkit-box-orient: vertical;
-		word-wrap:break-word; 
-		line-height: 1.5em;
-		height: 4.5em; /* line-height 가 1.2em 이고 3라인을 자르기 때문에 height는 1.2em * 3 = 3.6em */
-	}
-	
-	.media-body>p {
-		font-size: 0.8rem;
-	}
+#story {
+	width: 100%;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 3; /* 라인수 */
+	-webkit-box-orient: vertical;
+	word-wrap: break-word;
+	line-height: 1.5em;
+	height: 4.5em;
+	/* line-height 가 1.2em 이고 3라인을 자르기 때문에 height는 1.2em * 3 = 3.6em */
+}
 
+.media-body>p {
+	font-size: 0.8rem;
+}
 </style>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css" />
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/blog.css" />
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/bookList.css" />
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/css/bootstrap.min.css" />
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/css/blog.css" />
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/css/bookList.css" />
 </head>
 <body>
-	<jsp:include page="/include/header.jsp"></jsp:include>
+	<%
+		//한 페이지에 나타낼 row 의 갯수
+	final int PAGE_ROW_COUNT = 5;
+	//하단 디스플레이 페이지 갯수
+	final int PAGE_DISPLAY_COUNT = 5;
+
+	//보여줄 페이지의 번호
+	int pageNum = 1;
+	//보여줄 페이지의 번호가 파라미터로 전달되는지 읽어와 본다.	
+	String strPageNum = request.getParameter("pageNum");
+	if (strPageNum != null) {//페이지 번호가 파라미터로 넘어온다면
+		//페이지 번호를 설정한다.
+		pageNum = Integer.parseInt(strPageNum);
+	}
+	//보여줄 페이지 데이터의 시작 ResultSet row 번호
+	int startRowNum = 1 + (pageNum - 1) * PAGE_ROW_COUNT;
+	//보여줄 페이지 데이터의 끝 ResultSet row 번호
+	int endRowNum = pageNum * PAGE_ROW_COUNT;
+
+	//전체 row 의 갯수를 읽어온다.
+	int totalRow = BookDao.getInstance().getCount(3);
+	//전체 페이지의 갯수 구하기
+	int totalPageCount = (int) Math.ceil(totalRow / (double) PAGE_ROW_COUNT);
+	//시작 페이지 번호
+	int startPageNum = 1 + ((pageNum - 1) / PAGE_DISPLAY_COUNT) * PAGE_DISPLAY_COUNT;
+	//끝 페이지 번호
+	int endPageNum = startPageNum + PAGE_DISPLAY_COUNT - 1;
+	//끝 페이지 번호가 잘못된 값이라면 
+	if (totalPageCount < endPageNum) {
+		endPageNum = totalPageCount; //보정해준다. 
+	}
 	
+		//startRowNum 과 endRowNum을 FileDto 객체에 담고 
+		BookDto dto = new BookDto();
+		dto.setStartRowNum(startRowNum);
+		dto.setEndRowNum(endRowNum);
+		dto.setBsort(3);
+		//FileDto 객체를 인자로 전달해서 파일 목록을 얻어온다. 
+		List<BookDto> list = BookDao.getInstance().getList(dto);
+	%>
+	
+	<jsp:include page="/include/header.jsp"></jsp:include>
+
 	<div class="container">
 		<div class="container card my-4">
 			<div class="row mt-5 mb-4" id="article">
 				<div class="col-2">
 					<button class="btn btn-link">
-						<img class="menu_icon"
+						<img id="computer" class="menu_icon"
 							src="https://image.flaticon.com/icons/svg/867/867746.svg" alt="" />
-							<p class="mt-3 text-dark">컴퓨터/IT</p>
+						<p class="mt-3 text-dark">컴퓨터/IT</p>
 					</button>
 				</div>
 
@@ -71,7 +118,7 @@
 						<img class="menu_icon"
 							src="https://image.flaticon.com/icons/svg/3164/3164118.svg"
 							alt="" />
-							<p class="mt-3 text-dark">경제/경영</p>
+						<p class="mt-3 text-dark">경제/경영</p>
 					</button>
 				</div>
 
@@ -80,7 +127,7 @@
 						<img class="menu_icon"
 							src="https://image.flaticon.com/icons/svg/2970/2970729.svg"
 							alt="" />
-							<p class="mt-3 text-dark">예술</p>
+						<p class="mt-3 text-dark">예술</p>
 					</button>
 				</div>
 
@@ -88,7 +135,7 @@
 					<button class="btn btn-link">
 						<img class="menu_icon"
 							src="https://image.flaticon.com/icons/svg/841/841988.svg" alt="" />
-							<p class="mt-3 text-dark">과학</p>
+						<p class="mt-3 text-dark">과학</p>
 					</button>
 				</div>
 
@@ -97,7 +144,7 @@
 						<img class="menu_icon"
 							src="https://cdn3.iconfinder.com/data/icons/eldorado-stroke-buildings/40/church-512.png"
 							alt="" />
-							<p class="mt-3 text-dark">종교</p>
+						<p class="mt-3 text-dark">종교</p>
 					</button>
 				</div>
 
@@ -106,7 +153,7 @@
 						<img class="menu_icon"
 							src="https://cdns.iconmonstr.com/wp-content/assets/preview/2017/240/iconmonstr-time-17.png"
 							alt="" />
-							<p class="mt-3 text-dark">역사</p>
+						<p class="mt-3 text-dark">역사</p>
 					</button>
 				</div>
 
@@ -114,56 +161,56 @@
 		</div>
 		<div class="container my-5 card">
 			<ul class="list-unstyled">
+
+				<%for(int i = 0; i < list.size(); i++){
+					BookDto tmp = list.get(i);
+				%>
 				
-				<li class="media my-4 border list_info">
-				<img src="http://image.kyobobook.co.kr/images/book/xlarge/796/x9791188331796.jpg"
+					<li class="media my-4 border list_info"><img
+					src="<%=tmp.getBimg() %>"
 					class="mr-5 list_img border-right pr-5" alt="...">
 					<div class="media-body">
-					 	<h5 class="mt-0 my-2"><Strong>돈의 속성</Strong></h5>
-					 	<small>저자 : 홍길동 , 출판사 : 길벗 , 출간일 : 0000.00.00</small> <br /><br />
-						<p id="story">유튜브 1,100만 명이 시청한 〈돈의 속성〉 완결판『돈의 속성』. 맨손에서 만들어낸 종잣돈으로 돈 버는 방법을 알려준다. 부모에게 받은 유산은커녕, 30대 후반까지 낡은 자동차에 그날 판매할 과일을 싣고 다니던 어느 가난한 이민 가장이 이룬 진짜 부에 대한 모든 방법이 담겼다. 종잣돈 천만 원을 만들고 그 돈을 1억 원, 10억 원, 100억 원, 수천억 원이 될 때까지 돈을 관리하며 터득한 ‘돈’이 가진 속성을 정리한 안내서다. ‘진짜 부자’가 된 실제 인물이 말해주는 ‘진짜 돈’만들기에 대한 책이다.</p>
-					</div>
-				</li>
-				<br>
-				<li class="media my-4 border list_info">
-				<img src="http://image.kyobobook.co.kr/images/book/xlarge/796/x9791188331796.jpg"
-					class="mr-5 list_img border-right pr-5" alt="...">
-					<div class="media-body">
-					 	<h5 class="mt-0 my-2"><Strong>돈의 속성</Strong></h5>
-					 	<small>저자 : 홍길동 , 출판사 : 길벗 , 출간일 : 0000.00.00</small> <br /><br />
-						<p id="story">유튜브 1,100만 명이 시청한 〈돈의 속성〉 완결판『돈의 속성』. 맨손에서 만들어낸 종잣돈으로 돈 버는 방법을 알려준다. 부모에게 받은 유산은커녕, 30대 후반까지 낡은 자동차에 그날 판매할 과일을 싣고 다니던 어느 가난한 이민 가장이 이룬 진짜 부에 대한 모든 방법이 담겼다. 종잣돈 천만 원을 만들고 그 돈을 1억 원, 10억 원, 100억 원, 수천억 원이 될 때까지 돈을 관리하며 터득한 ‘돈’이 가진 속성을 정리한 안내서다. ‘진짜 부자’가 된 실제 인물이 말해주는 ‘진짜 돈’만들기에 대한 책이다.</p>
-					</div>
-				</li>
-				<br>
-				<li class="media my-4 border list_info">
-				<img src="http://image.kyobobook.co.kr/images/book/xlarge/796/x9791188331796.jpg"
-					class="mr-5 list_img border-right pr-5" alt="...">
-					<div class="media-body">
-					 	<h5 class="mt-0 my-2"><Strong>돈의 속성</Strong></h5>
-					 	<small>저자 : 홍길동 , 출판사 : 길벗 , 출간일 : 0000.00.00</small> <br /><br />
-						<p id="story">유튜브 1,100만 명이 시청한 〈돈의 속성〉 완결판『돈의 속성』. 맨손에서 만들어낸 종잣돈으로 돈 버는 방법을 알려준다. 부모에게 받은 유산은커녕, 30대 후반까지 낡은 자동차에 그날 판매할 과일을 싣고 다니던 어느 가난한 이민 가장이 이룬 진짜 부에 대한 모든 방법이 담겼다. 종잣돈 천만 원을 만들고 그 돈을 1억 원, 10억 원, 100억 원, 수천억 원이 될 때까지 돈을 관리하며 터득한 ‘돈’이 가진 속성을 정리한 안내서다. ‘진짜 부자’가 된 실제 인물이 말해주는 ‘진짜 돈’만들기에 대한 책이다.</p>
-					</div>
-				</li>
-				<br>
+						<h5 class="mt-0 my-2">
+							<a class="text-dark" href="book_info.jsp?bnum=<%=tmp.getBnum()%>"><Strong><%=tmp.getBname() %></Strong></a>
+						</h5>
+						<small>저자 : <%=tmp.getBauthor() %> , 출판사 : <%=tmp.getBcompany() %> , 출간일 : <%=tmp.getBdate() %></small> <br />
+						<br />
+						<p id="story"><%=tmp.getBstory() %></p>
+					</div></li>
+					<br>
+				
+				<%} %>
 			</ul>
 			<div class="">
 				<nav aria-label="책 리스트 페이지네이션">
 					<ul class="pagination justify-content-center">
-						<li class="page-item"><a class="page-link" href="#">Previous</a></li>
+					<%if(startPageNum != 1){ %>
+						<li class="page-item"><a class="page-link" href="book_list.jsp?pageNum=<%=startPageNum-1%>">Previous</a></li>
+					<%} %>
 						<!-- for문으로 페이지네이션 -->
-						<li class="page-item"><a class="page-link" href="#">1</a></li>
-						<li class="page-item"><a class="page-link" href="#">2</a></li>
-						<li class="page-item"><a class="page-link" href="#">3</a></li>
-						<!--  -->
-						<li class="page-item"><a class="page-link" href="#">Next</a></li>
+						<%for(int i=startPageNum; i<=endPageNum; i++) {
+						
+							System.out.println(endPageNum);
+						%>
+						
+							<%if(i==pageNum){ %>
+								<li class="page-item active"><a class="page-link" href="book_list.jsp?pageNum=<%=i %>"><%=i %></a></li>
+							<%}else{ %>
+								<li class="page-item"><a class="page-link" href="book_list.jsp?pageNum=<%=i %>"><%=i %></a></li>
+							<%} %>
+							
+						<%} %>
+						<%if(endPageNum < totalPageCount){ %>
+							<li class="page-item"><a class="page-link" href="book_list.jsp?pageNum=<%=endPageNum+1 %>">Next</a></li>
+						<%} %>
 					</ul>
 				</nav>
 			</div>
 
 		</div>
-		
+
 	</div>
 	<jsp:include page="../include/footer.jsp"></jsp:include>
-	
+
 </body>
 </html>
