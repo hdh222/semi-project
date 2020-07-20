@@ -66,6 +66,7 @@
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
     <script src="${pageContext.request.contextPath}/js/login.js"></script>
+    <script src="${pageContext.request.contextPath}/js/header.js"></script>
 </body>
 
 </html>

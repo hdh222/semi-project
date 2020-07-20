@@ -53,13 +53,13 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bookList.css" />
 </head>
 <body>
-	<jsp:include page="/include/header.jsp"></jsp:include>
+	<jsp:include page="../include/header.jsp"></jsp:include>
 	
 	<div class="container">
 		<div class="container card my-4">
 			<div class="row mt-5 mb-4" id="article">
 				<div class="col-2">
-					<button class="btn btn-link">
+					<button class="btn btn-link mx-3">
 						<img class="menu_icon"
 							src="https://image.flaticon.com/icons/svg/867/867746.svg" alt="" />
 							<p class="mt-3 text-dark">컴퓨터/IT</p>
@@ -67,7 +67,7 @@
 				</div>
 
 				<div class="col-2">
-					<button class="btn btn-link">
+					<button class="btn btn-link mx-3">
 						<img class="menu_icon"
 							src="https://image.flaticon.com/icons/svg/3164/3164118.svg"
 							alt="" />
@@ -76,7 +76,7 @@
 				</div>
 
 				<div class="col-2">
-					<button class="btn btn-link">
+					<button class="btn btn-link mx-3">
 						<img class="menu_icon"
 							src="https://image.flaticon.com/icons/svg/2970/2970729.svg"
 							alt="" />
@@ -85,7 +85,7 @@
 				</div>
 
 				<div class="col-2">
-					<button class="btn btn-link">
+					<button class="btn btn-link mx-3">
 						<img class="menu_icon"
 							src="https://image.flaticon.com/icons/svg/841/841988.svg" alt="" />
 							<p class="mt-3 text-dark">과학</p>
@@ -93,7 +93,7 @@
 				</div>
 
 				<div class="col-2">
-					<button class="btn btn-link">
+					<button class="btn btn-link mx-3">
 						<img class="menu_icon"
 							src="https://cdn3.iconfinder.com/data/icons/eldorado-stroke-buildings/40/church-512.png"
 							alt="" />
@@ -102,7 +102,7 @@
 				</div>
 
 				<div class="col-2">
-					<button class="btn btn-link">
+					<button class="btn btn-link mx-3">
 						<img class="menu_icon"
 							src="https://cdns.iconmonstr.com/wp-content/assets/preview/2017/240/iconmonstr-time-17.png"
 							alt="" />
@@ -165,5 +165,7 @@
 	</div>
 	<jsp:include page="../include/footer.jsp"></jsp:include>
 	
+	<script src="${pageContext.request.contextPath}/js/jquery-3.5.1.min.js"></script>
+	<script src="${pageContext.request.contextPath}/js/header.js"></script>
 </body>
 </html>

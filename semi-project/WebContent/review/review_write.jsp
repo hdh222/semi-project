@@ -62,7 +62,9 @@
 	</div> <!-- .container -->
 	
 	<jsp:include page="../include/footer.jsp"></jsp:include>
+	
 
+<script src="${pageContext.request.contextPath}/js/header.js"></script>
 </body>
 
 </html>
