@@ -39,8 +39,8 @@
                     <button type="submit" class="btn btn-primary">로그인</button>
                 </form>
                 <hr />
-                <a  href="#">회원이 아니신가요? 회원가입</a>
-                <a  href="#">비밀번호를 잊으셨나요?</a>
+                <a  href="javascript:window.open('memberShipForm.jsp','memberShip','width=700,height=570,scroll')">회원이 아니신가요? 회원가입</a>
+                <a  href="javascript:window.open('checkId_Form.jsp','memberShip','width=700,height=570')">비밀번호를 잊으셨나요?</a>
             </div>
             <div class="col-md-6 p-0" id="carousel">
                 <div id="carouselExampleSlidesOnly" class="carousel slide card px-2 py-5" data-ride="carousel" data-interval="2000">

@@ -10,8 +10,8 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css" />
 </head>
 
-<body>
-    <div class="container col-6 card p-5">
+<body onresize="parent.resizeTo(700,570)" scroll="no">
+    <div class="card p-5" style="width:700px;">
         <h3>회원 가입</h3>
         <hr />
         <form>
@@ -65,21 +65,18 @@
             </div>
 
 
-            <div class="form-group row">
-                <div class="col-sm-6"></div>
-                <div class="col-sm-2">
-                    <button type="submit" class="btn btn-outline-primary col-sm-10">가 입</button>
-                </div>
-                <div class="col-sm-2">
-                    <button type="reset" class="btn btn-outline-secondary col-sm-10">취 소</button>
-
-                </div>
-            </div>
+            <div class="form-group">
+				<div class="float-right mr-sm-3">
+					<button type="submit" class="btn btn-outline-primary">가입</button>
+					<button type="reset" class="btn btn-outline-secondary">취소</button>
+				</div>
+			</div>
         </form>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="${pageContext.request.contextPath}/js/jquery-3.5.1.min.js"></script>
     <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
+    <script src="${pageContext.request.contextPath}/js/popup.js"></script>
 </body>
 
 </html>
