@@ -104,9 +104,9 @@
 			<div class="row mt-5 mb-4" id="article">
 				<div class="col-2">
 					<button class="btn btn-link">
-						<img id="computer" class="menu_icon"
+						<a href="book_list.jsp?sort=1"><img id="computer" class="menu_icon"
 							src="https://image.flaticon.com/icons/svg/867/867746.svg" alt="" />
-							<p class="mt-3 text-dark">컴퓨터/IT</p>
+							<p class="mt-3 text-dark">컴퓨터/IT</p></a>
 					</button>
 				</div>
 
@@ -191,7 +191,7 @@
 						%>
 						
 							<%if(i==pageNum){ %>
-								<li class="page-item active"><a class="page-link" href="book_list.jsp?pageNum=<%=i %>"><%=i %></a></li>
+								<li class="page-item active"><a class="page-link" href="book_list.jsp?pageNum=<%=i %>&sort=<%=number%>"><%=i %></a></li>
 							<%}else{ %>
 								<li class="page-item"><a class="page-link" href="book_list.jsp?pageNum=<%=i %>&sort=<%=number%>"><%=i %></a></li>
 							<%} %>
