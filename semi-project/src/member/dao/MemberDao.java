@@ -13,7 +13,7 @@ public class MemberDao {
 	
 	private MemberDao() {}
 	
-	public MemberDao getInstance() {
+	public static MemberDao getInstance() {
 		if(dao == null) {
 			dao=new MemberDao();
 		}
@@ -196,7 +196,7 @@ public class MemberDao {
 		ResultSet rset=null;
 		
 		try {
-			String sql="SELECT COUNT(*) FROM member WHERE user_id=?";
+			String sql="SELECT * FROM member WHERE user_id=?";
 			
 			conn=new DBconn().getConn();
 			pstmt=conn.prepareStatement(sql);
@@ -230,15 +230,15 @@ public class MemberDao {
 		return result;
 	}
 	
-	public boolean login(String id,String pwd) {
-		boolean result=false;
+	public String login(String id,String pwd) {
+		String name=null;
 		
 		Connection conn=null;
 		PreparedStatement pstmt=null;
 		ResultSet rset=null;
 		
 		try {
-			String sql="SELECT COUNT(*) FROM member WHERE user_id=? AND user_pwd=?";
+			String sql="SELECT user_name FROM member WHERE user_id=? AND user_pwd=?";
 			
 			conn=new DBconn().getConn();
 			pstmt=conn.prepareStatement(sql);
@@ -248,7 +248,7 @@ public class MemberDao {
 			rset=pstmt.executeQuery();
 			
 			if(rset.next()) {
-				result=true;
+				name=rset.getString("user_name");
 			}
 			
 		
@@ -270,7 +270,7 @@ public class MemberDao {
 			}
 		}
 		
-		return result;
+		return name;
 	}
 	
 	public boolean changePwd(String id,String pwd) {

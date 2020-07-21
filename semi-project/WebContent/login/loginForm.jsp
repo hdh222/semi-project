@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -21,7 +21,7 @@
 
         <div class="row">
             <div class="col-lg-6 card py-5">
-                <form>
+                <form action="login.jsp" method="post" id="loginForm">
                     <div class="form-group m-0">
                         <label for="email">ID</label>
                         
@@ -67,6 +67,17 @@
     <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
     <script src="${pageContext.request.contextPath}/js/login.js"></script>
     <script src="${pageContext.request.contextPath}/js/header.js"></script>
+    <script>
+    $("#loginForm").submit(function() {
+		if($.trim($("#email").val())=="") {
+			alert("이메일을 입력하세요.");
+			return false;
+		}else if($.trim($("#pwd").val())=="") {
+			alert("비밀번호를 입력하세요.");
+			return false;
+		}
+	});
+    </script>
 </body>
 
 </html>
