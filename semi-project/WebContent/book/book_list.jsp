@@ -54,6 +54,9 @@
 </head>
 <body>
 	<%
+	int number = Integer.parseInt(request.getParameter("sort"));
+	
+	System.out.println(number);
 		//한 페이지에 나타낼 row 의 갯수
 	final int PAGE_ROW_COUNT = 5;
 	//하단 디스플레이 페이지 갯수
@@ -73,7 +76,7 @@
 	int endRowNum = pageNum * PAGE_ROW_COUNT;
 
 	//전체 row 의 갯수를 읽어온다.
-	int totalRow = BookDao.getInstance().getCount(3);
+	int totalRow = BookDao.getInstance().getCount(number);
 	//전체 페이지의 갯수 구하기
 	int totalPageCount = (int) Math.ceil(totalRow / (double) PAGE_ROW_COUNT);
 	//시작 페이지 번호
@@ -89,7 +92,7 @@
 		BookDto dto = new BookDto();
 		dto.setStartRowNum(startRowNum);
 		dto.setEndRowNum(endRowNum);
-		dto.setBsort(3);
+		dto.setBsort(number);
 		//FileDto 객체를 인자로 전달해서 파일 목록을 얻어온다. 
 		List<BookDto> list = BookDao.getInstance().getList(dto);
 	%>
@@ -109,45 +112,45 @@
 
 				<div class="col-2">
 					<button class="btn btn-link">
-						<img class="menu_icon"
+						<a href="book_list.jsp?sort=2"><img class="menu_icon"
 							src="https://image.flaticon.com/icons/svg/3164/3164118.svg"
 							alt="" />
-						<p class="mt-3 text-dark">경제/경영</p>
+						<p class="mt-3 text-dark">경제/경영</p></a>
 					</button>
 				</div>
 
 				<div class="col-2">
 					<button class="btn btn-link mx-3">
-						<img class="menu_icon"
+						<a href="book_list.jsp?sort=3"><img class="menu_icon"
 							src="https://image.flaticon.com/icons/svg/2970/2970729.svg"
 							alt="" />
-						<p class="mt-3 text-dark">예술</p>
+						<p class="mt-3 text-dark">예술</p></a>
 					</button>
 				</div>
 
 				<div class="col-2">
 					<button class="btn btn-link">
-						<img class="menu_icon"
+						<a href="book_list.jsp?sort=4"><img class="menu_icon"
 							src="https://image.flaticon.com/icons/svg/841/841988.svg" alt="" />
-						<p class="mt-3 text-dark">과학</p>
+						<p class="mt-3 text-dark">과학</p></a>
 					</button>
 				</div>
 
 				<div class="col-2">
 					<button class="btn btn-link">
-						<img class="menu_icon"
+						<a href="book_list.jsp?sort=5"><img class="menu_icon"
 							src="https://cdn3.iconfinder.com/data/icons/eldorado-stroke-buildings/40/church-512.png"
 							alt="" />
-							<p class="mt-3 text-dark">종교</p>
+							<p class="mt-3 text-dark">종교</p></a>
 					</button>
 				</div>
 
 				<div class="col-2">
 					<button class="btn btn-link">
-						<img class="menu_icon"
+						<a href="book_list.jsp?sort=6"><img class="menu_icon"
 							src="https://cdns.iconmonstr.com/wp-content/assets/preview/2017/240/iconmonstr-time-17.png"
 							alt="" />
-						<p class="mt-3 text-dark">역사</p>
+						<p class="mt-3 text-dark">역사</p></a>
 					</button>
 				</div>
 
@@ -190,7 +193,7 @@
 							<%if(i==pageNum){ %>
 								<li class="page-item active"><a class="page-link" href="book_list.jsp?pageNum=<%=i %>"><%=i %></a></li>
 							<%}else{ %>
-								<li class="page-item"><a class="page-link" href="book_list.jsp?pageNum=<%=i %>"><%=i %></a></li>
+								<li class="page-item"><a class="page-link" href="book_list.jsp?pageNum=<%=i %>&sort=<%=number%>"><%=i %></a></li>
 							<%} %>
 							
 						<%} %>
