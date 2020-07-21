@@ -17,7 +17,7 @@ package util;
 				Context envContext  = (Context)initContext.lookup("java:/comp/env");
 				DataSource ds = (DataSource)envContext.lookup("jdbc/myoracle");
 				conn = ds.getConnection();
-				System.out.println("db立加己傍");
+				System.out.println("鞝戩啀靹标车");
 			}catch(Exception e){
 				e.printStackTrace();
 			}
