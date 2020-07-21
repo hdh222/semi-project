@@ -111,7 +111,7 @@ public class BookDao {
 		
 		return list;
 	}
-	public BookDto getData() {
+	public BookDto getData(int number) {
 		Connection conn = null;
 		PreparedStatement ps = null;
 		ResultSet rs=null;
@@ -119,8 +119,9 @@ public class BookDao {
 		
 		try {
 			conn = new DBconn().getConn();
-			String sql = "SELECT * FROM book";
+			String sql = "SELECT * FROM book where bnum=?";
 			ps = conn.prepareStatement(sql);
+			ps.setInt(1, number);
 			rs=ps.executeQuery();
 
 			while(rs.next()) {

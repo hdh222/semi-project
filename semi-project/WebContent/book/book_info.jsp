@@ -64,8 +64,9 @@
 </style>
 
 <%
+	int num = Integer.parseInt(request.getParameter("bnum"));
 	BookDao dao=BookDao.getInstance();
-	BookDto dto=dao.getData();
+	BookDto dto=dao.getData(num);
 %>
 <body>
 		<!-- 헤더 -->
