@@ -182,7 +182,7 @@
 				<nav aria-label="책 리스트 페이지네이션">
 					<ul class="pagination justify-content-center">
 					<%if(startPageNum != 1){ %>
-						<li class="page-item"><a class="page-link" href="book_list.jsp?pageNum=<%=startPageNum-1%>">Previous</a></li>
+						<li class="page-item"><a class="page-link" href="book_list.jsp?pageNum=<%=startPageNum-1%>&sort=<%=number%>">Previous</a></li>
 					<%} %>
 						<!-- for문으로 페이지네이션 -->
 						<%for(int i=startPageNum; i<=endPageNum; i++) {
@@ -198,7 +198,7 @@
 							
 						<%} %>
 						<%if(endPageNum < totalPageCount){ %>
-							<li class="page-item"><a class="page-link" href="book_list.jsp?pageNum=<%=endPageNum+1 %>">Next</a></li>
+							<li class="page-item"><a class="page-link" href="book_list.jsp?pageNum=<%=endPageNum+1 %>&sort=<%=number%>">Next</a></li>
 						<%} %>
 					</ul>
 				</nav>
