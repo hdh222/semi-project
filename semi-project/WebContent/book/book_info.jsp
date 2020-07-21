@@ -81,11 +81,11 @@
 			<!--이미지 col-6 -->		
 			<div class="container card">
 				<div class="row">
-					<div class="col-xl-6 ">
+					<div class="col-lg-6 ">
 						 <img src="<%=dto.getBimg() %>" alt="bookimg" class="my-5 ml-xl-5 border border-success"/>
 					</div>
 			<!-- 책정보 col-6 -->
-					<div class="col-xl-6 ">
+					<div class="col-lg-6 ">
 						<div class="right mt-5">
 							<h2><strong><%=dto.getBname() %></strong></h2>
 							<p class="border-bottom border-success" ><%=dto.getBcompany()%>, <%=dto.getBdate()%></p>
