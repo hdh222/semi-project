@@ -30,10 +30,9 @@
 	<!-- Page Content -->
 	<div class="container my-4 ">
 		<!-- 상단로우 -->
+		<!--제목 -->
+		<h1 class="border-bottom">MY PAGE</h1>
 		<div class="row">
-			<!--제목 -->
-			<h1 class="mx-3 my-3">MY PAGE</h1>
-			<hr />
 			<!-- 관심사 carousel 영역-->
 			<div class="col-lg-12 px-0">
 				<h4 class="my-4 ml-5">최근 관심사</h4>
@@ -104,6 +103,7 @@
 	<script src="${pageContext.request.contextPath}/js/jquery-3.5.1.min.js"></script>
 	<script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
 	<script src="${pageContext.request.contextPath}/js/carousel.js"></script>
+	<script src="${pageContext.request.contextPath}/js/header.js"></script>
 
 </body>
 

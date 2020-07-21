@@ -301,7 +301,7 @@
 			</div>
 		</div>
 		 
-
+	<a href="book/book_list.jsp?sort=1">책</a>
 		
 	</div>
 	<!--</div>

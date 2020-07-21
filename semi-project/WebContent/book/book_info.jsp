@@ -64,8 +64,9 @@
 </style>
 
 <%
+	int num = Integer.parseInt(request.getParameter("bnum"));
 	BookDao dao=BookDao.getInstance();
-	BookDto dto=dao.getData();
+	BookDto dto=dao.getData(num);
 %>
 <body>
 		<!-- 헤더 -->
@@ -80,33 +81,35 @@
 			<!--이미지 col-6 -->		
 			<div class="container card">
 				<div class="row">
-					<div class="col-xl-6 ">
+					<div class="col-lg-6 ">
 						 <img src="<%=dto.getBimg() %>" alt="bookimg" class="my-5 ml-xl-5 border border-success"/>
 					</div>
 			<!-- 책정보 col-6 -->
-					<div class="col-xl-6 ">
+					<div class="col-lg-6 ">
 						<div class="right mt-5">
 							<h2><strong><%=dto.getBname() %></strong></h2>
 							<p class="border-bottom border-success" ><%=dto.getBcompany()%>, <%=dto.getBdate()%></p>
 							<h3 >줄거리</h3>
 							<p class="font-weight-light" style="font-size:12px" id="story"><%=dto.getBstory() %></p>
-							
-							<h3 class="border-bottom border-success">리뷰</h3>
-							<div style=" width:480px; height:286px; line-height:2em;overflow:auto; margin:0;">
-								<h2>This 'div' element uses 'overflow:scroll' to create scrollbars whenever the contents of the 'div' become too large. </h2>
-								This 'div' element uses 'overflow:scroll' to create scrollbars whenever the contents of the 'div' become too large. 
-								This 'div' element uses 'overflow:scroll' to create scrollbars whenever the contents of the 'div' become too large. 
-								This 'div' element uses 'overflow:scroll' to create scrollbars whenever the contents of the 'div' become too large. 
-								This 'div' element uses 'overflow:scroll' to create scrollbars whenever the contents of the 'div' become too large. 
-								This 'div' element uses 'overflow:scroll' to create scrollbars whenever the contents of the 'div' become too large. 
-								This 'div' element uses 'overflow:scroll' to create scrollbars whenever the contents of the 'div' become too large. 
-								This 'div' element uses 'overflow:scroll' to create scrollbars whenever the contents of the 'div' become too large. 
-								This 'div' element uses 'overflow:scroll' to create scrollbars whenever the contents of the 'div' become too large. 
-								This 'div' element uses 'overflow:scroll' to create scrollbars whenever the contents of the 'div' become too large. This 'div' element uses 'overflow:scroll' to create scrollbars whenever the contents of the 'div' become too large. 
-								This 'div' element uses 'overflow:scroll' to create scrollbars whenever the contents of the 'div' become too large. 
-								This 'div' element uses 'overflow:scroll' to create scrollbars whenever the contents of the 'div' become too large. 
-								This 'div' element uses 'overflow:scroll' to create scrollbars whenever the contents of the 'div' become too large. 
-								This 'div' element uses 'overflow:scroll' to create scrollbars whenever the contents of the 'div' become too large. 
+							<h3 class="border-bottom border-success">리뷰<a href="../review/review_write.jsp?bnum=<%=dto.getBnum() %>" class="float-right font-weight-bold" style="font-size:15px">리뷰작성</a></h3>
+							<div style=" width:480px; height:286px;">
+								<table style="font-size:7px">
+									<thead>
+									 	<tr>
+									 		<th>아이디</th>
+									 		<th>작성일</th>
+									 		<th>제목</th>
+									 		<th>내용</th>
+									 	</tr>
+									</thead>
+									<tr>
+										<td>stau04</td>
+										<td>2020-07-06</td>
+										<td>5가지 사랑의 언어에 대하여</td>
+										<td><a href="">비단 부부, 연인들뿐만이 아닌 자신의 주위사람과의 관계에 대해 돌아보게 될 것이다. 저자가 이야기하는 5가지 사랑의 언어를 
+										이해하고 상대방의 제1의 사랑의 언어로 구사하는 것을 배우게 되면 상대방의 행동에 즉각적인 변화가 나타날 것이다.</a></td>
+									</tr>
+								</table>
 							</div>
 						</div>
 					</div>

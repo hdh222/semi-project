@@ -54,6 +54,9 @@
 </head>
 <body>
 	<%
+	int number = Integer.parseInt(request.getParameter("sort"));
+	
+	System.out.println(number);
 		//한 페이지에 나타낼 row 의 갯수
 	final int PAGE_ROW_COUNT = 5;
 	//하단 디스플레이 페이지 갯수
@@ -73,7 +76,7 @@
 	int endRowNum = pageNum * PAGE_ROW_COUNT;
 
 	//전체 row 의 갯수를 읽어온다.
-	int totalRow = BookDao.getInstance().getCount(3);
+	int totalRow = BookDao.getInstance().getCount(number);
 	//전체 페이지의 갯수 구하기
 	int totalPageCount = (int) Math.ceil(totalRow / (double) PAGE_ROW_COUNT);
 	//시작 페이지 번호
@@ -89,7 +92,7 @@
 		BookDto dto = new BookDto();
 		dto.setStartRowNum(startRowNum);
 		dto.setEndRowNum(endRowNum);
-		dto.setBsort(3);
+		dto.setBsort(number);
 		//FileDto 객체를 인자로 전달해서 파일 목록을 얻어온다. 
 		List<BookDto> list = BookDao.getInstance().getList(dto);
 	%>
@@ -100,55 +103,55 @@
 		<div class="container card my-4">
 			<div class="row mt-5 mb-4" id="article">
 				<div class="col-2">
-					<button class="btn btn-link">
+					<a href="book_list.jsp?sort=1"><button class="btn btn-link">
 						<img id="computer" class="menu_icon"
 							src="https://image.flaticon.com/icons/svg/867/867746.svg" alt="" />
 							<p class="mt-3 text-dark">컴퓨터/IT</p>
-					</button>
+					</button></a>
 				</div>
 
 				<div class="col-2">
-					<button class="btn btn-link">
+					<a href="book_list.jsp?sort=2"><button class="btn btn-link">
 						<img class="menu_icon"
 							src="https://image.flaticon.com/icons/svg/3164/3164118.svg"
 							alt="" />
 						<p class="mt-3 text-dark">경제/경영</p>
-					</button>
+					</button></a>
 				</div>
 
 				<div class="col-2">
-					<button class="btn btn-link mx-3">
+					<a href="book_list.jsp?sort=3"><button class="btn btn-link mx-3">
 						<img class="menu_icon"
 							src="https://image.flaticon.com/icons/svg/2970/2970729.svg"
 							alt="" />
 						<p class="mt-3 text-dark">예술</p>
-					</button>
+					</button></a>
 				</div>
 
 				<div class="col-2">
-					<button class="btn btn-link">
+					<a href="book_list.jsp?sort=4"><button class="btn btn-link">
 						<img class="menu_icon"
 							src="https://image.flaticon.com/icons/svg/841/841988.svg" alt="" />
 						<p class="mt-3 text-dark">과학</p>
-					</button>
+					</button></a>
 				</div>
 
 				<div class="col-2">
-					<button class="btn btn-link">
+					<a href="book_list.jsp?sort=5"><button class="btn btn-link">
 						<img class="menu_icon"
 							src="https://cdn3.iconfinder.com/data/icons/eldorado-stroke-buildings/40/church-512.png"
 							alt="" />
 							<p class="mt-3 text-dark">종교</p>
-					</button>
+					</button></a>
 				</div>
 
 				<div class="col-2">
-					<button class="btn btn-link">
+					<a href="book_list.jsp?sort=6"><button class="btn btn-link">
 						<img class="menu_icon"
 							src="https://cdns.iconmonstr.com/wp-content/assets/preview/2017/240/iconmonstr-time-17.png"
 							alt="" />
 						<p class="mt-3 text-dark">역사</p>
-					</button>
+					</button></a>
 				</div>
 
 			</div>
@@ -179,7 +182,7 @@
 				<nav aria-label="책 리스트 페이지네이션">
 					<ul class="pagination justify-content-center">
 					<%if(startPageNum != 1){ %>
-						<li class="page-item"><a class="page-link" href="book_list.jsp?pageNum=<%=startPageNum-1%>">Previous</a></li>
+						<li class="page-item"><a class="page-link" href="book_list.jsp?pageNum=<%=startPageNum-1%>&sort=<%=number%>">Previous</a></li>
 					<%} %>
 						<!-- for문으로 페이지네이션 -->
 						<%for(int i=startPageNum; i<=endPageNum; i++) {
@@ -188,14 +191,14 @@
 						%>
 						
 							<%if(i==pageNum){ %>
-								<li class="page-item active"><a class="page-link" href="book_list.jsp?pageNum=<%=i %>"><%=i %></a></li>
+								<li class="page-item active"><a class="page-link" href="book_list.jsp?pageNum=<%=i %>&sort=<%=number%>"><%=i %></a></li>
 							<%}else{ %>
-								<li class="page-item"><a class="page-link" href="book_list.jsp?pageNum=<%=i %>"><%=i %></a></li>
+								<li class="page-item"><a class="page-link" href="book_list.jsp?pageNum=<%=i %>&sort=<%=number%>"><%=i %></a></li>
 							<%} %>
 							
 						<%} %>
 						<%if(endPageNum < totalPageCount){ %>
-							<li class="page-item"><a class="page-link" href="book_list.jsp?pageNum=<%=endPageNum+1 %>">Next</a></li>
+							<li class="page-item"><a class="page-link" href="book_list.jsp?pageNum=<%=endPageNum+1 %>&sort=<%=number%>">Next</a></li>
 						<%} %>
 					</ul>
 				</nav>
