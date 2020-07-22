@@ -4,19 +4,24 @@
     pageEncoding="UTF-8"%>
 <%
 	int bnum=Integer.parseInt(request.getParameter("bnum"));
+	System.out.print("bnum:"+bnum);
 	String rname=request.getParameter("rname");
-	String user_id="hihhihi"; //request.getParameter("user_id");
-	String rimg= "hihi";//request.getParameter("rimg");
+	String user_id=request.getParameter("user_id");
+	String rimg= request.getParameter("rimg");
 	String rcontent=request.getParameter("rcontent");
 	int rscore=Integer.parseInt(request.getParameter("rscore"));
 	ReviewDto dto=new ReviewDto();
+	
 	dto.setBnum(bnum);
 	dto.setUser_id(user_id);
 	dto.setRname(rname);
 	dto.setRimg(rimg);
 	dto.setRcontent(rcontent);
 	dto.setRscore(rscore);
+	System.out.println(rscore);
+	
 	ReviewDao.getInstance().insert(dto);
+
 %>
 <!DOCTYPE html>
 <html>
@@ -27,7 +32,7 @@
 <body>
 	<script>
 		alert("리뷰가 저장되었습니다");
-		location.href="../book/bookinfo.jsp";
+		location.href="../book/book_info.jsp?bnum=<%=bnum%>";
 	</script>
 </body>
 </html>

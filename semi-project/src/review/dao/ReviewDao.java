@@ -38,6 +38,7 @@ public class ReviewDao {
 			ps.setString(5, dto.getRcontent());
 			ps.setInt(6, dto.getRscore());
 			flag=ps.executeUpdate();
+			System.out.println("리뷰추가됨");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {
@@ -140,9 +141,8 @@ public class ReviewDao {
 		}
 		return dto;
 	}
-	/*
-	 * 페이지네이션 리스트 
-	public List<ReviewDto> getList(){
+	
+	public List<ReviewDto> getList(int bnum){
 		List<ReviewDto> list=new ArrayList<>();
 		Connection conn=null;
 		PreparedStatement ps=null;
@@ -150,13 +150,13 @@ public class ReviewDao {
 		ReviewDto dto=null;
 		try {
 			conn=new DBconn().getConn();
-			String sql="SELECT * FROM review WHERE rnum=?";
+			String sql="SELECT * FROM review where bnum=? order by rdate desc";
 			ps=conn.prepareStatement(sql);
-			ps.setInt(1, num);
+			ps.setInt(1, bnum);
 			rs=ps.executeQuery();
-			if(rs.next()) {
+			while(rs.next()) {
 				dto=new ReviewDto();
-				dto.setRnum(rs.getInt(""));
+				dto.setRnum(rs.getInt("rnum"));
 				dto.setBnum(rs.getInt("bnum"));
 				dto.setUser_id(rs.getString("user_id"));
 				dto.setRdate(rs.getString("rdate"));
@@ -164,6 +164,7 @@ public class ReviewDao {
 				dto.setRimg(rs.getString("rimg"));
 				dto.setRcontent(rs.getString("rcontent"));
 				dto.setRscore(rs.getInt("rscore"));
+				list.add(dto);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -176,5 +177,5 @@ public class ReviewDao {
 		}
 		return list;
 	}
-	*/
+	
 }

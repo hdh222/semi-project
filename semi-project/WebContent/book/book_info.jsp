@@ -1,3 +1,6 @@
+<%@page import="review.dto.ReviewDto"%>
+<%@page import="java.util.List"%>
+<%@page import="review.dao.ReviewDao"%>
 <%@page import="book.dto.BookDto"%>
 <%@page import="book.dao.BookDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -11,17 +14,12 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 <link rel="stylesheet" href="../css/blog.css" />
 <style>
-	footer{
-		text-align:center;
-	}
-</style>
-</head>
-<style>
 	@font-face { font-family: 'Arita-buri-SemiBold'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/Arita-buri-SemiBold.woff') format('woff'); font-weight: normal; font-style: normal; }
-
-	#container{
-		width:800px;
-		margin:0 auto;		
+	
+	.table td, .table th {
+    padding: .75rem;
+    vertical-align: top;
+    border-top: 0px ;
 	}
 	.container{
 		font-family:'Arita-buri-SemiBold'; 
@@ -60,13 +58,25 @@
 		line-height: 1.5em;
 		height: 13.5em; /* line-height 가 1.2em 이고 3라인을 자르기 때문에 height는 1.2em * 3 = 3.6em */
 	}
+	.content{
+		  width        : 150px;     /* 너비는 변경될수 있습니다. */
+		  text-overflow: ellipsis;  /* 위에 설정한 100px 보다 길면 말줄임표처럼 표시합니다. */
+		  white-space  : nowrap;    /* 줄바꿈을 하지 않습니다. */
+		  overflow     : hidden;    /* 내용이 길면 감춤니다 */
+		  display      : block;     /* ie6이상 현재요소를 블럭처리합니다. */
+	}
 	
 </style>
+</head>
+
 
 <%
 	int num = Integer.parseInt(request.getParameter("bnum"));
+	List<ReviewDto> list=ReviewDao.getInstance().getList(num);
 	BookDao dao=BookDao.getInstance();
 	BookDto dto=dao.getData(num);
+	System.out.println(num);
+
 %>
 <body>
 		<!-- 헤더 -->
@@ -91,24 +101,28 @@
 							<p class="border-bottom border-success" ><%=dto.getBcompany()%>, <%=dto.getBdate()%></p>
 							<h3 >줄거리</h3>
 							<p class="font-weight-light" style="font-size:12px" id="story"><%=dto.getBstory() %></p>
-							<h3 class="border-bottom border-success">리뷰<a href="../review/review_write.jsp?bnum=<%=dto.getBnum() %>" class="float-right font-weight-bold" style="font-size:15px">리뷰작성</a></h3>
+							<h3 class="border-bottom border-success">리뷰<a href="../review/review_write.jsp?bnum=<%=num%>"
+							 class="float-right font-weight-bold" style="font-size:12px">리뷰작성</a></h3>
 							<div style=" width:480px; height:286px;">
-								<table style="font-size:7px">
-									<thead>
+								<table class="table border-bottom" style="font-size:10px" >
+									<thead class="thead border-bottom">
 									 	<tr>
 									 		<th>아이디</th>
-									 		<th>작성일</th>
 									 		<th>제목</th>
 									 		<th>내용</th>
+									 		<th>별점</th>
+									 		<th>작성일</th>
 									 	</tr>
 									</thead>
-									<tr>
-										<td>stau04</td>
-										<td>2020-07-06</td>
-										<td>5가지 사랑의 언어에 대하여</td>
-										<td><a href="">비단 부부, 연인들뿐만이 아닌 자신의 주위사람과의 관계에 대해 돌아보게 될 것이다. 저자가 이야기하는 5가지 사랑의 언어를 
-										이해하고 상대방의 제1의 사랑의 언어로 구사하는 것을 배우게 되면 상대방의 행동에 즉각적인 변화가 나타날 것이다.</a></td>
-									</tr>
+									<%for(ReviewDto tmp:list){ %>
+										<tr>
+											<td><%=tmp.getUser_id() %></td>
+											<td><%=tmp.getRname() %></td>
+											<td class="content"><a href=""><%=tmp.getRcontent() %></a></td>
+											<td>"<%=tmp.getRscore()%>/5 "</script></td>
+											<td><%=tmp.getRdate() %></td>
+										</tr>
+									<%} %>
 								</table>
 							</div>
 						</div>
@@ -117,5 +131,6 @@
 			</div>
 		<!-- footer -->
 		<jsp:include page="../include/footer.jsp"></jsp:include>
+
 </body>
 </html>
