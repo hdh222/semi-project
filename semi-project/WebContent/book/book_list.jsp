@@ -211,7 +211,7 @@
 		
 		<div class="container my-5 card">
 			<ul class="list-unstyled">
-
+			<%if(totalRow > 0){ %>
 				<%for(int i = 0; i < list.size(); i++){
 					BookDto tmp = list.get(i);
 				%>
@@ -229,6 +229,15 @@
 					</div></li>
 					<br>
 				
+				<%} %>
+				
+				<%}else{ %>
+					<li class="media my-4 border list_info"><img style = "width:100%; height : 100%;"
+					src="${pageContext.request.contextPath }/image/search_empty.JPG"
+					class="mr-5 list_img border-right" alt="...">
+					
+					<br>
+					
 				<%} %>
 			</ul>
 			<div class="">
