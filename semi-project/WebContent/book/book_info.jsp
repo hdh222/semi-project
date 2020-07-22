@@ -109,7 +109,6 @@
 									 	<tr>
 									 		<th>아이디</th>
 									 		<th>제목</th>
-									 		<th>내용</th>
 									 		<th>별점</th>
 									 		<th>작성일</th>
 									 	</tr>
@@ -117,8 +116,7 @@
 									<%for(ReviewDto tmp:list){ %>
 										<tr>
 											<td><%=tmp.getUser_id() %></td>
-											<td><%=tmp.getRname() %></td>
-											<td class="content"><a href=""><%=tmp.getRcontent() %></a></td>
+											<td><a href=""><%=tmp.getRname() %></a></td>
 											<td>"<%=tmp.getRscore()%>/5 "</script></td>
 											<td><%=tmp.getRdate() %></td>
 										</tr>
