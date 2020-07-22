@@ -37,6 +37,6 @@
 		<a class="p-3 mx-lg-5 text-muted" href="#">U.S.</a>
 		<a class="p-3 mx-lg-5 text-muted" href="#">Technology</a> 
 		<a class="p-3 mx-lg-5 text-muted" href="#">Design</a>
-		<a class="p-3 mx-lg-5 text-muted" href="#">Culture</a>
+		<a class="p-3 mx-lg-5 text-muted" href="${pageContext.request.contextPath}/mypage/mypage.jsp">My Page</a>
 	</nav>
 </div>

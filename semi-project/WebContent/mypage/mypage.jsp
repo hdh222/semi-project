@@ -1,10 +1,15 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	
+<%
+	request.setCharacterEncoding("utf-8");
+
+	String id=(String)session.getAttribute("id");
+%>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -77,23 +82,25 @@
 				</div>
 			</div>
 		</div>
-		<div class="row">
-			<div class="col-10 my-sm-5 border boder-secondary mx-auto">
-				<form class="w-50 mb-2 mt-2 mx-auto">
-					<h4 class="my-3">회원정보수정</h4>
-					<div class="form-group">
-						<label for="exampleInputEmail1">Email address</label>
-						<input type="email" class="form-control" id="exampleInputEmail1"
-								aria-describedby="emailHelp">
-					</div>
-					<div class="form-group">
-						<label for="exampleInputPassword1">Password</label> 
-						<input type="password" class="form-control" id="exampleInputPassword1">
-					</div>
-					<button type="submit" class="btn btn-primary float-right mb-5">Submit</button>
-				</form>
-			</div>
-		</div>
+
+		<div class="card py-3">
+			<h3 class="ml-4">회원정보 수정</h3>
+			<hr />
+            <form action="${pageContext.request.contextPath}/login/memberShipForm.jsp" method="post" id="checkPwd">
+                <div class="w-50 mx-auto my-3">
+                    <div class="form-group m-0">
+                        <label for="email">ID</label>
+                        <input type="email" readonly class="form-control" id="email" name="email"
+                            aria-describedby="emailHelp" value="<%=id %>" />
+                    </div>
+                    <div class="form-group">
+                        <label for="pwd">Password</label>
+                        <input type="password" class="form-control" id="pwd" name="pwd" placeholder="password" />
+                    </div>
+                    <button type="button" class="btn btn-primary float-right" id="nextBtn">다음</button>
+                </div>
+             </form>
+       	 </div>
 	</div> <!-- .container -->
 
 	<!-- Footer -->
@@ -104,7 +111,30 @@
 	<script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
 	<script src="${pageContext.request.contextPath}/js/carousel.js"></script>
 	<script src="${pageContext.request.contextPath}/js/header.js"></script>
-
+	<script>
+		$("#nextBtn").on("click",function() {
+			if($.trim($("#pwd").val())=="") {
+				alert("비밀번호를 입력 해수세요.");
+				return false;
+			}
+			
+			var id=$("#email").val();
+			var pwd=$("#pwd").val();
+			
+			$.ajax({
+				method:"post",
+				url:"${pageContext.request.contextPath}/login/checkPwd.jsp",
+				data:"id="+id+"&pwd="+pwd,
+				success:function(data){
+					if(data.isTrue == "true") {
+						$("#checkPwd").submit();
+					}else {
+						alert("현재 비밀번호가 일치하지 않습니다.");
+					}
+				}
+			});
+		});
+	</script>
 </body>
 
 </html>
