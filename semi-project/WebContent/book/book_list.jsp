@@ -55,9 +55,8 @@
 <body>
 	<%
 	int number = Integer.parseInt(request.getParameter("sort"));
-	
-	System.out.println(number);
-		//한 페이지에 나타낼 row 의 갯수
+
+	//한 페이지에 나타낼 row 의 갯수
 	final int PAGE_ROW_COUNT = 5;
 	//하단 디스플레이 페이지 갯수
 	final int PAGE_DISPLAY_COUNT = 5;
@@ -185,10 +184,7 @@
 						<li class="page-item"><a class="page-link" href="book_list.jsp?pageNum=<%=startPageNum-1%>&sort=<%=number%>">Previous</a></li>
 					<%} %>
 						<!-- for문으로 페이지네이션 -->
-						<%for(int i=startPageNum; i<=endPageNum; i++) {
-						
-							System.out.println(endPageNum);
-						%>
+						<%for(int i=startPageNum; i<=endPageNum; i++) {	%>
 						
 							<%if(i==pageNum){ %>
 								<li class="page-item active"><a class="page-link" href="book_list.jsp?pageNum=<%=i %>&sort=<%=number%>"><%=i %></a></li>
