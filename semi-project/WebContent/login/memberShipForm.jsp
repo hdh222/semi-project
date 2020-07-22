@@ -15,7 +15,7 @@
         <h3>회원 가입</h3>
         <hr />
         <form action="memberShip.jsp" method="post" id="memberForm">
-        	<input type="hidden" id="cofirmID" name="confirmID" />
+        	<input type="hidden" id="confirmID" name="confirmID" />
             <div class="form-group row">
                 <label for="email" class="col-sm-2 col-form-label">이메일</label>
                 <div class="col-sm-6">
