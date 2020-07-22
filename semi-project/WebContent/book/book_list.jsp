@@ -1,3 +1,4 @@
+<%@page import="java.net.URLEncoder"%>
 <%@page import="java.util.List"%>
 <%@page import="book.dto.BookDto"%>
 <%@page import="book.dao.BookDao"%>
@@ -60,7 +61,7 @@
 	if(strsort != null){
 		sort = Integer.parseInt(request.getParameter("sort"));
 	}
-
+	
 	//한 페이지에 나타낼 row 의 갯수
 	final int PAGE_ROW_COUNT = 5;
 	//하단 디스플레이 페이지 갯수
@@ -78,9 +79,42 @@
 	int startRowNum = 1 + (pageNum - 1) * PAGE_ROW_COUNT;
 	//보여줄 페이지 데이터의 끝 ResultSet row 번호
 	int endRowNum = pageNum * PAGE_ROW_COUNT;
+	/*
+		검색 키워드 관련 처리
+	*/
+	String keyword = request.getParameter("keyword");
+	if(keyword == null){
+		keyword="";
+	}
+	String encodedK=URLEncoder.encode(keyword);	
 
-	//전체 row 의 갯수를 읽어온다.
-	int totalRow = BookDao.getInstance().getCount(sort);
+	//검색 키워드와 startRowNum, endRowNum 을 담을 FileDto 객체 생성
+	BookDto dto=new BookDto();
+	dto.setBname(keyword);
+	dto.setStartRowNum(startRowNum);
+	dto.setEndRowNum(endRowNum);
+	
+	//select 된 결과를 담을 List
+	List<BookDto> list=null;
+	//전체 row 의 갯수를 담을 변수 
+	int totalRow=0;
+	
+	if(!keyword.equals("")){ //만일 키워드가 넘어온다면 
+		dto.setBname(keyword);
+		dto.setStartRowNum(startRowNum);
+		dto.setEndRowNum(endRowNum);
+		list = BookDao.getInstance().getSearchList(dto);
+		totalRow = BookDao.getInstance().getSearchCount(keyword);
+	}else{
+		dto.setStartRowNum(startRowNum);
+		dto.setEndRowNum(endRowNum);
+		dto.setBsort(sort);
+		//FileDto 객체를 인자로 전달해서 파일 목록을 얻어온다.
+		list = BookDao.getInstance().getList(dto);
+		//전체 row 의 갯수를 읽어온다.
+		totalRow = BookDao.getInstance().getCount(sort);
+	}
+	
 	//전체 페이지의 갯수 구하기
 	int totalPageCount = (int) Math.ceil(totalRow / (double) PAGE_ROW_COUNT);
 	//시작 페이지 번호
@@ -92,37 +126,33 @@
 		endPageNum = totalPageCount; //보정해준다. 
 	}
 	
-		//startRowNum 과 endRowNum을 FileDto 객체에 담고 
-		BookDto dto = new BookDto();
-		dto.setStartRowNum(startRowNum);
-		dto.setEndRowNum(endRowNum);
-		dto.setBsort(sort);
-		//FileDto 객체를 인자로 전달해서 파일 목록을 얻어온다. 
-		List<BookDto> list = BookDao.getInstance().getList(dto);
+		
 	%>
 	
 	<jsp:include page="/include/header.jsp"></jsp:include>
 
 	<div class="container">
-	<div class="input-group my-3 w-50 container">
-			<input type="text" class="form-control"
-				placeholder="Recipient's username" aria-label="Recipient's username"
-				aria-describedby="button-addon2">
-			<div class="input-group-append">
-				<button class="btn btn-outline-secondary" type="button"
-					id="button-addon2">
-					<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-						fill="none" stroke="currentColor" stroke-linecap="round"
-						stroke-linejoin="round" stroke-width="2" class="mx-3" role="img"
-						viewBox="0 0 24 24" focusable="false">
-            <title>Search</title>
-            <circle cx="10.5" cy="10.5" r="7.5" />
-            <path d="M21 21l-5.2-5.2" />
-          </svg>
-				</button>
-			</div>
-		</div>	<!-- search -->
-	
+	<form action="book_list.jsp" method="get">
+
+		<div class="input-group my-3 w-50 container">
+				<input type="text" class="form-control"
+					placeholder="search book" aria-label="Recipient's username"
+					aria-describedby="button-addon2" name="keyword" value="<%=keyword %>">
+				<div class="input-group-append">
+					<button class="btn btn-outline-secondary" type="submit"
+						id="button-addon2">
+						<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+							fill="none" stroke="currentColor" stroke-linecap="round"
+							stroke-linejoin="round" stroke-width="2" class="mx-3" role="img"
+							viewBox="0 0 24 24" focusable="false">
+				            <title>Search</title>
+				            <circle cx="10.5" cy="10.5" r="7.5" />
+				            <path d="M21 21l-5.2-5.2" />
+				          </svg>
+					</button>
+				</div>
+			</div>	<!-- search -->
+		</form>	
 		<div class="container card my-4">
 			<div class="row mt-5 mb-4" id="article">
 				<div class="col-2">
@@ -205,20 +235,20 @@
 				<nav aria-label="책 리스트 페이지네이션">
 					<ul class="pagination justify-content-center">
 					<%if(startPageNum != 1){ %>
-						<li class="page-item"><a class="page-link" href="book_list.jsp?pageNum=<%=startPageNum-1%>&sort=<%=sort%>">Previous</a></li>
+						<li class="page-item"><a class="page-link" href="book_list.jsp?pageNum=<%=startPageNum-1%>&sort=<%=sort%>&keyword=<%=encodedK %>">Previous</a></li>
 					<%} %>
 						<!-- for문으로 페이지네이션 -->
 						<%for(int i=startPageNum; i<=endPageNum; i++) {	%>
 						
 							<%if(i==pageNum){ %>
-								<li class="page-item active"><a class="page-link" href="book_list.jsp?pageNum=<%=i %>&sort=<%=sort%>"><%=i %></a></li>
+								<li class="page-item active"><a class="page-link" href="book_list.jsp?pageNum=<%=i %>&sort=<%=sort%>&keyword=<%=encodedK %>"><%=i %></a></li>
 							<%}else{ %>
-								<li class="page-item"><a class="page-link" href="book_list.jsp?pageNum=<%=i %>&sort=<%=sort%>"><%=i %></a></li>
+								<li class="page-item"><a class="page-link" href="book_list.jsp?pageNum=<%=i %>&sort=<%=sort%>&keyword=<%=encodedK %>"><%=i %></a></li>
 							<%} %>
 							
 						<%} %>
 						<%if(endPageNum < totalPageCount){ %>
-							<li class="page-item"><a class="page-link" href="book_list.jsp?pageNum=<%=endPageNum+1 %>&sort=<%=sort%>">Next</a></li>
+							<li class="page-item"><a class="page-link" href="book_list.jsp?pageNum=<%=endPageNum+1 %>&sort=<%=sort%>&keyword=<%=encodedK %>">Next</a></li>
 						<%} %>
 					</ul>
 				</nav>
