@@ -33,7 +33,7 @@
 	</header>
 	
 	<nav class="nav d-flex justify-content-center bg-white" id="nav">
-		<a class="p-3 mx-lg-5 text-muted" href="#">World</a> 
+		<a class="p-3 mx-lg-5 text-muted" href="${pageContext.request.contextPath }/book/book_list.jsp">Book</a> 
 		<a class="p-3 mx-lg-5 text-muted" href="#">U.S.</a>
 		<a class="p-3 mx-lg-5 text-muted" href="#">Technology</a> 
 		<a class="p-3 mx-lg-5 text-muted" href="#">Design</a>

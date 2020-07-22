@@ -70,7 +70,7 @@ public class BookDao {
 			conn = new DBconn().getConn();
 			
 			String sql = "select * from (select result1.*, rownum as rnumber" + 
-					" from (select * from book where bsort=?"
+					" from (select book.* ,to_char(bdate, 'yyyy-mm-dd') as b_date from book where bsort=?"
 					+ " order by bnum asc) result1)" + 
 					" where rnumber between ? and ?";
 			pstmt = conn.prepareStatement(sql);
@@ -89,7 +89,7 @@ public class BookDao {
 				tmp.setBsort(rs.getInt("bsort"));
 				tmp.setBcompany(rs.getString("bcompany"));
 				tmp.setBimg(rs.getString("bimg"));
-				tmp.setBdate(rs.getString("bdate"));
+				tmp.setBdate(rs.getString("b_date"));
 				tmp.setBauthor(rs.getString("author"));
 				//ArrayList 객체에 누적 시킨다.
 			
