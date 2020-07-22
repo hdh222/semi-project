@@ -6,7 +6,7 @@
 	int bnum=Integer.parseInt(request.getParameter("bnum"));
 	System.out.print("bnum:"+bnum);
 	String rname=request.getParameter("rname");
-	String user_id=request.getParameter("user_id");
+	String user_id=(String)session.getAttribute("id");
 	String rimg= request.getParameter("rimg");
 	String rcontent=request.getParameter("rcontent");
 	int rscore=Integer.parseInt(request.getParameter("rscore"));
