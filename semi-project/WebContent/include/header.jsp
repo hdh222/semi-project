@@ -1,5 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+	
+<%
+	String id=(String)session.getAttribute("id");
+	
+%>
 <style>
 .
 </style>
@@ -14,7 +19,13 @@
 				<a class="blog-header-logo text-dark" href="${pageContext.request.contextPath}/index.jsp">Large</a>
 			</div>
 			<div class="col-4 d-flex justify-content-end align-items-center">
-				<a class="btn btn-sm btn-outline-secondary" href="${pageContext.request.contextPath}/login/loginForm.jsp">Sign up</a>
+				<%if(id == null) {%>
+					<a class="btn btn-sm btn-outline-secondary" href="${pageContext.request.contextPath}/login/loginForm.jsp">Sign up</a>
+				<%} else { 
+					String name=(String)session.getAttribute("name");
+				%>
+					<p class="text-muted m-0"><%=name %>님 로그인 <a href="${pageContext.request.contextPath}/login/logout.jsp" class="btn btn-outline-secondary btn-sm mx-3">로그 아웃</a></p>
+				<%} %>
 			</div>
 		</div>
 
