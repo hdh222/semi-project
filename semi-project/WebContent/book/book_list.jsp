@@ -54,7 +54,12 @@
 </head>
 <body>
 	<%
-	int number = Integer.parseInt(request.getParameter("sort"));
+	int sort = 1;
+	String strsort = request.getParameter("sort");
+	
+	if(strsort != null){
+		sort = Integer.parseInt(request.getParameter("sort"));
+	}
 
 	//한 페이지에 나타낼 row 의 갯수
 	final int PAGE_ROW_COUNT = 5;
@@ -75,7 +80,7 @@
 	int endRowNum = pageNum * PAGE_ROW_COUNT;
 
 	//전체 row 의 갯수를 읽어온다.
-	int totalRow = BookDao.getInstance().getCount(number);
+	int totalRow = BookDao.getInstance().getCount(sort);
 	//전체 페이지의 갯수 구하기
 	int totalPageCount = (int) Math.ceil(totalRow / (double) PAGE_ROW_COUNT);
 	//시작 페이지 번호
@@ -91,7 +96,7 @@
 		BookDto dto = new BookDto();
 		dto.setStartRowNum(startRowNum);
 		dto.setEndRowNum(endRowNum);
-		dto.setBsort(number);
+		dto.setBsort(sort);
 		//FileDto 객체를 인자로 전달해서 파일 목록을 얻어온다. 
 		List<BookDto> list = BookDao.getInstance().getList(dto);
 	%>
@@ -181,20 +186,20 @@
 				<nav aria-label="책 리스트 페이지네이션">
 					<ul class="pagination justify-content-center">
 					<%if(startPageNum != 1){ %>
-						<li class="page-item"><a class="page-link" href="book_list.jsp?pageNum=<%=startPageNum-1%>&sort=<%=number%>">Previous</a></li>
+						<li class="page-item"><a class="page-link" href="book_list.jsp?pageNum=<%=startPageNum-1%>&sort=<%=sort%>">Previous</a></li>
 					<%} %>
 						<!-- for문으로 페이지네이션 -->
 						<%for(int i=startPageNum; i<=endPageNum; i++) {	%>
 						
 							<%if(i==pageNum){ %>
-								<li class="page-item active"><a class="page-link" href="book_list.jsp?pageNum=<%=i %>&sort=<%=number%>"><%=i %></a></li>
+								<li class="page-item active"><a class="page-link" href="book_list.jsp?pageNum=<%=i %>&sort=<%=sort%>"><%=i %></a></li>
 							<%}else{ %>
-								<li class="page-item"><a class="page-link" href="book_list.jsp?pageNum=<%=i %>&sort=<%=number%>"><%=i %></a></li>
+								<li class="page-item"><a class="page-link" href="book_list.jsp?pageNum=<%=i %>&sort=<%=sort%>"><%=i %></a></li>
 							<%} %>
 							
 						<%} %>
 						<%if(endPageNum < totalPageCount){ %>
-							<li class="page-item"><a class="page-link" href="book_list.jsp?pageNum=<%=endPageNum+1 %>&sort=<%=number%>">Next</a></li>
+							<li class="page-item"><a class="page-link" href="book_list.jsp?pageNum=<%=endPageNum+1 %>&sort=<%=sort%>">Next</a></li>
 						<%} %>
 					</ul>
 				</nav>
