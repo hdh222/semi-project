@@ -119,7 +119,7 @@ public class BookDao {
 		
 		try {
 			conn = new DBconn().getConn();
-			String sql = "SELECT * FROM book where bnum=?";
+			String sql = "SELECT bnum,bname,bstory,to_char(bdate,'yyyy-mm-dd')as bdate,bcompany,bsort,bimg,author from book where bnum=?";
 			ps = conn.prepareStatement(sql);
 			ps.setInt(1, number);
 			rs=ps.executeQuery();
