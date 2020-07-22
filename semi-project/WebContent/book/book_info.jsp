@@ -103,7 +103,7 @@
 							<p class="font-weight-light" style="font-size:12px" id="story"><%=dto.getBstory() %></p>
 							<h3 class="border-bottom border-success">리뷰<a href="../review/review_write.jsp?bnum=<%=num%>"
 							 class="float-right font-weight-bold" style="font-size:12px">리뷰작성</a></h3>
-							<div style=" width:480px; height:286px;">
+							<div style=" width:460px; height:286px;">
 								<table class="table border-bottom" style="font-size:10px" >
 									<thead class="thead border-bottom">
 									 	<tr>
