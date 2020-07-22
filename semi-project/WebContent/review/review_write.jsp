@@ -2,7 +2,10 @@
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
-
+<%
+	int num=Integer.parseInt(request.getParameter("bnum"));
+	System.out.print("bnum:"+num);
+%>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -26,6 +29,7 @@
 			<h3 class="p-2">Review 작성</h3>
 			<hr class="mt-0" />
 			<form action="review_insert.jsp" method="post">
+				<input type="hidden" name="bnum" value="<%=num%>"/>
 				<div class="form-group row">
 					<label for="rname" class="col-sm-2 col-form-label text-center mt-4">제목</label>
 					<div class="col-sm-10  mb-2 mt-4">
@@ -35,7 +39,7 @@
 				<div class="form-group row">
 					<label for="user_id" class="col-sm-2 col-form-label text-center mt-4">작성자</label>
 					<div class="col-sm-10  mb-2 mt-4">
-						<input type="text"class="form-control-plaintext border-bottom" name="user_id" id="user_id" disabled>
+						<input type="text"class="form-control-plaintext border-bottom" name="user_id" id="user_id">
 					</div>
 				</div>
 				<div class="form-group row">
@@ -81,6 +85,7 @@
 
 <script src="${pageContext.request.contextPath}/js/header.js"></script>
 <script src="../js/jquery-3.5.1.min.js"></script>
+<!-- 별점기능 제이쿼리 -->
 <script>
 	$('#star i').on('click',function(){
 		$(this).parent().children("i").removeClass("on");
