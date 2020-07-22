@@ -32,12 +32,13 @@
 %>
 	<script>
 		alert("회원정보가 수정되었습니다.");
-		location.href="${pageContext.request.contextPath}/mypage/mypage.jsp";
+		 opener.location.reload();
+		 window.close();
 	</script>
 <%}else { %>
 	<script>
 		alert("회원정보 수정에 실패 하였습니다.");
-		location.href="${pageContext.request.contextPath}/mypage/mypage.jsp";
+		histoy.go(-1);
 	</script>
 <%} %>
 </body>

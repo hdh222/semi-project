@@ -86,7 +86,7 @@
 		<div class="card py-3">
 			<h3 class="ml-4">회원정보 수정</h3>
 			<hr />
-            <form action="${pageContext.request.contextPath}/login/memberShipForm.jsp" method="post" id="checkPwd">
+            <form action="${pageContext.request.contextPath}/login/memberShipForm.jsp" target="update" method="post" id="checkPwd">
                 <div class="w-50 mx-auto my-3">
                     <div class="form-group m-0">
                         <label for="email">ID</label>
@@ -127,6 +127,7 @@
 				data:"id="+id+"&pwd="+pwd,
 				success:function(data){
 					if(data.isTrue == "true") {
+						window.open("", "update", 'width=700, height=570'); 
 						$("#checkPwd").submit();
 					}else {
 						alert("현재 비밀번호가 일치하지 않습니다.");
