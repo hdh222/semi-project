@@ -8,7 +8,7 @@
 	String rname=request.getParameter("rname");
 	String user_id=(String)session.getAttribute("id");
 	String rimg= request.getParameter("rimg");
-	String rcontent=request.getParameter("content");
+	String rcontent=request.getParameter("rcontent");
 	int rscore=Integer.parseInt(request.getParameter("rscore"));
 	ReviewDto dto=new ReviewDto();
 	
