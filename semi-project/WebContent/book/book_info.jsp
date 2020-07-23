@@ -121,7 +121,7 @@
 																			aria-labelledby="home-tab">
 																			<p id="review_content" class="my-lg-5"><%=tmp.getRcontent() %></p>
 																				
-																			<p class="float-right" >저자 : 홍길동,&nbsp;&nbsp;출판사 : 길벗,&nbsp;&nbsp; 출간일 : 0000.00.00</p>	
+																			<p class="float-right" >저자 : <%=dto.getBauthor() %>,&nbsp;&nbsp;출판사 : <%=dto.getBcompany() %>,&nbsp;&nbsp; 출간일 : <%=dto.getBdate() %></p>	
 																		</div>
 																		<div class="tab-pane fade" id="profile" role="tabpanel"
 																			aria-labelledby="profile-tab">

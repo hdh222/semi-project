@@ -1,3 +1,6 @@
+<%@page import="review.dto.ReviewDto"%>
+<%@page import="java.util.List"%>
+<%@page import="review.dao.ReviewDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 	
@@ -5,6 +8,10 @@
 	request.setCharacterEncoding("utf-8");
 
 	String id=(String)session.getAttribute("id");
+	
+	List<ReviewDto> list = ReviewDao.getInstance().getReviewList(id);
+	
+	ReviewDto data = null;
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -48,25 +55,39 @@
 		<div class="row my-4">
 			<div class="col-md-6 mb-5" id="listBox">
 				<div class="card">
-					<div class="card-body">
+					<div class="card-body"  style="overflow-y: scroll; height : 300px;">
 						<h4 class="card-title">
 							<a href="#">내가 쓴 리뷰</a>
 						</h4>
-						<ul>
-							<li>하나</li>
-							<li>둘</li>
-							<li>셋</li>
-						</ul>
+						<div class="table-responsiv">
+							<table class="table table-light">
+						<thead>
+							<tr>
+								<th class="text-center">평점</th>
+								<th class="text-center">제목</th>
+								<th class="text-center">작성일</th>
+							</tr>
+						</thead>
+						<%for(ReviewDto tmp : list){ %>
+							<tr>
+								<td class="text-center"><%=tmp.getRscore() %></td>
+								<td><a id="reviewBtn" type="button" data-toggle="modal" data-target="#ReviewModal" data-whatever="@mdo"><%=tmp.getRname()%></a>
+								
+								</td>
+								<td class="text-center"><%=tmp.getRdate() %></td>
+							</tr>
+						<%} %>
+						</table>
+						</div>
+						
 					</div>
-					<div class="card-footer">
-						<small class="text-muted float-right"><a href="">더보기</a></small>
-					</div>
+					
 				</div>
 			</div>
 
 			<div class="col-md-6 mb-5" id="listBox">
 				<div class="card">
-					<div class="card-body">
+					<div class="card-body" style="overflow-y: scroll; height : 300px;">
 						<h4 class="card-title">
 							<a href="#">내가 쓴 댓글</a>
 						</h4>
@@ -101,6 +122,39 @@
                 </div>
              </form>
        	 </div>
+       	 
+       	 <!-- 리뷰 modal -->
+       	 <div class="modal fade" id="ReviewModal" tabindex="-1" role="dialog"
+												aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog modal-xl" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<span><strong><%=id%>님의 리뷰</strong></span>
+						<button type="button" class="close" data-dismiss="modal"
+																aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					
+					<div class="modal-body">
+					
+						<h3 class="border-bottom border-success">리뷰 제목</h3>
+										
+							<p class="small my-1">
+								글쓴이 : <%=id%>&nbsp;&nbsp; 작성일 : 0000.00.00 &nbsp;&nbsp; 평점 : ★★★★★
+							</p>
+																	
+						<div class="modal-content" id="myTabContent">
+																		
+							<p id="review_content" class="my-lg-5">내용</p>
+																				
+							<p class="float-right" >저자 : 홍길동 ,&nbsp;&nbsp;출판사 : 길벗,&nbsp;&nbsp; 출간일 : 0000.00.00</p>	
+												
+						</div>
+					</div>	<!-- modal body -->
+				</div>	<!-- modal content -->
+			</div>	<!-- modal-dialog -->
+		</div> <!-- modal -->
 	</div> <!-- .container -->
 
 	<!-- Footer -->
@@ -114,7 +168,7 @@
 	<script>
 		$("#nextBtn").on("click",function() {
 			if($.trim($("#pwd").val())=="") {
-				alert("비밀번호를 입력 해수세요.");
+				alert("비밀번호를 입력 해주세요.");
 				return false;
 			}
 			
@@ -135,6 +189,7 @@
 				}
 			});
 		});
+		
 	</script>
 </body>
 

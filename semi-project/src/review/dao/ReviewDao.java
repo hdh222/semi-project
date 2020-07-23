@@ -178,4 +178,40 @@ public class ReviewDao {
 		return list;
 	}
 	
+	public List<ReviewDto> getReviewList(String id){
+		List<ReviewDto> list=new ArrayList<>();
+		Connection conn=null;
+		PreparedStatement ps=null;
+		ResultSet rs=null;
+		ReviewDto dto=null;
+		try {
+			conn=new DBconn().getConn();
+			String sql="SELECT review.*,to_char(rdate, 'yy-mm-dd hh24:mi') as r_date FROM review where user_id=? order by rdate desc";
+			ps=conn.prepareStatement(sql);
+			ps.setString(1, id);
+			rs=ps.executeQuery();
+			while(rs.next()) {
+				dto=new ReviewDto();
+				dto.setRnum(rs.getInt("rnum"));
+				dto.setBnum(rs.getInt("bnum"));
+				dto.setUser_id(rs.getString("user_id"));
+				dto.setRdate(rs.getString("r_date"));
+				dto.setRname(rs.getString("rname"));
+				dto.setRimg(rs.getString("rimg"));
+				dto.setRcontent(rs.getString("rcontent"));
+				dto.setRscore(rs.getInt("rscore"));
+				list.add(dto);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(rs!=null)rs.close();
+				if(ps!=null)ps.close();
+				if(conn!=null)conn.close();
+			} catch (Exception e2) {}
+		}
+		return list;
+	}
+	
 }
