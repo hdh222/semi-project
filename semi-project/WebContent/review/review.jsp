@@ -11,7 +11,7 @@
 	crossorigin="anonymous">
 <style>
 .modal-content {
-	height: 700px;
+	height: 1000px;
 	float: left;
 }
 
@@ -23,12 +23,13 @@
 #review_content {
 	line-height: 30px;
 }
+
 </style>
 </head>
 <body>
-	<button type="button" class="btn btn-primary" data-toggle="modal"
+	<a type="button" class="btn btn-primary" data-toggle="modal"
 		data-target="#exampleModal" data-whatever="@mdo">Open modal
-		for @mdo</button>
+		for @mdo</a>
 
 	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
 		aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -54,19 +55,13 @@
 							</ol>
 							<div class="carousel-inner mr-3">
 								<div class="carousel-item active">
-									<img id="review_img"
-										src="http://image.kyobobook.co.kr/images/book/xlarge/796/x9791188331796.jpg"
-										class="d-block w-100" alt="...">
+									<img id="review_img" src="http://image.kyobobook.co.kr/images/book/xlarge/796/x9791188331796.jpg" class="d-block w-100" alt="..." >
 								</div>
 								<div class="carousel-item">
-									<img id="review_img"
-										src="http://image.kyobobook.co.kr/mimages/nowbook/202006/20200628091354478.jpg"
-										class="d-block w-100" alt="...">
+									<img id="review_img" src="http://image.kyobobook.co.kr/mimages/nowbook/202006/20200628091354478.jpg" class="d-block w-100" alt="..."  >
 								</div>
 								<div class="carousel-item">
-									<img id="review_img"
-										src="http://image.kyobobook.co.kr/upload/SimpleReview/62016301559_202006100949442.jpg"
-										class="d-block w-100" alt="...">
+									<img id="review_img" src="http://image.kyobobook.co.kr/upload/SimpleReview/62016301559_202006100949442.jpg" class="d-block w-100" alt="..." >
 								</div>
 							</div>
 							<a class="carousel-control-prev"
