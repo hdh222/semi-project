@@ -64,9 +64,9 @@
 			var id=$("#id").val();
 			var pwd=$("#pwd").val();
 			
-			alert(id+pwd);
 			if($.trim($("#pwd").val())=="") {
-				
+				alert("현재 비밀번호를 입력하지 않았습니다.");
+				return false;
 			}else if($.trim($("#npwd").val())=="") {
 				alert("새 비밀번호를 입력하지 않았습니다.");
 				return false;

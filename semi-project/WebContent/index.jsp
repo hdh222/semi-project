@@ -1,5 +1,16 @@
+<%@page import="java.util.Random"%>
+<%@page import="book.dao.BookDao"%>
+<%@page import="book.dto.BookDto"%>
+<%@page import="java.util.ArrayList"%>
 <%@page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%
+	String[] sort={"","컴퓨터","경제","예술","과학","종교","역사"};
+	int sortNum=new Random().nextInt(6)+1;
+	ArrayList<BookDto> rndBook=BookDao.getInstance().getRecommantedList(sortNum);
+
+	ArrayList<BookDto> newBook=BookDao.getInstance().getNewList();
+%>
 <!doctype html>
 <html lang="en">
 
@@ -19,8 +30,6 @@
 <!-- Bootstrap core CSS -->
 <link href="${pageContext.request.contextPath }/css/bootstrap.css"
 	rel="stylesheet">
-<link href="${pageContext.request.contextPath }/css/bootstrap.min.css"
-	rel="stylesheet">
 <style>
 .bd-placeholder-img {
 	font-size: 1.125rem;
@@ -35,6 +44,11 @@
 	.bd-placeholder-img-lg {
 		font-size: 3.5rem;
 	}
+}
+
+.pic_img {
+	width: 150px;
+	height: 200px;
 }
 </style>
 <!-- Custom styles for this template -->
@@ -72,112 +86,32 @@
 				</button>
 			</div>
 		</div>
-
-		<h3 class="p-0 mt-5">추천도서</h3>
+		<!-- 멀티 슬라이드 -->
+		<h3 class="p-0 mt-5">추천도서 - <%=sort[sortNum] %></h3>
 		<hr />
 		<div id="wrap" class="my-5">
 			<ul class="slide" id="slide">
+				<%for(BookDto tmp:rndBook) {%>
 				<li>
-					<div class="card">
-						<picture class="shadow">
+					<div class="card bookInfo">
+						<form action="${pageContext.request.contextPath}/book/book_info.jsp">
+							<input type="hidden" name="bnum" value="<%=tmp.getBnum() %>" />
+						</form>
+						<picture class="shadow mb-3">
 						<source
-							srcset="${pageContext.request.contextPath }/image/book.PNG"
+							srcset="<%=tmp.getBimg() %>"
 							type="image/svg+xml">
-						<img src="${pageContext.request.contextPath }/image/book.PNG"
-							class="img-fluid img-thumbnail" alt="..."> </picture>
+						<img src="<%=tmp.getBimg() %>"
+							class="img-fluid img-thumbnail pic_img" alt="..."> </picture>
 						<div class="card-body">
-							<p class="card-text">Some quick example text to build on the
-								card title and make up the bulk of the card's content.</p>
+							<p class="card-title text-center"><strong><%=tmp.getBname() %></strong></p>
 						</div>
 					</div>
 				</li>
-				<li>
-					<div class="card">
-						<picture class="shadow">
-						<source
-							srcset="${pageContext.request.contextPath }/image/book.PNG"
-							type="image/svg+xml">
-						<img src="${pageContext.request.contextPath }/image/book.PNG"
-							class="img-fluid img-thumbnail" alt="..."> </picture>
-						<div class="card-body">
-							<p class="card-text">Some quick example text to build on the
-								card title and make up the bulk of the card's content.</p>
-						</div>
-					</div>
-				</li>
-				<li>
-					<div class="card">
-						<picture class="shadow">
-						<source
-							srcset="${pageContext.request.contextPath }/image/book.PNG"
-							type="image/svg+xml">
-						<img src="${pageContext.request.contextPath }/image/book.PNG"
-							class="img-fluid img-thumbnail" alt="..."> </picture>
-						<div class="card-body">
-							<p class="card-text">Some quick example text to build on the
-								card title and make up the bulk of the card's content.</p>
-						</div>
-					</div>
-				</li>
-				<li>
-					<div class="card">
-						<picture class="shadow">
-						<source
-							srcset="${pageContext.request.contextPath }/image/book.PNG"
-							type="image/svg+xml">
-						<img src="${pageContext.request.contextPath }/image/book.PNG"
-							class="img-fluid img-thumbnail" alt="..."> </picture>
-						<div class="card-body">
-							<p class="card-text">Some quick example text to build on the
-								card title and make up the bulk of the card's content.</p>
-						</div>
-					</div>
-				</li>
-				<li>
-					<div class="card">
-						<picture class="shadow">
-						<source
-							srcset="${pageContext.request.contextPath }/image/book.PNG"
-							type="image/svg+xml">
-						<img src="${pageContext.request.contextPath }/image/book.PNG"
-							class="img-fluid img-thumbnail" alt="..."> </picture>
-						<div class="card-body">
-							<p class="card-text">Some quick example text to build on the
-								card title and make up the bulk of the card's content.</p>
-						</div>
-					</div>
-				</li>
-				<li>
-					<div class="card">
-						<picture class="shadow">
-						<source
-							srcset="${pageContext.request.contextPath }/image/book.PNG"
-							type="image/svg+xml">
-						<img src="${pageContext.request.contextPath }/image/book.PNG"
-							class="img-fluid img-thumbnail" alt="..."> </picture>
-						<div class="card-body">
-							<p class="card-text">Some quick example text to build on the
-								card title and make up the bulk of the card's content.</p>
-						</div>
-					</div>
-				</li>
-				<li>
-					<div class="card">
-						<picture class="shadow">
-						<source
-							srcset="${pageContext.request.contextPath }/image/book.PNG"
-							type="image/svg+xml">
-						<img src="${pageContext.request.contextPath }/image/book.PNG"
-							class="img-fluid img-thumbnail" alt="..."> </picture>
-						<div class="card-body">
-							<p class="card-text">Some quick example text to build on the
-								card title and make up the bulk of the card's content.</p>
-						</div>
-					</div>
-				</li>
+				<%} %>
 			</ul>
-
-
+	        <!-- 멀티 슬라이드 -->
+ 
 			<div class="prev">
 				<svg width="2em" height="2em" viewBox="0 0 16 16"
 					class="bi bi-caret-left-fill" fill="currentColor"
@@ -207,16 +141,17 @@
 							<svg width="1em" height="1em" viewBox="0 0 16 16"
 								class="bi bi-plus" fill="currentColor"
 								xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd"
-									d="M8 3.5a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5H4a.5.5 0 0 1 0-1h3.5V4a.5.5 0 0 1 .5-.5z" />
-                <path fill-rule="evenodd"
-									d="M7.5 8a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1H8.5V12a.5.5 0 0 1-1 0V8z" />
-              </svg>
+               					 <path fill-rule="evenodd"
+											d="M8 3.5a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5H4a.5.5 0 0 1 0-1h3.5V4a.5.5 0 0 1 .5-.5z" />
+               					 <path fill-rule="evenodd"
+											d="M7.5 8a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1H8.5V12a.5.5 0 0 1-1 0V8z" />
+           					   </svg>
 						</button>
 					</legend>
+					
 					<jsp:include page="include/carousel2.jsp"></jsp:include>
 				</div>
-				<!--케러셀-->
+				
 			</div>
 
 			<div class="col-md-6">
@@ -228,11 +163,11 @@
 								<svg width="1em" height="1em" viewBox="0 0 16 16"
 									class="bi bi-plus" fill="currentColor"
 									xmlns="http://www.w3.org/2000/svg">
-                  <path fill-rule="evenodd"
+                  					<path fill-rule="evenodd"
 										d="M8 3.5a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5H4a.5.5 0 0 1 0-1h3.5V4a.5.5 0 0 1 .5-.5z" />
-                  <path fill-rule="evenodd"
+                 					 <path fill-rule="evenodd"
 										d="M7.5 8a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1H8.5V12a.5.5 0 0 1-1 0V8z" />
-                </svg>
+                				</svg>
 							</button>
 						</legend>
 						<thead>
@@ -275,25 +210,25 @@
 		
 		
 		<div class="row my-5">
-			<div class="col-md">
+			<div class="col-md-3">
 				<button class="btn btn-sm mx-0">
 					<img src="${pageContext.request.contextPath }/image/link.PNG"
 						alt="...">
 				</button>
 			</div>
-			<div class="col-md">
+			<div class="col-md-3">
 				<button class="btn btn-sm">
 					<img src="${pageContext.request.contextPath }/image/link.PNG"
 						alt="...">
 				</button>
 			</div>
-			<div class="col-md">
+			<div class="col-md-3">
 				<button class="btn btn-sm">
 					<img src="${pageContext.request.contextPath }/image/link.PNG"
 						alt="...">
 				</button>
 			</div>
-			<div class="col-md">
+			<div class="col-md-3">
 				<button class="btn btn-sm">
 					<img src="${pageContext.request.contextPath }/image/link.PNG"
 						alt="...">
@@ -311,6 +246,11 @@
 	<script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
 	<script src="${pageContext.request.contextPath }/js/carousel.js"></script>
 	<script src="${pageContext.request.contextPath}/js/header.js"></script>
+	<script>
+	 $(".bookInfo").on("click",function() {
+     	$(this).children("form").submit();
+     });
+	</script>
 </body>
 
 </html>
