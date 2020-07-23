@@ -15,4 +15,25 @@
 	 <res-type>javax.sql.DataSource</res-type>
 	 <res-auth>Container</res-auth>
 	</resource-ref>
+	<!-- 인코딩 필터 정의하기( 웹서버에 알리기) -->
+  <filter>
+  	<filter-name>EncodingFilter</filter-name>
+  	<filter-class>filter.EncodingFilter</filter-class>
+  	<!-- 필터 초기화 파라미터 정의하기 encoding:utf-8 -->
+  	<init-param>
+  		<param-name>encoding</param-name>
+  		<param-value>utf-8</param-value>
+  	</init-param>
+  </filter>
+  <!-- 인코딩 필터 맵핑하기(어떤 요청에 대해서 필터가 동작할지 알리기) -->
+  <!-- /*=최상위 경로 하위에 모든요청 -->
+  <!-- filter-name은 보통 패키지명과 같게하고 정의한 이름과 맵핑하는 이름이 같아야한다 -->
+  <filter-mapping>
+  	<filter-name>EncodingFilter</filter-name>
+  	<url-pattern>/*</url-pattern>
+  </filter-mapping>
+  
+ 
+
+  
 </web-app>
