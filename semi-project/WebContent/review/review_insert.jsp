@@ -18,10 +18,8 @@
 	dto.setRimg(rimg);
 	dto.setRcontent(rcontent);
 	dto.setRscore(rscore);
-	System.out.println(rscore);
-	
 	ReviewDao.getInstance().insert(dto);
-
+	
 %>
 <!DOCTYPE html>
 <html>
