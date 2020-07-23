@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import book.dto.BookDto;
 import util.DBconn;
@@ -21,16 +22,16 @@ public class BookDao {
 		}
 		return dao;
 	}
-	//검색 페이지네이션 getList
+	//寃��깋 �럹�씠吏��꽕�씠�뀡 getList
 		public List<BookDto> getSearchList(BookDto dto){
 				
 			List<BookDto> list = new ArrayList<BookDto>();
-			//필요한 객체의 참조값을 담을 지역변수 만들기 
+			//�븘�슂�븳 媛앹껜�쓽 李몄“媛믪쓣 �떞�쓣 吏��뿭蹂��닔 留뚮뱾湲� 
 			Connection conn = null;
 			PreparedStatement pstmt = null;
 			ResultSet rs = null;
 			try {
-				//Connection 객체의 참조값 얻어오기 
+				//Connection 媛앹껜�쓽 李몄“媛� �뼸�뼱�삤湲� 
 				conn = new DBconn().getConn();
 				
 				String sql = "select * from (select result1.*, rownum as rnumber" + 
@@ -38,13 +39,13 @@ public class BookDao {
 						+ " order by bnum asc) result1)" + 
 						" where rnumber between ? and ?";
 				pstmt = conn.prepareStatement(sql);
-				//sql 문에 ? 에 바인딩할 값이 있으면 바인딩하고 
+				//sql 臾몄뿉 ? �뿉 諛붿씤�뵫�븷 媛믪씠 �엳�쑝硫� 諛붿씤�뵫�븯怨� 
 				pstmt.setString(1, dto.getBname());
 				pstmt.setInt(2, dto.getStartRowNum());
 				pstmt.setInt(3, dto.getEndRowNum());
-				//select 문 수행하고 결과 받아오기 
+				//select 臾� �닔�뻾�븯怨� 寃곌낵 諛쏆븘�삤湲� 
 				rs = pstmt.executeQuery();
-				//반복문 돌면서 결과 값 추출하기 
+				//諛섎났臾� �룎硫댁꽌 寃곌낵 媛� 異붿텧�븯湲� 
 				while (rs.next()) {
 					BookDto tmp=new BookDto();
 					tmp.setBnum(rs.getInt("bnum"));
@@ -55,7 +56,7 @@ public class BookDao {
 					tmp.setBimg(rs.getString("bimg"));
 					tmp.setBdate(rs.getString("b_date"));
 					tmp.setBauthor(rs.getString("author"));
-					//ArrayList 객체에 누적 시킨다.
+					//ArrayList 媛앹껜�뿉 �늻�쟻 �떆�궓�떎.
 				
 					list.add(tmp);
 				}
@@ -76,26 +77,26 @@ public class BookDao {
 			return list;
 		}
 		
-		//검색 페이지네이션
+		//寃��깋 �럹�씠吏��꽕�씠�뀡
 		public int getSearchCount(String str) {
 			int count = 0;
 			
-			//필요한 객체의 참조값을 담을 지역변수 만들기 
+			//�븘�슂�븳 媛앹껜�쓽 李몄“媛믪쓣 �떞�쓣 吏��뿭蹂��닔 留뚮뱾湲� 
 			Connection conn = null;
 			PreparedStatement pstmt = null;
 			ResultSet rs = null;
 			try {
-				//Connection 객체의 참조값 얻어오기 
+				//Connection 媛앹껜�쓽 李몄“媛� �뼸�뼱�삤湲� 
 				conn = new DBconn().getConn();
-				//실행할 sql 문 준비하기
+				//�떎�뻾�븷 sql 臾� 以�鍮꾪븯湲�
 				String sql = "SELECT NVL(MAX(ROWNUM), 0) AS rnumber" + 
 						" FROM book where bname like '%' || ? || '%'";
 				pstmt = conn.prepareStatement(sql);
-				//sql 문에 ? 에 바인딩할 값이 있으면 바인딩하고 
+				//sql 臾몄뿉 ? �뿉 諛붿씤�뵫�븷 媛믪씠 �엳�쑝硫� 諛붿씤�뵫�븯怨� 
 				pstmt.setString(1, str);
-				//select 문 수행하고 결과 받아오기 
+				//select 臾� �닔�뻾�븯怨� 寃곌낵 諛쏆븘�삤湲� 
 				rs = pstmt.executeQuery();
-				//반복문 돌면서 결과 값 추출하기 
+				//諛섎났臾� �룎硫댁꽌 寃곌낵 媛� 異붿텧�븯湲� 
 				if (rs.next()) {
 					count=rs.getInt("rnumber");
 				}
@@ -117,22 +118,22 @@ public class BookDao {
 	public int getCount(int sort) {
 		int count = 0;
 		
-		//필요한 객체의 참조값을 담을 지역변수 만들기 
+		//�븘�슂�븳 媛앹껜�쓽 李몄“媛믪쓣 �떞�쓣 吏��뿭蹂��닔 留뚮뱾湲� 
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
-			//Connection 객체의 참조값 얻어오기 
+			//Connection 媛앹껜�쓽 李몄“媛� �뼸�뼱�삤湲� 
 			conn = new DBconn().getConn();
-			//실행할 sql 문 준비하기
+			//�떎�뻾�븷 sql 臾� 以�鍮꾪븯湲�
 			String sql = "SELECT NVL(MAX(ROWNUM), 0) AS rnumber" + 
 					" FROM book where bsort=?";
 			pstmt = conn.prepareStatement(sql);
-			//sql 문에 ? 에 바인딩할 값이 있으면 바인딩하고 
+			//sql 臾몄뿉 ? �뿉 諛붿씤�뵫�븷 媛믪씠 �엳�쑝硫� 諛붿씤�뵫�븯怨� 
 			pstmt.setInt(1, sort);
-			//select 문 수행하고 결과 받아오기 
+			//select 臾� �닔�뻾�븯怨� 寃곌낵 諛쏆븘�삤湲� 
 			rs = pstmt.executeQuery();
-			//반복문 돌면서 결과 값 추출하기 
+			//諛섎났臾� �룎硫댁꽌 寃곌낵 媛� 異붿텧�븯湲� 
 			if (rs.next()) {
 				count=rs.getInt("rnumber");
 			}
@@ -154,12 +155,12 @@ public class BookDao {
 	public List<BookDto> getList(BookDto dto){
 		
 		List<BookDto> list = new ArrayList<BookDto>();
-		//필요한 객체의 참조값을 담을 지역변수 만들기 
+		//�븘�슂�븳 媛앹껜�쓽 李몄“媛믪쓣 �떞�쓣 吏��뿭蹂��닔 留뚮뱾湲� 
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
-			//Connection 객체의 참조값 얻어오기 
+			//Connection 媛앹껜�쓽 李몄“媛� �뼸�뼱�삤湲� 
 			conn = new DBconn().getConn();
 			
 			String sql = "select * from (select result1.*, rownum as rnumber" + 
@@ -167,13 +168,13 @@ public class BookDao {
 					+ " order by bnum asc) result1)" + 
 					" where rnumber between ? and ?";
 			pstmt = conn.prepareStatement(sql);
-			//sql 문에 ? 에 바인딩할 값이 있으면 바인딩하고 
+			//sql 臾몄뿉 ? �뿉 諛붿씤�뵫�븷 媛믪씠 �엳�쑝硫� 諛붿씤�뵫�븯怨� 
 			pstmt.setInt(1, dto.getBsort());
 			pstmt.setInt(2, dto.getStartRowNum());
 			pstmt.setInt(3, dto.getEndRowNum());
-			//select 문 수행하고 결과 받아오기 
+			//select 臾� �닔�뻾�븯怨� 寃곌낵 諛쏆븘�삤湲� 
 			rs = pstmt.executeQuery();
-			//반복문 돌면서 결과 값 추출하기 
+			//諛섎났臾� �룎硫댁꽌 寃곌낵 媛� 異붿텧�븯湲� 
 			while (rs.next()) {
 				BookDto tmp=new BookDto();
 				tmp.setBnum(rs.getInt("bnum"));
@@ -184,7 +185,7 @@ public class BookDao {
 				tmp.setBimg(rs.getString("bimg"));
 				tmp.setBdate(rs.getString("b_date"));
 				tmp.setBauthor(rs.getString("author"));
-				//ArrayList 객체에 누적 시킨다.
+				//ArrayList 媛앹껜�뿉 �늻�쟻 �떆�궓�떎.
 			
 				list.add(tmp);
 			}
@@ -233,10 +234,107 @@ public class BookDao {
 			e.printStackTrace();
 		} finally {
 			try {
+				if (rs != null)
+					rs.close();
 				if (ps != null)
 					ps.close();
 				if (conn != null)
 					conn.close();
+			} catch (Exception e2) {
+			}
+		}
+		return dto;
+	}
+	
+	public ArrayList<BookDto> getRecommantedList(int sortNum) { // index 멀티 슬라이드 용 (랜덤)
+		Connection conn = null;
+		PreparedStatement ps = null;
+		ResultSet rs=null;
+		ArrayList<BookDto> dto=new ArrayList<BookDto>();
+		
+		try {
+			
+			int rnd=new Random().nextInt(4)+1;
+			int startNum=1+(rnd-1)*5;
+			int endNum=rnd*5;
+			int count=getCount(sortNum);
+			if(endNum >count) {
+				endNum=count;
+				startNum=count-5;
+			}
+			
+			conn = new DBconn().getConn();
+			String sql = "SELECT * FROM (SELECT t.*,ROWNUM AS rnum "
+					+ "FROM (SELECT bnum,bname,bimg FROM book WHERE bsort=? ORDER BY bnum ASC) t) "
+					+ "WHERE rnum BETWEEN ? AND ?";
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, sortNum);
+			ps.setInt(2, startNum);
+			ps.setInt(3, endNum);
+			rs=ps.executeQuery();
+
+			while(rs.next()) {
+				BookDto tmp=new BookDto();
+				tmp.setBnum(rs.getInt("bnum"));
+				tmp.setBname(rs.getString("bname"));
+				tmp.setBimg(rs.getString("bimg"));
+				
+				dto.add(tmp);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null)
+					rs.close();
+				if (ps != null)
+					ps.close();
+				if (conn != null)
+					conn.close();			
+			} catch (Exception e2) {
+			}
+		}
+		return dto;
+	}
+	
+	public ArrayList<BookDto> getNewList() {  // 최신 책 5권 
+		Connection conn = null;
+		PreparedStatement ps = null;
+		ResultSet rs=null;
+		ArrayList<BookDto> dto=new ArrayList<BookDto>();
+		
+		try {
+			conn = new DBconn().getConn();
+			String sql = "SELECT * FROM (SELECT t.*,ROWNUM as rnum "
+					+ "FROM (SELECT bnum,bname,bsort,to_char(bdate,'yyyy\"년 \"mm\"월 \"dd\"일 \"') as bdate,SUBSTR(book.bstory,1,60) as bstory,bimg "
+					+ "FROM book ORDER BY bdate DESC) t)"
+					+ "WHERE rnum<=5";
+			ps = conn.prepareStatement(sql);
+			rs=ps.executeQuery();
+
+			while(rs.next()) {
+				BookDto tmp=new BookDto();
+				tmp.setBnum(rs.getInt("bnum"));
+				tmp.setBname(rs.getString("bname"));
+				tmp.setBstory(rs.getString("bstory"));
+				tmp.setBdate(rs.getString("bdate"));
+				tmp.setBsort(rs.getInt("bsort"));
+				tmp.setBimg(rs.getString("bimg"));
+				
+				dto.add(tmp);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null)
+					rs.close();
+				if (ps != null)
+					ps.close();
+				if (conn != null)
+					conn.close();		
 			} catch (Exception e2) {
 			}
 		}

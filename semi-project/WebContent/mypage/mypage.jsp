@@ -28,7 +28,7 @@
 	href="${pageContext.request.contextPath }/css/blog.css" />
 </head>
 
-<body>
+<body> 
 
 	<!-- 헤더 -->
 	<jsp:include page="../include/header.jsp"></jsp:include>
@@ -46,7 +46,7 @@
 		</div>
 				<!--내가 쓴 리뷰,내가 쓴 댓글 row-->
 		<div class="row my-4">
-			<div class="col-md-6 mb-5" id="listBox">
+			<div class="col-md-6" id="listBox">
 				<div class="card">
 					<div class="card-body">
 						<h4 class="card-title">
@@ -64,7 +64,7 @@
 				</div>
 			</div>
 
-			<div class="col-md-6 mb-5" id="listBox">
+			<div class="col-md-6" id="listBox">
 				<div class="card">
 					<div class="card-body">
 						<h4 class="card-title">

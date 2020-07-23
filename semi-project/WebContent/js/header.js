@@ -5,3 +5,8 @@ $(window).scroll(function(e) {
 		$("#nav").removeClass("container fixed-top border-bottom");
 	}
 });
+
+$("#nav>a").on("click",function() {
+	$("#nav>a").addClass("text-primary");
+});
+
