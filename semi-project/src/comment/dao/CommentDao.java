@@ -77,14 +77,13 @@ public class CommentDao {
 		PreparedStatement pstmt = null;
 
 		try {
-			String sql = "INSERT INTO review_comment VALUES (comment_seq.NEXTVAL,?,?,SYSDATE,?,?)";
+			String sql = "INSERT INTO review_comment VALUES (comment_seq.NEXTVAL,?,?,SYSDATE,?,0)";
 
 			conn = new DBconn().getConn();
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, dto.getRnum());
 			pstmt.setString(2, dto.getUser_id());
 			pstmt.setString(3, dto.getCcontent());
-			pstmt.setInt(4, dto.getCrecommend());
 			result = pstmt.executeUpdate();
 
 		} catch (Exception e) {
