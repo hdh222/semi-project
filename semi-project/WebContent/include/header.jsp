@@ -20,7 +20,7 @@
 			</div>
 			<div class="col-4 d-flex justify-content-end align-items-center">
 				<%if(id == null) {%>
-					<a class="btn btn-sm btn-outline-secondary" href="${pageContext.request.contextPath}/login/loginForm.jsp">Sign up</a>
+					<a class="btn btn-sm btn-outline-secondary" href="${pageContext.request.contextPath}/login/loginForm.jsp">Sign in</a>
 				<%} else { 
 					String name=(String)session.getAttribute("name");
 				%>

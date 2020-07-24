@@ -50,6 +50,16 @@
 	width: 150px;
 	height: 200px;
 }
+
+.banner {
+	width: 100px;
+	height: 40px;
+}
+
+.banner>img {
+	width: 100%;
+	height: 100%;
+}
 </style>
 <!-- Custom styles for this template -->
 <link
@@ -209,36 +219,11 @@
 		</div>
 		
 		
-		<div class="row my-5">
-			<div class="col-md-3">
-				<button class="btn btn-sm mx-0">
-					<img src="${pageContext.request.contextPath }/image/link.PNG"
-						alt="...">
-				</button>
-			</div>
-			<div class="col-md-3">
-				<button class="btn btn-sm">
-					<img src="${pageContext.request.contextPath }/image/link.PNG"
-						alt="...">
-				</button>
-			</div>
-			<div class="col-md-3">
-				<button class="btn btn-sm">
-					<img src="${pageContext.request.contextPath }/image/link.PNG"
-						alt="...">
-				</button>
-			</div>
-			<div class="col-md-3">
-				<button class="btn btn-sm">
-					<img src="${pageContext.request.contextPath }/image/link.PNG"
-						alt="...">
-				</button>
-			</div>
-		</div>
-		
+		<!-- banner -->
+		<jsp:include page="include/banner.jsp"></jsp:include>
+		<!-- banner -->
 	</div>
-	<!--</div>
-	 /.container -->
+	<!--/.container -->
 
 	<jsp:include page="include/footer.jsp"></jsp:include>
 

@@ -1,4 +1,4 @@
-function Rslide() {
+		function Rslide() {
             $('#slide').animate({ left: -340 }, function () {   // 애니메이션 효과 slie전체 창에 위치를 좌측으로 1000px 당김 
                 $('#slide li:first').appendTo('#slide');  // 맨 첫번째를 맨뒤로 추가시킴
                 $('#slide').css({ left: 0 })  //
