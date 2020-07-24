@@ -97,7 +97,7 @@
 			</div>
 		</div>
 		<!-- 멀티 슬라이드 -->
-		<h3 class="p-0 mt-5">추천도서 - <%=sort[sortNum] %></h3>
+		<h3 class="p-0 mt-5">추천도서 - <%=sort[sortNum] %></h3><small class="text-muted">오늘의 책 도서를 추천 합니다.</small>
 		<hr />
 		<div id="wrap" class="my-5">
 			<ul class="slide" id="slide">

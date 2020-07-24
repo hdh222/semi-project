@@ -34,7 +34,6 @@ public class MemberDao {
 			conn=new DBconn().getConn();
 			pstmt=conn.prepareStatement(sql);
 			pstmt.setString(1, id);
-			
 			rset=pstmt.executeQuery();
 			
 			if(rset.next()) {
