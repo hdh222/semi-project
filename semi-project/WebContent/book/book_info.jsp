@@ -161,6 +161,26 @@
 					}
 				});
 			});
+			
+			$("#commentForm").on("submit",function() {
+				var url=$(this).attr("action");
+				var method=$(this).attr("method");
+				var data=$(this).serialize();
+				
+				$.ajax({
+					"method":method,
+					"url":url,
+					"data":data,
+					"success": function(data) {
+						console.log(data);
+					},
+					"error": function(a,b,c) {
+						console.log(a+" "+b+" "+c);
+					}
+				});
+				
+				return false;
+			});
 	</script>
 	<!-- review 페이징 처리 -->
 	<script>

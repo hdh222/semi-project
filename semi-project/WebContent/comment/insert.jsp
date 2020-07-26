@@ -5,7 +5,7 @@
 <%
 	int rnum=Integer.parseInt(request.getParameter("rnum"));
 	String user_id=request.getParameter("id");
-	String ccontent=request.getParameter("content");
+	String ccontent=request.getParameter("review_comment");
 	
 	CommentDto dto=new CommentDto(0,rnum,user_id,null,ccontent,0);
 	
