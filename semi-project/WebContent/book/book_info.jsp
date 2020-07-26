@@ -1,6 +1,6 @@
+<%@page import="review.dao.ReviewDao"%>
 <%@page import="review.dto.ReviewDto"%>
 <%@page import="java.util.List"%>
-<%@page import="review.dao.ReviewDao"%>
 <%@page import="book.dto.BookDto"%>
 <%@page import="book.dao.BookDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -11,189 +11,198 @@
 <head>
 <meta charset="utf-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+	integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+	crossorigin="anonymous">
 <link rel="stylesheet" href="../css/blog.css" />
 <link rel="stylesheet" href="../css/book_info.css" />
 </head>
-<!-- modal style -->
-<style>
-.modal-content {
-	width:800px;
-	height:  autopx;
-	margin:0 auto;
-}
-.modal-content img{
-	width:400px;
-	height:300px;
-	text-align: center;
-}
 
-
-#review_content {
-	line-height: 30px;
-}
-
-</style>
 
 <%
 	request.setCharacterEncoding("UTF-8");
 	int num = Integer.parseInt(request.getParameter("bnum"));
-	List<ReviewDto> list=ReviewDao.getInstance().getList(num);
-	BookDao dao=BookDao.getInstance();
-	BookDto dto=dao.getData(num);
-	int rnum=1;
-	System.out.println(rnum);
+	BookDao dao = BookDao.getInstance();
+	BookDto dto = dao.getData(num);
+	String id = (String) session.getAttribute("id");
+
+	//한 페이지에 나타낼 row 의 갯수
+	final int PAGE_ROW_COUNT = 5;
+
+	//보여줄 페이지의 번호
+	int pageNum = 1;
+
+	//보여줄 페이지 데이터의 시작 ResultSet row 번호
+	int startRowNum = 1 + (pageNum - 1) * PAGE_ROW_COUNT;
+
+	//보여줄 페이지 데이터의 끝 ResultSet row 번호
+	int endRowNum = pageNum * PAGE_ROW_COUNT;
+
+	//전체 row 의 갯수를 읽어온다.
+	int totalRow = ReviewDao.getInstance().getCount(num);
+	
+	//전체 페이지의 갯수 구하기
+	int totalPageCount = (int) Math.ceil(totalRow / (double) PAGE_ROW_COUNT);
+	System.out.println(totalPageCount);
+	System.out.println(totalRow);
+	ReviewDto rdto = new ReviewDto();
+	rdto.setBnum(num);
+	rdto.setStartRowNum(startRowNum);
+	rdto.setEndRowNum(endRowNum);
+
+	//1. DB 에서 글 목록을 얻어온다.
+	List<ReviewDto> list = ReviewDao.getInstance().getListb(rdto);
 %>
 <body>
-		<!-- 헤더 -->
-		<header>
-			<jsp:include page="../include/header.jsp"></jsp:include>
-		</header>
-		<div id="container">
-				<!-- 메뉴바 -->
-			    <div class="nav-scroller py-1 mb-2">
-				</div>	
-		</div>
-			<!--이미지 col-6 -->		
-			<div class="container card">
-				<div class="row">
-					<div class="col-lg-6 ">
-						 <img src="<%=dto.getBimg() %>" alt="bookimg" class="my-5 ml-xl-5 border border-success"/>
-					</div>
+	<!-- 헤더 -->
+	<header>
+		<jsp:include page="../include/header.jsp"></jsp:include>
+	</header>
+	<div id="container">
+		<!-- 메뉴바 -->
+		<div class="nav-scroller py-1 mb-2"></div>
+	</div>
+	<!--이미지 col-6 -->
+	<div class="container card">
+		<a href="${pageContext.request.contextPath}/book/book_list.jsp"> 
+				<svg class="float-right mt-2" width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-box-arrow-left" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+					<path fill-rule="evenodd" d="M4.354 11.354a.5.5 0 0 0 0-.708L1.707 8l2.647-2.646a.5.5 0 1 0-.708-.708l-3 3a.5.5 0 0 0 0 .708l3 3a.5.5 0 0 0 .708 0z" />
+					<path fill-rule="evenodd" d="M11.5 8a.5.5 0 0 0-.5-.5H2a.5.5 0 0 0 0 1h9a.5.5 0 0 0 .5-.5z" />
+					<path fill-rule="evenodd" d="M14 13.5a1.5 1.5 0 0 0 1.5-1.5V4A1.5 1.5 0 0 0 14 2.5H7A1.5 1.5 0 0 0 5.5 4v1.5a.5.5 0 0 0 1 0V4a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-.5.5H7a.5.5 0 0 1-.5-.5v-1.5a.5.5 0 0 0-1 0V12A1.5 1.5 0 0 0 7 13.5h7z" />
+				</svg>
+		</a>
+		<div class="row">
+			<div class="col-lg-6 ">
+				<img src="<%=dto.getBimg()%>" alt="bookimg" class="my-5 ml-xl-5 border border-success" />
+			</div>
 			<!-- 책정보 col-6 -->
-					<div class="col-lg-6 ">
-						<div class="right mt-5">
-							<h2><strong><%=dto.getBname() %></strong></h2>
-							<p class="border-bottom border-success" ><%=dto.getBcompany()%>, <%=dto.getBdate()%></p>
-							<h3 >줄거리</h3>
-							<p class="font-weight-light" style="font-size:12px" id="story"><%=dto.getBstory() %></p>
-							<h3 class="border-bottom border-success">리뷰<a href="../review/review_write.jsp?bnum=<%=num%>"
-							 class="float-right font-weight-bold" style="font-size:12px">리뷰작성</a></h3>
-							<div style=" width:480px; height:286px;">
-								<table class="table border-bottom" style="font-size:10px" >
-									<thead class="thead border-bottom">
-									 	<tr>
-									 		<th>번호</th>
-									 		<th>아이디</th>
-									 		<th>제목</th>
-									 		<th>별점</th>
-									 		<th>작성일</th>
-									 	</tr>
-									</thead>
-									<%for(ReviewDto tmp:list){ %>
-										<tr>
-											<td id="rnum"><%=tmp.getRnum() %></td>
-											<td><%=tmp.getUser_id() %></td>
-											<td>
-												<a id="reviewBtn" type="button" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo"><%=tmp.getRname() %></a>
-											<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
-												aria-labelledby="exampleModalLabel" aria-hidden="true">
-												<div class="modal-dialog modal-xl" role="document">
-													<div class="modal-content">
-														<div class="modal-header">
-															<span><strong><%=tmp.getUser_id()%>님의 리뷰</strong></span>
-															<button type="button" class="close" data-dismiss="modal"
-																aria-label="Close">
-																<span aria-hidden="true">&times;</span>
-															</button>
-														</div>
-														<div class="modal-body">
-					
-																	<h3 class="border-bottom border-success"><%=dto.getBname() %></h3>
-										
-																	<p class="small my-1">
-																		글쓴이 : <%=tmp.getUser_id()%> <span class="ml-5">get</span><span
-																			class="float-right"><%=tmp.getRdate() %></span>
-																	</p>
-																	<!-- review_menu -->
-																	<ul class="nav nav-tabs mt-lg-5" id="myTab" role="tablist">
-																		<li class="nav-item" role="presentation"><a
-																			class="nav-link active" id="home-tab" data-toggle="tab"
-																			href="#home" role="tab" aria-controls="home"
-																			aria-selected="true">책 소개</a></li>
-																		<li class="nav-item" role="presentation"><a
-																			class="nav-link" id="profile-tab" data-toggle="tab"
-																			href="#profile" role="tab" aria-controls="profile"
-																			aria-selected="false">댓글</a></li>
-																	</ul>
-																	<div class="tab-content" id="myTabContent">
-																		<div class="tab-pane fade show active" id="home" role="tabpanel"
-																			aria-labelledby="home-tab">
-																			<p id="review_content" class="my-lg-5"><%=tmp.getRcontent() %></p>
-																				
-																			<p class="float-right" >저자 : <%=dto.getBauthor() %>,&nbsp;&nbsp;출판사 : <%=dto.getBcompany() %>,&nbsp;&nbsp; 출간일 : <%=dto.getBdate() %></p>	
-																		</div>
-																		<div class="tab-pane fade" id="profile" role="tabpanel"
-																			aria-labelledby="profile-tab">
-																			<table class = "table table-light my-lg-3 border-bottom border-success">
-																				<thead class ="table">
-																					<tr class="">
-																						<th class = "text-center border-bottom border-success">추천</th>
-																						<th class = "text-center border-bottom border-success">아이디</th>
-																						<th class = "text-center border-bottom border-success">댓글 내용</th>
-																						<th class = "text-center border-bottom border-success">날짜</th>	
-																					</tr>
-																				</thead>
-																				<tbody>
-																					<tr>
-																						<td class = "text-center">1</td>
-																						<td class = "text-center">kimgura</td>
-																						<td class = "text-center">가나다라마바사아자차카타파하</td>
-																						<td class = "text-center">0000.00.00</td>
-																					</tr>
-																					<tr>
-																						<td class = "text-center">2</td>
-																						<td class = "text-center">hdh</td>
-																						<td class = "text-center">리뷰잘읽었어요</td>
-																						<td class = "text-center">0000.00.00</td>
-																					</tr>
-																					<tr>
-																						<td class = "text-center">2</td>
-																						<td class = "text-center">asd</td>
-																						<td class = "text-center">리뷰잘읽었어요</td>
-																						<td class = "text-center">0000.00.00</td>
-																					</tr>
-																					
-																				</tbody>
-																				
-																			</table>
-																			<div class="mb-lg-5 w-100">
-																				<textarea class="form-control mt-lg-5 mb-lg-2"  name="review_comment" id=""></textarea>
-																				<button class = "btn btn-primary float-right mt-3">작성</button>
-																				<button class = "btn btn-primary float-right mt-3 mr-2">지우기</button>
-																			</div>
-																			
-																		</div>						
-																	</div>
-																</div>
-															</div>
-														</div>
-													</div>
-											</td>
-											<td><%=tmp.getRscore()%>/5 </td>
-											<td><%=tmp.getRdate() %></td>
-										</tr>
-									<%} %>
-								</table>
-							</div>
+			<div class="col-lg-6 ">
+				<div class="right mt-5">
+					<h2>
+						<strong><%=dto.getBname()%></strong>
+					</h2>
+					<p class="border-bottom border-success"><%=dto.getBcompany()%>,
+						<%=dto.getBdate()%></p>
+					<h3>줄거리</h3>
+					<p style="font-size: 13px" id="story"><%=dto.getBstory()%></p>
+
+					<!-- 리뷰테이블 -->
+					<h3 class="border-bottom border-success">
+						리뷰
+						<a href="../review/review_write.jsp?bnum=<%=num%>"class="float-right font-weight-bold" style="font-size: 12px">
+							리뷰작성
+						</a>
+					</h3>
+					<div id="reviewList" style="width: 460px; overflow-y: scroll; height: 270px;">
+						<table id="reviewTable" class="table border-bottom" style="font-size: 13px;" >
+							<thead class="thead border-bottom">
+								<tr>
+									<th>아이디</th>
+									<th>제목</th>
+									<th>별점</th>
+									<th>작성일</th>
+								</tr>
+							</thead>
+								<%for (ReviewDto tmp : list) {%>
+									<tr>
+										<td><%=tmp.getUser_id()%></td>
+										<td>
+											<a class="reviewBtn" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">
+												<%=tmp.getRname()%>
+											<input type="hidden" id="rnum" value="<%=tmp.getRnum()%>" />
+											</a>
+										</td>
+										<td><%=tmp.getRscore()%>/5</td>
+										<td><%=tmp.getRdate()%></td>
+									</tr>
+								<%}%>
+						</table>				
+						<!-- 리뷰 더보기 버튼 -->
+						<div class="text-center">
+							<button id="more" class="btn btn-light-sm ">더보기</button>
+						</div>
+						<!-- 모달 -->
+						<jsp:include page="modal.jsp"></jsp:include>
+						<!-- loding 아이콘 -->
+						<div class="loader">
+							<img src="${pageContext.request.contextPath}/image/ajax-loader.gif" />
 						</div>
 					</div>
 				</div>
 			</div>
-		<!-- footer -->
-		<jsp:include page="../include/footer.jsp"></jsp:include>
-		<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-		crossorigin="anonymous"></script>
-		<script
-		src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-		integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-		crossorigin="anonymous"></script>
-		<script
-		src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
-		integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
-		crossorigin="anonymous"></script>
-		<script src="${pageContext.request.contextPath}/js/review.js"></script>
-
+		</div>
+	</div>
+	<!-- footer -->
+	<jsp:include page="../include/footer.jsp"></jsp:include>
+	<script src="../js/jquery-3.5.1.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+	<script src="${pageContext.request.contextPath}/js/review.js"></script>
+	
+	<!--modal 내용불러오기 -->
+	<script>
+			$(".reviewBtn").on("click",function() {
+				var rnum=$(this).children("#rnum").val();
+				
+				$.ajax({
+					"method":"post",
+					"url":"viewReview.jsp",
+					"data":"rnum="+rnum,
+					"success": function(data) {
+						$(".modal-content").html(data);
+					},
+					"error": function(a,b,c) {
+						console.log(a+" "+b+" "+c);
+					}
+				});
+			});
+	</script>
+	
+	<!-- review 페이징 처리 -->
+	<script>
+	var currentPage = 1;
+	//전체 페이지의 수를 javascript 변수에 담아준다.
+	var totalPageCount =<%=totalPageCount%>;
+	
+	//웹브라우저에 scoll 이벤트가 일어 났을때 실행할 함수 등록 
+	$("#more").on("click", function() {
+	var displayRowNum=$("#reviewTable").children("tbody").children().length;
+		if(displayRowNum == <%=totalRow%>&&<%=totalRow%>!=0){
+			$("#reviewList").append("<div style='width:100%; text-align:center; font-size:12px;'>마지막 리뷰 입니다.</div>")
+			$("#more")
+			.hide();
+		}
+		if (currentPage == totalPageCount||<%=totalRow%>==0) {//만일 마지막 페이지 이면 
+			return; //함수를 여기서 종료한다. 
+		}
+		//위쪽으로 스크롤된 길이 구하기
+		//var scrollTop = $("#reviewList").scrollTop();
+		//window 의 높이
+		var listHeight = $("#reviewList").height();
+		//document(문서)의 높이
+		//var tableHeight = $("#reviewTable").height();
+		//바닥까지 스크롤 되었는지 여부
+		//var isBottom = scrollTop + listHeight-16> tableHeight;
+		//if (isBottom) {//만일 바닥까지 스크롤 했다면...
+			//로딩 이미지 띄우기
+			
+			$(".loader").show();
+			currentPage++; //페이지를 1 증가 시키고 
+			//해당 페이지의 내용을 ajax  요청을 해서 받아온다. 
+			setTimeout(function() {
+				$.ajax({
+					url : "review_action.jsp",
+					method : "get",
+					data : {pageNum:currentPage,bnum:<%=num%>},
+					success : function(data) {	 
+							$("#reviewTable tbody").append(data);
+							//로딩 이미지를 숨긴다. 
+							$(".loader").hide();
+							}
+						});
+					}, 1000);
+			});
+	</script>
 </body>
 </html>

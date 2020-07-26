@@ -9,11 +9,14 @@ public class ReviewDto {
 	private String rimg;
 	private String rcontent;
 	private int rscore;
-	
-	public ReviewDto() {}
+	private int startRowNum;
+	private int endRowNum;
+
+	public ReviewDto() {
+	}
 
 	public ReviewDto(int rnum, int bnum, String user_id, String rdate, String rname, String rimg, String rcontent,
-			int rscore) {
+			int rscore, int startRowNum, int endRowNum) {
 		super();
 		this.rnum = rnum;
 		this.bnum = bnum;
@@ -23,6 +26,8 @@ public class ReviewDto {
 		this.rimg = rimg;
 		this.rcontent = rcontent;
 		this.rscore = rscore;
+		this.startRowNum = startRowNum;
+		this.endRowNum = endRowNum;
 	}
 
 	public int getRnum() {
@@ -87,7 +92,22 @@ public class ReviewDto {
 
 	public void setRscore(int rscore) {
 		this.rscore = rscore;
-	};
-	
-	
+	}
+
+	public int getStartRowNum() {
+		return startRowNum;
+	}
+
+	public void setStartRowNum(int startRowNum) {
+		this.startRowNum = startRowNum;
+	}
+
+	public int getEndRowNum() {
+		return endRowNum;
+	}
+
+	public void setEndRowNum(int endRowNum) {
+		this.endRowNum = endRowNum;
+	}
+
 }
