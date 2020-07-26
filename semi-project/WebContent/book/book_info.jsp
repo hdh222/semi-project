@@ -73,12 +73,12 @@
 				</svg>
 		</a>
 		<div class="row">
-			<div class="col-lg-6 ">
-				<img src="<%=dto.getBimg()%>" alt="bookimg" class="my-5 ml-xl-5 border border-success" />
+			<div class="col-sm-auto">
+				<img id="bookImg"src="<%=dto.getBimg()%>" alt="bookimg" class="my-3 ml-xl-5 ml-sm-3 border border-success" />
 			</div>
 			<!-- 책정보 col-6 -->
-			<div class="col-lg-6 ">
-				<div class="right mt-5">
+			<div class="col-sm-auto ">
+				<div class="right">
 					<h2>
 						<strong><%=dto.getBname()%></strong>
 					</h2>
@@ -90,11 +90,19 @@
 					<!-- 리뷰테이블 -->
 					<h3 class="border-bottom border-success">
 						리뷰
-						<a href="../review/review_write.jsp?bnum=<%=num%>"class="float-right font-weight-bold" style="font-size: 12px">
-							리뷰작성
+						<!-- loding 아이콘 -->
+						<span class="loader">
+							<img src="${pageContext.request.contextPath}/image/ajax-loader.gif" />
+						</span>
+						<a href="../review/review_write.jsp?bnum=<%=num%>"class="float-right font-weight-bold" style="font-size: 11px; margin-top:5px;">
+							글쓰기
+							<svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-pencil mr-2" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+							  <path fill-rule="evenodd" d="M11.293 1.293a1 1 0 0 1 1.414 0l2 2a1 1 0 0 1 0 1.414l-9 9a1 1 0 0 1-.39.242l-3 1a1 1 0 0 1-1.266-1.265l1-3a1 1 0 0 1 .242-.391l9-9zM12 2l2 2-9 9-3 1 1-3 9-9z"/>
+							  <path fill-rule="evenodd" d="M12.146 6.354l-2.5-2.5.708-.708 2.5 2.5-.707.708zM3 10v.5a.5.5 0 0 0 .5.5H4v.5a.5.5 0 0 0 .5.5H5v.5a.5.5 0 0 0 .5.5H6v-1.5a.5.5 0 0 0-.5-.5H5v-.5a.5.5 0 0 0-.5-.5H3z"/>
+							</svg>
 						</a>
 					</h3>
-					<div id="reviewList" style="width: 460px; overflow-y: scroll; height: 270px;">
+					<div id="reviewList" style="width: 460px; overflow-y: scroll; height: 248px;">
 						<table id="reviewTable" class="table border-bottom" style="font-size: 13px;" >
 							<thead class="thead border-bottom">
 								<tr>
@@ -124,10 +132,6 @@
 						</div>
 						<!-- 모달 -->
 						<jsp:include page="modal.jsp"></jsp:include>
-						<!-- loding 아이콘 -->
-						<div class="loader">
-							<img src="${pageContext.request.contextPath}/image/ajax-loader.gif" />
-						</div>
 					</div>
 				</div>
 			</div>
@@ -158,13 +162,12 @@
 				});
 			});
 	</script>
-	
 	<!-- review 페이징 처리 -->
 	<script>
 	var currentPage = 1;
 	//전체 페이지의 수를 javascript 변수에 담아준다.
 	var totalPageCount =<%=totalPageCount%>;
-	
+	$(".loader").hide();
 	//웹브라우저에 scoll 이벤트가 일어 났을때 실행할 함수 등록 
 	$("#more").on("click", function() {
 	var displayRowNum=$("#reviewTable").children("tbody").children().length;
@@ -201,7 +204,7 @@
 							$(".loader").hide();
 							}
 						});
-					}, 1000);
+					}, 2000);
 			});
 	</script>
 </body>
