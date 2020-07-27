@@ -1,3 +1,5 @@
+
+<%@page import="comment.dao.CommentDao"%>
 <%@page import="book.dao.BookDao"%>
 <%@page import="book.dto.BookDto"%>
 <%@page import="review.dao.ReviewDao"%>
@@ -6,8 +8,13 @@
     pageEncoding="UTF-8"%>
 <%
 	int rnum=Integer.parseInt(request.getParameter("rnum"));
+
 	ReviewDto dto=ReviewDao.getInstance().getdata(rnum);
 	BookDto BookInfo=BookDao.getInstance().getData(dto.getBnum());
+	
+	int totalPageCount=CommentDao.getInstance().getCount(rnum);
+	
+	int endPage=(int)Math.ceil(totalPageCount/5.0);
 %>
 	<div class="modal-header">
 
@@ -50,7 +57,7 @@
 
 					<div class="tab-pane fade" id="profile" role="tabpanel"
 						aria-labelledby="profile-tab">
-						<h3 class="pt-3">댓글</h3>
+						<h4 class="pt-3" id="comment_caption">댓글</h4>
 						<hr />
 						<div class="pb-3 mb-5 w-100">  <!-- 댓글 작성 창 -->
 							<form action="../comment/insert.jsp" method="post" id="commentForm">
@@ -66,18 +73,29 @@
 						<div id="commentField"><!-- 댓글 목록 -->
 													
 						</div>
+						<hr class="mt-5"/>
+						<span class="comment_loader">
+							<img src="${pageContext.request.contextPath}/image/ajax-loader.gif" class="mx-auto"/>
+						</span>
+						<div class="text-center">
+							<button id="comment_more" class="btn btn-light-sm ">더보기 ╋</button>
+						</div>
 					</div>
 				</div>
 			</div>
 			
 			<script>
+			var currentPage = 1;
+			var totalPage =<%=endPage%>;
+			
 			function loadComment() {
 				$.ajax({
 					"method":"post",
 					"url":"../comment/load.jsp",
-					"data":"rnum=<%=dto.getRnum()%>",
+					"data":"rnum=<%=dto.getRnum()%>&page=1",
 					"success":function(data) {
 						$("#commentField").html(data);
+						currentPage=1;
 					}
 				});
 			}
@@ -106,48 +124,32 @@
 					}
 				});
 			});
-			</script>
-			<script>
-			var currentPage = 1;
-			//전체 페이지의 수를 javascript 변수에 담아준다.
-			var totalPageCount =<%=totalPageCount%>;
-			$(".loader").hide();
-			//웹브라우저에 scoll 이벤트가 일어 났을때 실행할 함수 등록 
-			$("#more").on("click", function() {
-			var displayRowNum=$("#reviewTable").children("tbody").children().length;
-				if(displayRowNum == <%=totalRow%>&&<%=totalRow%>!=0){
-					$("#reviewList").append("<div style='width:100%; text-align:center; font-size:12px;'>마지막 리뷰 입니다.</div>")
-					$("#more")
-					.hide();
+			
+			$(".comment_loader").hide();
+			
+			$("#comment_more").on("click", function() {
+				var displayRowNum=$("#commentField").children(".media").length;
+				
+				if (currentPage == totalPage ||<%=totalPageCount%>==0) {
+					return;
 				}
-				if (currentPage == totalPageCount||<%=totalRow%>==0) {//만일 마지막 페이지 이면 
-					return; //함수를 여기서 종료한다. 
-				}
-				//위쪽으로 스크롤된 길이 구하기
-				//var scrollTop = $("#reviewList").scrollTop();
-				//window 의 높이
-				var listHeight = $("#reviewList").height();
-				//document(문서)의 높이
-				//var tableHeight = $("#reviewTable").height();
-				//바닥까지 스크롤 되었는지 여부
-				//var isBottom = scrollTop + listHeight-16> tableHeight;
-				//if (isBottom) {//만일 바닥까지 스크롤 했다면...
-					//로딩 이미지 띄우기
+				
 					
-					$(".loader").show();
-					currentPage++; //페이지를 1 증가 시키고 
-					//해당 페이지의 내용을 ajax  요청을 해서 받아온다. 
-					setTimeout(function() {
-						$.ajax({
-							url : "review_action.jsp",
-							method : "get",
-							data : {pageNum:currentPage,bnum:<%=num%>},
-							success : function(data) {	 
-									$("#reviewTable tbody").append(data);
-									//로딩 이미지를 숨긴다. 
-									$(".loader").hide();
+				$(".comment_loader").show();
+				currentPage++;
+				setTimeout(function() {
+					$.ajax({
+						url : "../comment/load.jsp",
+						method : "get",
+						data : {page:currentPage,rnum:<%=rnum%>},
+						success : function(data) {	
+									$("#commentField").append(data);
+									$(".comment_loader").hide();
+									if(displayRowNum == <%=totalPageCount%> && <%=totalPageCount%> != 0){
+										$("#comment_more").hide();
 									}
-								});
-							}, 2000);
-					});
+								}
+							});
+						}, 2000);
+				});
 			</script>

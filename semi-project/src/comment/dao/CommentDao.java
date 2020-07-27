@@ -30,7 +30,7 @@ public class CommentDao {
 		ResultSet rset = null;
 
 		try {
-			String sql="SELECT * FROM (SELECT result1.*,ROWNUM AS ronum FROM (SELECT cnum,user_id,to_char(cdate,'mm-dd hh:mi')as cdate,ccontent,crecommend FROM review_comment WHERE rnum=? ORDER BY cdate DESC) result1) WHERE ronum BETWEEN ? AND ?";
+			String sql="SELECT * FROM (SELECT result1.*,ROWNUM AS ronum FROM (SELECT cnum,user_id,to_char(cdate,'mm-dd hh:mi')as cdate,ccontent,crecommend FROM review_comment WHERE rnum=? ORDER BY cnum DESC) result1) WHERE ronum BETWEEN ? AND ?";
 			conn = new DBconn().getConn();
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, rnum);
@@ -125,43 +125,6 @@ public class CommentDao {
 			pstmt.setInt(1, dto.getRnum());
 			pstmt.setString(2, dto.getUser_id());
 			pstmt.setString(3, dto.getCcontent());
-			result = pstmt.executeUpdate();
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				if (conn != null) {
-					conn.close();
-				}
-				if (pstmt != null) {
-					pstmt.close();
-				}
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
-
-		if (result == -1) {
-			return false;
-		} else {
-			return true;
-		}
-	}
-	
-	public boolean update(String content, int cnum) {
-		int result=-1;
-		Connection conn = null;
-		PreparedStatement pstmt = null;
-
-		try {
-			String sql = "UPDATE review_comment SET ccontent=? WHERE cnum=?";
-
-			conn = new DBconn().getConn();
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, content);
-			pstmt.setInt(2, cnum);
-			
 			result = pstmt.executeUpdate();
 
 		} catch (Exception e) {

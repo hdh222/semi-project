@@ -197,8 +197,8 @@
 			//해당 페이지의 내용을 ajax  요청을 해서 받아온다. 
 			setTimeout(function() {
 				$.ajax({
-					url : "review_action.jsp",
-					method : "get",
+					url : "../comment/load.jsp",
+					method : "post",
 					data : {pageNum:currentPage,bnum:<%=num%>},
 					success : function(data) {	 
 							$("#reviewTable tbody").append(data);
