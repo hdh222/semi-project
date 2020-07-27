@@ -65,13 +65,22 @@
 	</div>
 	<!--이미지 col-6 -->
 	<div class="container card">
-		<a href="${pageContext.request.contextPath}/book/book_list.jsp"> 
-				<svg class="float-right mt-2" width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-box-arrow-left" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+	
+		<div>
+			<a href="${pageContext.request.contextPath}/book/book_list.jsp"> 
+				<svg class="float-right mt-2" width="2.5em" height="2.5em" viewBox="0 0 16 16" class="bi bi-box-arrow-left" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
 					<path fill-rule="evenodd" d="M4.354 11.354a.5.5 0 0 0 0-.708L1.707 8l2.647-2.646a.5.5 0 1 0-.708-.708l-3 3a.5.5 0 0 0 0 .708l3 3a.5.5 0 0 0 .708 0z" />
 					<path fill-rule="evenodd" d="M11.5 8a.5.5 0 0 0-.5-.5H2a.5.5 0 0 0 0 1h9a.5.5 0 0 0 .5-.5z" />
 					<path fill-rule="evenodd" d="M14 13.5a1.5 1.5 0 0 0 1.5-1.5V4A1.5 1.5 0 0 0 14 2.5H7A1.5 1.5 0 0 0 5.5 4v1.5a.5.5 0 0 0 1 0V4a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-.5.5H7a.5.5 0 0 1-.5-.5v-1.5a.5.5 0 0 0-1 0V12A1.5 1.5 0 0 0 7 13.5h7z" />
 				</svg>
-		</a>
+			</a>
+			<button class="btn float-right mt-2" id = "bookMarkBtn">
+				<svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-bookmark-plus" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+				  <path fill-rule="evenodd" d="M4.5 2a.5.5 0 0 0-.5.5v11.066l4-2.667 4 2.667V8.5a.5.5 0 0 1 1 0v6.934l-5-3.333-5 3.333V2.5A1.5 1.5 0 0 1 4.5 1h4a.5.5 0 0 1 0 1h-4zm9-1a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1H13V1.5a.5.5 0 0 1 .5-.5z"/>
+				  <path fill-rule="evenodd" d="M13 3.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0v-2z"/>
+				</svg>
+			</button>
+		</div>
 		<div class="row">
 			<div class="col-sm-auto">
 				<img id="bookImg"src="<%=dto.getBimg()%>" alt="bookimg" class="my-3 ml-xl-5 ml-sm-3 border border-success" />
@@ -209,5 +218,22 @@
 					}, 2000);
 			});
 	</script>
+	
+	<!-- 북마크 처리   -->
+	<script>
+		$("#bookMarkBtn").on("click", function(){
+			$.ajax({
+				method : "get",
+				url : "bookmark.jsp",
+				data : {"id" : "<%=id%>", bnum : <%=num%>},
+			
+				success : function(data){
+					alert(data.result);
+					
+				}
+			});
+			return false;
+		});
+	</script> 
 </body>
 </html>
