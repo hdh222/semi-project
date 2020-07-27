@@ -24,6 +24,46 @@ public class BookDao {
 		}
 		return dao;
 	}
+	public List<BookDto> getMarkList(String id){
+		List<BookDto> list = new ArrayList<BookDto>();
+		//필요한 객체의 참조값을 담을 지역변수 만들기 
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			//Connection 객체의 참조값 얻어오기 
+			conn = new DBconn().getConn();
+			//실행할 sql 문 준비하기
+			String sql = "";
+			pstmt = conn.prepareStatement(sql);
+			//sql 문에 ? 에 바인딩할 값이 있으면 바인딩하고 
+
+			//select 문 수행하고 결과 받아오기 
+			rs = pstmt.executeQuery();
+			//반복문 돌면서 결과 값 추출하기 
+			while (rs.next()) {
+				BookDto tmp = new BookDto();
+				
+				tmp.setBimg(rs.getNString("bimg"));
+				tmp.setBname(rs.getString("bname"));
+				
+				list.add(tmp);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null)
+					rs.close();
+				if (pstmt != null)
+					pstmt.close();
+				if (conn != null)
+					conn.close();
+			} catch (Exception e) {
+			}
+		}
+		return list;
+	}
 	public boolean selectMark(BookMarkDto dto) {
 		//필요한 객체의 참조값을 담을 지역변수 만들기 
 		Connection conn = null;
@@ -93,23 +133,41 @@ public class BookDao {
 		}
 	}
 	public boolean insert(BookMarkDto dto) {
+		int count = 0;
 		Connection conn = null;
 		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		int flag = 0;
 		try {
 			conn = new DBconn().getConn();
 			//실행할 sql 문 준비하기 
-			String sql = "insert into book_mark values(?, ?)";
+			String sql = "select count(*) as count from book_mark where user_id=?";
 			pstmt = conn.prepareStatement(sql);
-			//? 에 바인딩 할 값이 있으면 바인딩한다.
+			//sql 문에 ? 에 바인딩할 값이 있으면 바인딩하고 
 			pstmt.setString(1, dto.getUser_id());
-			pstmt.setInt(2, dto.getBnum());
-			//sql  문 수행하고 update or insert or delete 된 row 의 갯수 리턴받기 
-			flag = pstmt.executeUpdate();
+			//select 문 수행하고 결과 받아오기 
+			rs = pstmt.executeQuery();
+			//반복문 돌면서 결과 값 추출하기 
+			if (rs.next()) {
+				count = rs.getInt("count");
+			}
+			if(count < 5) {
+				String insert_sql = "insert into book_mark values(?, ?)";
+				pstmt = conn.prepareStatement(insert_sql);
+				//? 에 바인딩 할 값이 있으면 바인딩한다.
+				pstmt.setString(1, dto.getUser_id());
+				pstmt.setInt(2, dto.getBnum());
+				//sql  문 수행하고 update or insert or delete 된 row 의 갯수 리턴받기 
+				flag = pstmt.executeUpdate();
+			}
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			try {
+				if (rs != null) {
+					rs.close();
+				}
 				if (pstmt != null)
 					pstmt.close();
 				if (conn != null)
