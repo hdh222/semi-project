@@ -29,25 +29,35 @@ public class BookDao {
 		//필요한 객체의 참조값을 담을 지역변수 만들기 
 		Connection conn = null;
 		PreparedStatement pstmt = null;
-		ResultSet rs = null;
+		ResultSet rs = null, list_rs = null;
+		
 		try {
 			//Connection 객체의 참조값 얻어오기 
 			conn = new DBconn().getConn();
 			//실행할 sql 문 준비하기
-			String sql = "";
+			String sql = "select bnum from book_mark where user_id=?";
 			pstmt = conn.prepareStatement(sql);
 			//sql 문에 ? 에 바인딩할 값이 있으면 바인딩하고 
-
+			pstmt.setString(1, id);
 			//select 문 수행하고 결과 받아오기 
 			rs = pstmt.executeQuery();
 			//반복문 돌면서 결과 값 추출하기 
 			while (rs.next()) {
-				BookDto tmp = new BookDto();
+				int bnum = rs.getInt("bnum");
+				String list_sql = "select bname, bimg from book where bnum=?";
+				pstmt = conn.prepareStatement(list_sql);
+				pstmt.setInt(1, bnum);
 				
-				tmp.setBimg(rs.getNString("bimg"));
-				tmp.setBname(rs.getString("bname"));
+				list_rs = pstmt.executeQuery();
+				while(list_rs.next()) {
+					BookDto tmp = new BookDto();
+					tmp.setBnum(bnum);
+					tmp.setBimg(list_rs.getString("bimg"));
+					tmp.setBname(list_rs.getString("bname"));
+					
+					list.add(tmp);
+				}
 				
-				list.add(tmp);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -132,7 +142,7 @@ public class BookDao {
 			return false;
 		}
 	}
-	public boolean insert(BookMarkDto dto) {
+	public String insert(BookMarkDto dto) {
 		int count = 0;
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -176,9 +186,9 @@ public class BookDao {
 			}
 		}
 		if (flag > 0) {
-			return true;
+			return "북마크 추가 성공";
 		} else {
-			return false;
+			return "북마크 카운터 초과로 추가 실패";
 		}
 	}
 
