@@ -68,6 +68,10 @@
 		z-index: 1000;
 		display: none; /* 일단 숨겨 놓기 */
 	}
+	#exampleModal{
+		height: 880px;
+	}
+	
 	.loader img{
 		width: 25px;
 		height:25px;

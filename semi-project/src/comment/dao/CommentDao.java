@@ -22,7 +22,7 @@ public class CommentDao {
 		return dao;
 	}
 	
-	public ArrayList<CommentDto> getList(int rnum) {
+	public ArrayList<CommentDto> getList(int rnum,int page) {
 		ArrayList<CommentDto> dto=new ArrayList<CommentDto>();
 		
 		Connection conn = null;
@@ -30,12 +30,13 @@ public class CommentDao {
 		ResultSet rset = null;
 
 		try {
-			String sql = "SELECT cnum,user_id,cdate,ccontent,crecommend FROM review_comment WHERE rnum=? ORDER BY crecommend,cdate ASC";
-
+			String sql="SELECT * FROM (SELECT result1.*,ROWNUM AS ronum FROM (SELECT cnum,user_id,to_char(cdate,'mm-dd hh:mi')as cdate,ccontent,crecommend FROM review_comment WHERE rnum=? ORDER BY cdate DESC) result1) WHERE ronum BETWEEN ? AND ?";
 			conn = new DBconn().getConn();
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, rnum);
-
+			pstmt.setInt(2, 1+(page-1)*5);
+			pstmt.setInt(3, page*5);
+			
 			rset = pstmt.executeQuery();
 
 			while (rset.next()) {
@@ -68,6 +69,46 @@ public class CommentDao {
 		}
 		
 		return dto;
+	}
+	
+	public int getCount(int rnum) {
+		int count=0;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+
+		try {
+			String sql = "SELECT count(*) FROM review_comment WHERE rnum=?";
+
+			conn = new DBconn().getConn();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, rnum);
+
+			rset = pstmt.executeQuery();
+
+			if (rset.next()) {	
+				count=rset.getInt("count(*)");
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (conn != null) {
+					conn.close();
+				}
+				if (pstmt != null) {
+					pstmt.close();
+				}
+				if (rset != null) {
+					rset.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return count;
 	}
 	
 	public boolean insert(CommentDto dto) {
