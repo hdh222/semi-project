@@ -9,7 +9,7 @@
 	
 	BookMarkDto dto = new BookMarkDto(id, bnum);
 	
-	boolean isSuccess = false;
+	String isSuccess = "";
 	boolean isCheck = false;
 	
 	isCheck = BookDao.getInstance().selectMark(dto);
@@ -18,13 +18,10 @@
 		isSuccess = BookDao.getInstance().insert(dto);
 	}else{
 		BookDao.getInstance().delete(dto);
+		isSuccess = "북마크 목록에서 삭제되었습니다.";
 	}
 	
 	
 	
 %>
-<% if(isSuccess){%>
-	{"result" : "북마크가 추가됨"}
-<%}else{%>
-	{"result" : "북마크 목록에서 삭제됨"}
-<%}%>
+{"result" : "<%=isSuccess %>"}

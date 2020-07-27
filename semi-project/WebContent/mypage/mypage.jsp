@@ -14,6 +14,8 @@
 	List<ReviewDto> list = ReviewDao.getInstance().getReviewList(id);
 	List<BookDto> markList = BookDao.getInstance().getMarkList(id);
 	
+	System.out.println(markList);
+	
 	ReviewDto data = null;
 %>
 <!DOCTYPE html>
@@ -51,7 +53,18 @@
 			<!-- 관심사 carousel 영역-->
 			<div class="col-lg-12 px-0">
 				<h4 class="my-4 ml-5">최근 관심사</h4>
-				<jsp:include page="../include/carousel.jsp"></jsp:include>
+				<div class="row">
+					<% for(BookDto tmp : markList){ %>
+					<div class="col">
+						​<picture>
+						  <source srcset="..." type="image/svg+xml">
+						  <a href="../book/book_info.jsp?bnum=<%=tmp.getBnum() %>"><img src="<%=tmp.getBimg() %>" class="img-thumbnail" alt="..."></a>
+						</picture>
+					</div>
+					
+					<%} %>
+				</div>
+				
 			</div>
 		</div>
 				<!--내가 쓴 리뷰,내가 쓴 댓글 row-->
