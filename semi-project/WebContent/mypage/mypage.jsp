@@ -1,3 +1,5 @@
+<%@page import="book.dto.BookDto"%>
+<%@page import="book.dao.BookDao"%>
 <%@page import="review.dto.ReviewDto"%>
 <%@page import="java.util.List"%>
 <%@page import="review.dao.ReviewDao"%>
@@ -10,6 +12,7 @@
 	String id=(String)session.getAttribute("id");
 	
 	List<ReviewDto> list = ReviewDao.getInstance().getReviewList(id);
+	List<BookDto> markList = BookDao.getInstance().getMarkList(id);
 	
 	ReviewDto data = null;
 %>
