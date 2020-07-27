@@ -43,7 +43,11 @@
 		line-height: 1.5em;
 		height: 4.5em;
 		/* line-height 가 1.2em 이고 3라인을 자르기 때문에 height는 1.2em * 3 = 3.6em */
-	}	
+	}
+	
+	.book_img {
+		width:148px;
+	}
 </style>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css" />
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/blog.css" />
@@ -56,66 +60,6 @@
 	
 	<div class="container">
 	<form action="book_list.jsp" method="get">
-
-		
-		</form>	
-		<div class="container card my-4">
-			<div class="row mt-5 mb-4" id="article">
-				<div class="col-2">
-					<a href="book_list.jsp?sort=1"><button class="btn btn-link">
-						<img id="computer" class="menu_icon"
-							src="https://image.flaticon.com/icons/svg/867/867746.svg" alt="" />
-							<p class="mt-3 text-dark">컴퓨터/IT</p>
-					</button></a>
-				</div>
-
-				<div class="col-2">
-					<a href="book_list.jsp?sort=2"><button class="btn btn-link">
-						<img class="menu_icon"
-							src="https://image.flaticon.com/icons/svg/3164/3164118.svg"
-							alt="" />
-						<p class="mt-3 text-dark">경제/경영</p>
-					</button></a>
-				</div>
-
-				<div class="col-2">
-					<a href="book_list.jsp?sort=3"><button class="btn btn-link mx-3">
-						<img class="menu_icon"
-							src="https://image.flaticon.com/icons/svg/2970/2970729.svg"
-							alt="" />
-						<p class="mt-3 text-dark">예술</p>
-					</button></a>
-				</div>
-
-				<div class="col-2">
-					<a href="book_list.jsp?sort=4"><button class="btn btn-link">
-						<img class="menu_icon"
-							src="https://image.flaticon.com/icons/svg/841/841988.svg" alt="" />
-						<p class="mt-3 text-dark">과학</p>
-					</button></a>
-				</div>
-
-				<div class="col-2">
-					<a href="book_list.jsp?sort=5"><button class="btn btn-link">
-						<img class="menu_icon"
-							src="https://cdn3.iconfinder.com/data/icons/eldorado-stroke-buildings/40/church-512.png"
-							alt="" />
-							<p class="mt-3 text-dark">종교</p>
-					</button></a>
-				</div>
-
-				<div class="col-2">
-					<a href="book_list.jsp?sort=6"><button class="btn btn-link">
-						<img class="menu_icon"
-							src="https://cdns.iconmonstr.com/wp-content/assets/preview/2017/240/iconmonstr-time-17.png"
-							alt="" />
-						<p class="mt-3 text-dark">역사</p>
-					</button></a>
-				</div>
-			</div>
-		</div>
-		
-		
 		<div class="input-group my-3 w-50 container">
 						<input type="text" class="form-control"
 							placeholder="search book" aria-label="Recipient's username"
@@ -134,28 +78,81 @@
 							</button>
 						</div>
 		</div>	<!-- search -->
+	</form>	
 		
-		<div class="container my-5 card">
+		<div class="container card my-3">
+			<div class="row mt-5 mb-4" id="article">
+				<div class="col-2">
+					<a href="book_list.jsp?sort=1"><button class="btn btn-link w-100">
+						<img id="computer" class="menu_icon"
+							src="https://image.flaticon.com/icons/svg/867/867746.svg" alt="" />
+							<p class="mt-3 text-dark icon-text">컴퓨터/IT</p>
+					</button></a>
+				</div>
+
+				<div class="col-2">
+					<a href="book_list.jsp?sort=2"><button class="btn btn-link  w-100">
+						<img class="menu_icon"
+							src="https://image.flaticon.com/icons/svg/3164/3164118.svg"
+							alt="" />
+						<p class="mt-3 text-dark icon-text">경제/경영</p>
+					</button></a>
+				</div>
+
+				<div class="col-2">
+					<a href="book_list.jsp?sort=3"><button class="btn btn-link w-100">
+						<img class="menu_icon"
+							src="https://image.flaticon.com/icons/svg/2970/2970729.svg"
+							alt="" />
+						<p class="mt-3 text-dark icon-text">예술</p>
+					</button></a>
+				</div>
+
+				<div class="col-2">
+					<a href="book_list.jsp?sort=4"><button class="btn btn-link w-100">
+						<img class="menu_icon"
+							src="https://image.flaticon.com/icons/svg/841/841988.svg" alt="" />
+						<p class="mt-3 text-dark icon-text">과학</p>
+					</button></a>
+				</div>
+
+				<div class="col-2">
+					<a href="book_list.jsp?sort=5"><button class="btn btn-link w-100">
+						<img class="menu_icon"
+							src="https://cdn3.iconfinder.com/data/icons/eldorado-stroke-buildings/40/church-512.png"
+							alt="" />
+							<p class="mt-3 text-dark icon-text">종교</p>
+					</button></a>
+				</div>
+
+				<div class="col-2">
+					<a href="book_list.jsp?sort=6"><button class="btn btn-link w-100">
+						<img class="menu_icon"
+							src="https://cdns.iconmonstr.com/wp-content/assets/preview/2017/240/iconmonstr-time-17.png"
+							alt="" />
+						<p class="mt-3 text-dark icon-text">역사</p>
+					</button></a>
+				</div>
+			</div>
+		</div>
+		
+		<div class="container my-3 card">
 			<ul class="list-unstyled">
 			<%if(totalRow > 0){ %>
 				<%for(int i = 0; i < list.size(); i++){
 					BookDto tmp = list.get(i);
 				%>
 				
-					<li class="media my.....
-					-4 border list_info"><img
-					src="<%=tmp.getBimg() %>"
-					class="mr-5 list_img border-right pr-5" alt="...">
-					<div class="media-body">
-						<h5 class="mt-0 my-2">
-							<a class="text-dark" href="book_info.jsp?bnum=<%=tmp.getBnum()%>"><Strong><%=tmp.getBname() %></Strong></a>
-						</h5>
-						<small>저자 : <%=tmp.getBauthor() %> , 출판사 : <%=tmp.getBcompany() %> , 출간일 : <%=tmp.getBdate() %></small> <br />
-						<br />
-						<p id="story"><%=tmp.getBstory() %></p>
-					</div></li>
-					<br>
-				
+					<li class="media my-4 border rounded list_info">
+						<img src="<%=tmp.getBimg() %>" class="mr-5 list_img border-right shadow book_img" alt="..." />
+						<div class="media-body my-auto mr-5">
+							<h5 class="mt-0 my-2">
+								<a class="text-dark" href="book_info.jsp?bnum=<%=tmp.getBnum()%>"><Strong><%=tmp.getBname() %></Strong></a>
+							</h5>
+							<small class="text-muted">저자 : <%=tmp.getBauthor() %> , 출판사 : <%=tmp.getBcompany() %> , 출간일 : <%=tmp.getBdate() %></small> <br />
+							<p id="story"><%=tmp.getBstory() %></p>
+						</div>
+					</li>				
 				<%} %>
 				
 				<%}else{ %>

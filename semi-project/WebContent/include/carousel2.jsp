@@ -20,7 +20,7 @@ img {
 }
 </style>
 
-<div id="carouselExampleControls" class="carousel slide card"
+<div id="carouselExampleControls" class="carousel slide card border-0"
 	data-ride="carousel">
 	<div class="carousel-inner mb-0 py-4">
 

@@ -78,7 +78,7 @@
 							<img src="${pageContext.request.contextPath}/image/ajax-loader.gif" class="mx-auto"/>
 						</span>
 						<div class="text-center">
-							<button id="comment_more" class="btn btn-light-sm ">더보기 ╋</button>
+							<button id="comment_more" class="btn btn-light-sm ">더보기 <strong>+</strong></button>
 						</div>
 					</div>
 				</div>
