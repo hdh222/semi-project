@@ -45,7 +45,7 @@
 					<%}else{ %>
 						잘못된 평점입니다.
 					<%} %>
-					<span class="ml-5">get</span><span class="float-right" id="rdate"><%=dto.getRdate()%></span>
+					<span class="float-right" id="rdate"><%=dto.getRdate()%></span>
 				</p>
 				<!-- review_menu -->
 				<ul class="nav nav-tabs mt-lg-5" id="myTab" role="tablist">
