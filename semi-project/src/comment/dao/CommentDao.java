@@ -22,6 +22,56 @@ public class CommentDao {
 		return dao;
 	}
 	
+	public ArrayList<CommentDto> getList(String id) {
+		ArrayList<CommentDto> dto=new ArrayList<CommentDto>();
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+
+		try {
+			String sql="select * from "
+					+ "(select cnum, rnum, user_id, crecommend,to_char(cdate, 'yy-mm-dd hh24:mi') as c_date,"
+					+ " SUBSTR(review_comment.ccontent,1,10) as ccontent from review_comment where user_id=?) "
+					+ "order by cnum desc";
+			conn = new DBconn().getConn();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+			
+			rset = pstmt.executeQuery();
+
+			while (rset.next()) {
+				CommentDto tmp=new CommentDto();
+				tmp.setCnum(rset.getInt("cnum"));
+				tmp.setUser_id(id);
+				tmp.setCdate(rset.getString("c_date"));
+				tmp.setCcontent(rset.getString("ccontent"));
+				tmp.setCrecommend(rset.getInt("crecommend"));
+				
+				dto.add(tmp);
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (conn != null) {
+					conn.close();
+				}
+				if (pstmt != null) {
+					pstmt.close();
+				}
+				if (rset != null) {
+					rset.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return dto;
+	}
+	
 	public ArrayList<CommentDto> getList(int rnum,int page) {
 		ArrayList<CommentDto> dto=new ArrayList<CommentDto>();
 		
