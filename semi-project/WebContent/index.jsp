@@ -8,7 +8,6 @@
 	String[] sort={"","컴퓨터","경제","예술","과학","종교","역사"};
 	int sortNum=new Random().nextInt(6)+1;
 	ArrayList<BookDto> rndBook=BookDao.getInstance().getRecommantedList(sortNum);
-
 	ArrayList<BookDto> newBook=BookDao.getInstance().getNewList();
 %>
 <!doctype html>
@@ -26,11 +25,22 @@
 
 <link rel="canonical"
 	href="https://getbootstrap.com/docs/4.5/examples/blog/">
-
+<link href="https://fonts.googleapis.com/css2?family=Monoton&display=swap" rel="stylesheet">
 <!-- Bootstrap core CSS -->
 <link href="${pageContext.request.contextPath }/css/bootstrap.css"
 	rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fascinate+Inline&family=Faster+One&family=Nanum+Myeongjo:wght@400;700&family=Song+Myung&display=swap" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@1.0/nanumsquare.css">
+
 <style>
+p,h1,h2,h3,h4,h5,strong,small,div{
+	font-family: 'NanumSquare', sans-serif;
+	font-weight: 500;
+}
+#logo{
+	font-family:'Monoton', cursive;
+	font-size:30px;
+}
 .bd-placeholder-img {
 	font-size: 1.125rem;
 	text-anchor: middle;
@@ -96,6 +106,7 @@
 				</button>
 			</div>
 		</div>
+		<img src="image/index.jpg" alt="" style="height:auto; width:100%;"/>
 		<!-- 멀티 슬라이드 -->
 		<h3 class="p-0 mt-5">추천도서 - <%=sort[sortNum] %></h3><small class="text-muted">오늘의 책 도서를 추천 합니다.</small>
 		<hr />

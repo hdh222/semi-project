@@ -30,7 +30,7 @@
 			
 			<h3 class="p-2">Review 작성</h3>
 			<hr class="mt-0" />
-			<form action="review_insert.jsp" method="post">
+			<form id="myForm" action="review_insert.jsp" method="post">
 				<input type="hidden" name="bnum" value="<%=num%>"/>
 				<div class="form-group row">
 					<label for="rname" class="col-sm-2 col-form-label text-center mt-4">제목</label>
@@ -66,7 +66,7 @@
 					</div>
 				</div>
 				<div class="form-group row float-right my-4 ">
-					<button type="submit" class="btn btn-primary mr-2" onclick="submitContents(this);">작성</button>
+					<button type="button" class="btn btn-primary mr-2" onclick="submitContents(this);">작성</button>
 					<button type="reset" class="btn btn-primary mr-2">취소</button>
 				</div>	
 			</form>
@@ -117,12 +117,28 @@
 		}
 			
 		function submitContents(elClickedObj) {
+			
 			oEditors.getById["content"].exec("UPDATE_CONTENTS_FIELD", []);	// 에디터의 내용이 textarea에 적용됩니다.
+			
 			
 			// 에디터의 내용에 대한 값 검증은 이곳에서 document.getElementById("content").value를 이용해서 처리하면 됩니다.
 			
 			try {
-				elClickedObj.form.submit();
+				if($.trim($("#rname").val())==""){
+					alert("이름을적어주세요!")
+					console.log($("#rname").val());
+					return;
+				}else if($.trim($("#rscore").val())==""){
+					alert("평점을 정해주세요!")
+					console.log($("#rscore").val());
+					return;
+				}else if($.trim($("#content").val())==""){
+					alert("내용을 적어주세요!")
+					return;
+				}else{
+					elClickedObj.form.submit();
+				}
+				
 			} catch(e) {}
 		}
 		
@@ -140,6 +156,9 @@
 		$("strong").text($(this).attr("value"));
 		$("#rscore").val($(this).attr("value"));
 	})
+</script>
+<script>
+
 </script>
 </body>
 

@@ -1,6 +1,22 @@
 @charset "UTF-8";
 
 @font-face { font-family: 'Arita-buri-SemiBold'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/Arita-buri-SemiBold.woff') format('woff'); font-weight: normal; font-style: normal; }
+	body*{
+	background-color: rgba(144, 198, 230, 0.774);
+	}
+	#backBtn{
+		position:absolute; 
+		right:1%; 
+		color:#595959;
+		}
+	
+	#bookMarkBtn{
+		position:absolute; 
+		right:2%;
+		top:3%;
+		color:tomato;
+		}
+	
 	/*리뷰 테이블 */
 	.table td, .table th {
     padding: .75rem;
@@ -16,6 +32,7 @@
 
 	/*컨테이너 오른쪽 col-6에 내용 부분*/
 	.right{
+		position:relative;
 		margin-top:30px;
 		margin-left:28px;
 		width:460px;
@@ -55,11 +72,13 @@
 	}
 	/*책 이미지 부분*/
 	#bookImg{
-		padding: 0.25rem;
+		
 	    background-color: #fff;
 	    border: 1px solid #dee2e6;
 	    border-radius: 0.25rem;
 	    max-width: 100%;
+	    margin-top:23px;
+	    
 	}
 	/*리뷰 불러오기 로딩 이미지*/
 	.loader{
@@ -76,5 +95,11 @@
 		width: 25px;
 		height:25px;
 		margin-bottom: 6px;
+	}
+	.modal-content{
+		text-align: center;
+	}
+	.modal-content img{
+		 max-width: 40%;
 	}
 	

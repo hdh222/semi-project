@@ -56,8 +56,6 @@
 			$(".reviewBtn").on("click",function() {
 				var rnum=$(this).children("#rnum").val();
 				
-				alert(rnum);
-				
 				$.ajax({
 					"method":"post",
 					"url":"viewReview.jsp",

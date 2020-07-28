@@ -172,7 +172,7 @@ public class ReviewDao {
 		ReviewDto dto = null;
 		try {
 			conn = new DBconn().getConn();
-			String sql = "SELECT rnum,bnum,user_id,to_char(rdate,'yy-mm-dd hh:mi')as rdate,rimg,rname,rcontent,rscore FROM review where bnum=? order by rdate desc";
+			String sql = "SELECT rnum,bnum,user_id,to_char(rdate,'YYYY/MM/DD HH24:MI:SS')as rdate,rimg,rname,rcontent,rscore FROM review where bnum=? order by rnum desc";
 			ps = conn.prepareStatement(sql);
 			ps.setInt(1, bnum);
 			rs = ps.executeQuery();
@@ -212,7 +212,7 @@ public class ReviewDao {
 		
 		try {
 			conn = new DBconn().getConn();
-			String sql = " SELECT * FROM (SELECT result1.*,ROWNUM AS ronum FROM(SELECT rnum,bnum,user_id,to_char(rdate,'mm-dd hh:mi')as rdate,rname,rimg,rcontent,rscore FROM review ORDER BY rdate DESC) result1) where bnum=? AND ronum BETWEEN ? AND ? ";
+			String sql = " SELECT * FROM (SELECT result1.*,ROWNUM AS ronum FROM(SELECT rnum,bnum,user_id,to_char(rdate,'MM/DD HH24:MI:SS')as rdate,rname,rimg,rcontent,rscore FROM review ORDER BY rnum DESC) result1) where bnum=? AND ronum BETWEEN ? AND ? ";
 			ps = conn.prepareStatement(sql);
 			ps.setInt(1, dto.getBnum());
 			ps.setInt(2, dto.getStartRowNum());
