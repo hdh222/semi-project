@@ -1,3 +1,5 @@
+<%@page import="comment.dao.CommentDao"%>
+<%@page import="comment.dto.CommentDto"%>
 <%@page import="book.dto.BookDto"%>
 <%@page import="book.dao.BookDao"%>
 <%@page import="review.dto.ReviewDto"%>
@@ -13,8 +15,7 @@
 	
 	List<ReviewDto> list = ReviewDao.getInstance().getReviewList(id);
 	List<BookDto> markList = BookDao.getInstance().getMarkList(id);
-	
-	System.out.println(markList);
+	List<CommentDto> commentList = CommentDao.getInstance().getList(id);
 	
 	ReviewDto data = null;
 %>
@@ -87,7 +88,11 @@
 						<%for(ReviewDto tmp : list){ %>
 							<tr>
 								<td class="text-center"><%=tmp.getRscore() %></td>
-								<td><a id="reviewBtn" type="button" data-toggle="modal" data-target="#ReviewModal" data-whatever="@mdo"><%=tmp.getRname()%></a>
+								<td>
+									<a class="reviewBtn" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">
+										<%=tmp.getRname()%>
+										<input type="hidden" id="rnum" value="<%=tmp.getRnum()%>" />
+									</a>
 								
 								</td>
 								<td class="text-center"><%=tmp.getRdate() %></td>
@@ -103,19 +108,30 @@
 
 			<div class="col-md-6" id="listBox">
 				<div class="card">
-					<div class="card-body" style="overflow-y: scroll; height : 300px;">
+					<div class="card-body"  style="overflow-y: scroll; height : 300px;">
 						<h4 class="card-title">
-							<a href="#">내가 쓴 댓글</a>
+							<a href="#">내가 쓴 리뷰</a>
 						</h4>
-						<ul>
-							<li>하나</li>
-							<li>둘</li>
-							<li>셋</li>
-						</ul>
+						<div class="table-responsiv">
+							<table class="table table-light">
+						<thead>
+							<tr>
+								<th class="text-center">내용</th>
+								<th class="text-center">작성일</th>
+							</tr>
+						</thead>
+						<%for(CommentDto tmp : commentList) { %>
+							<tr>
+								<td><%=tmp.getCcontent() %></td>
+								<td><%=tmp.getCdate() %></td>
+							</tr>
+						<%} %>
+						
+						</table>
+						</div>
+						
 					</div>
-					<div class="card-footer">
-						<small class="text-muted float-right"><a href="">더보기</a></small>
-					</div>
+					
 				</div>
 			</div>
 		</div>
@@ -140,37 +156,7 @@
        	 </div>
        	 
        	 <!-- 리뷰 modal -->
-       	 <div class="modal fade" id="ReviewModal" tabindex="-1" role="dialog"
-												aria-labelledby="exampleModalLabel" aria-hidden="true">
-			<div class="modal-dialog modal-xl" role="document">
-				<div class="modal-content">
-					<div class="modal-header">
-						<span><strong><%=id%>님의 리뷰</strong></span>
-						<button type="button" class="close" data-dismiss="modal"
-																aria-label="Close">
-							<span aria-hidden="true">&times;</span>
-						</button>
-					</div>
-					
-					<div class="modal-body">
-					
-						<h3 class="border-bottom border-success">리뷰 제목</h3>
-										
-							<p class="small my-1">
-								글쓴이 : <%=id%>&nbsp;&nbsp; 작성일 : 0000.00.00 &nbsp;&nbsp; 평점 : ★★★★★
-							</p>
-																	
-						<div class="modal-content" id="myTabContent">
-																		
-							<p id="review_content" class="my-lg-5">내용</p>
-																				
-							<p class="float-right" >저자 : 홍길동 ,&nbsp;&nbsp;출판사 : 길벗,&nbsp;&nbsp; 출간일 : 0000.00.00</p>	
-												
-						</div>
-					</div>	<!-- modal body -->
-				</div>	<!-- modal content -->
-			</div>	<!-- modal-dialog -->
-		</div> <!-- modal -->
+       	 <jsp:include page="../book/modal.jsp"></jsp:include>
 	</div> <!-- .container -->
 
 	<!-- Footer -->
@@ -202,6 +188,22 @@
 					}else {
 						alert("현재 비밀번호가 일치하지 않습니다.");
 					}
+				}
+			});
+		});
+		
+		$(".reviewBtn").on("click",function() {
+			var rnum=$(this).children("#rnum").val();
+			
+			$.ajax({
+				method:"post",
+				url:"${pageContext.request.contextPath}/book/viewReview.jsp",
+				data:"rnum="+rnum,
+				success: function(data) {
+					$(".modal-content").html(data);
+				},
+				error: function(a,b,c) {
+					console.log(a+" "+b+" "+c);
 				}
 			});
 		});

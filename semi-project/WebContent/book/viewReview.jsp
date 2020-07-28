@@ -30,8 +30,22 @@
 
 				<p class="small my-1" id="id">
 					글쓴이 :
-					<%=dto.getUser_id()%>
-					<span class="ml-5">get</span><span class="float-right" id="rdate"><%=dto.getRdate()%></span>
+					<%=dto.getUser_id()%> &nbsp;&nbsp;
+					평점 : 
+					<%if(dto.getRscore() == 5){ %>
+						★★★★★
+					<%}else if(dto.getRscore() == 4){ %>
+						★★★★☆
+					<%}else if(dto.getRscore() == 3){ %>
+						★★★☆☆
+					<%}else if(dto.getRscore() == 2){ %>
+						★★☆☆☆
+					<%}else if(dto.getRscore() == 1){ %>
+						★☆☆☆☆						
+					<%}else{ %>
+						잘못된 평점입니다.
+					<%} %>
+					<span class="float-right" id="rdate"><%=dto.getRdate()%></span>
 				</p>
 				<!-- review_menu -->
 				<ul class="nav nav-tabs mt-lg-5" id="myTab" role="tablist">
