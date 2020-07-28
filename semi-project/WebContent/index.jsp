@@ -9,6 +9,7 @@
 	int sortNum=new Random().nextInt(6)+1;
 	ArrayList<BookDto> rndBook=BookDao.getInstance().getRecommantedList(sortNum);
 	ArrayList<BookDto> newBook=BookDao.getInstance().getNewList();
+	
 %>
 <!doctype html>
 <html lang="en">
