@@ -90,8 +90,8 @@
 			
 			function loadComment() {
 				$.ajax({
-					"method":"post",
-					"url":"../comment/load.jsp",
+					"method":"get",
+					"url":"${pageContext.request.contextPath}/comment/load.jsp",
 					"data":"rnum=<%=dto.getRnum()%>&page=1",
 					"success":function(data) {
 						$("#commentField").html(data);
@@ -139,15 +139,12 @@
 				currentPage++;
 				setTimeout(function() {
 					$.ajax({
-						url : "../comment/load.jsp",
+						url : "${pageContext.request.contextPath}/comment/load.jsp",
 						method : "get",
 						data : {page:currentPage,rnum:<%=rnum%>},
 						success : function(data) {	
 									$("#commentField").append(data);
 									$(".comment_loader").hide();
-									if(displayRowNum == <%=totalPageCount%> && <%=totalPageCount%> != 0){
-										$("#comment_more").hide();
-									}
 								}
 							});
 						}, 2000);

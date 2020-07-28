@@ -24,7 +24,9 @@
 				<%} else { 
 					String name=(String)session.getAttribute("name");
 				%>
-					<p class="text-muted m-0"><%=name %>님 로그인 <a href="${pageContext.request.contextPath}/login/logout.jsp" class="btn btn-outline-secondary btn-sm mx-3">로그 아웃</a></p>
+					
+					<p id="login_status" class="text-muted m-0"><span><%=name %>님 로그인</span> <a href="${pageContext.request.contextPath}/login/logout.jsp" class="btn btn-outline-secondary btn-sm mx-3" data-toggle="tooltip" title="<%=name %>">로그 아웃</a></p>
+					
 				<%} %>
 			</div>
 		</div>

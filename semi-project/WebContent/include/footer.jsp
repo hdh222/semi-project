@@ -40,10 +40,7 @@
 		<div>
 			<i class="fa fa-envelope"></i>
 			<p>
-				<a
-					href="/cdn-cgi/l/email-protection#27545257574855536744484a5746495e0944484a"><span
-					class="__cf_email__"
-					data-cfemail="c1b2b4b1b1aeb3b581a2aeacb1a0afb8efa2aeac">example@email.com</span></a>
+				<span class="__cf_email__" data-cfemail="c1b2b4b1b1aeb3b581a2aeacb1a0afb8efa2aeac">example@email.com</span>
 			</p>
 		</div>
 

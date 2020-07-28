@@ -17,6 +17,7 @@
 	crossorigin="anonymous">
 <link rel="stylesheet" href="../css/blog.css" />
 <link rel="stylesheet" href="../css/book_info.css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/scroll.css" />
 </head>
 
 
@@ -127,7 +128,7 @@
 										<td>
 											<a class="reviewBtn" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">
 												<%=tmp.getRname()%>
-											<input type="hidden" id="rnum" value="<%=tmp.getRnum()%>" />
+												<input type="hidden" id="rnum" value="<%=tmp.getRnum()%>" />
 											</a>
 										</td>
 										<td><%=tmp.getRscore()%>/5</td>
@@ -206,7 +207,7 @@
 			//해당 페이지의 내용을 ajax  요청을 해서 받아온다. 
 			setTimeout(function() {
 				$.ajax({
-					url : "../comment/load.jsp",
+					url : "review_action.jsp",
 					method : "post",
 					data : {pageNum:currentPage,bnum:<%=num%>},
 					success : function(data) {	 

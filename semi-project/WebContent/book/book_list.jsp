@@ -82,7 +82,7 @@
 		
 		<div class="container card my-3">
 			<div class="row mt-5 mb-4" id="article">
-				<div class="col-2">
+				<div class="col">
 					<a href="book_list.jsp?sort=1"><button class="btn btn-link w-100">
 						<img id="computer" class="menu_icon"
 							src="https://image.flaticon.com/icons/svg/867/867746.svg" alt="" />
@@ -90,7 +90,7 @@
 					</button></a>
 				</div>
 
-				<div class="col-2">
+				<div class="col">
 					<a href="book_list.jsp?sort=2"><button class="btn btn-link  w-100">
 						<img class="menu_icon"
 							src="https://image.flaticon.com/icons/svg/3164/3164118.svg"
@@ -99,7 +99,7 @@
 					</button></a>
 				</div>
 
-				<div class="col-2">
+				<div class="col">
 					<a href="book_list.jsp?sort=3"><button class="btn btn-link w-100">
 						<img class="menu_icon"
 							src="https://image.flaticon.com/icons/svg/2970/2970729.svg"
@@ -108,7 +108,7 @@
 					</button></a>
 				</div>
 
-				<div class="col-2">
+				<div class="col">
 					<a href="book_list.jsp?sort=4"><button class="btn btn-link w-100">
 						<img class="menu_icon"
 							src="https://image.flaticon.com/icons/svg/841/841988.svg" alt="" />
@@ -116,7 +116,7 @@
 					</button></a>
 				</div>
 
-				<div class="col-2">
+				<div class="col">
 					<a href="book_list.jsp?sort=5"><button class="btn btn-link w-100">
 						<img class="menu_icon"
 							src="https://cdn3.iconfinder.com/data/icons/eldorado-stroke-buildings/40/church-512.png"
@@ -125,7 +125,7 @@
 					</button></a>
 				</div>
 
-				<div class="col-2">
+				<div class="col">
 					<a href="book_list.jsp?sort=6"><button class="btn btn-link w-100">
 						<img class="menu_icon"
 							src="https://cdns.iconmonstr.com/wp-content/assets/preview/2017/240/iconmonstr-time-17.png"

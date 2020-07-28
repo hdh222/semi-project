@@ -45,12 +45,32 @@
 			<td>
 				<a class="reviewBtn" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">
 					<%=tmp.getRname()%>
-				<input type="hidden" id="rnum" value="<%=tmp.getRnum()%>" />
+					<input type="hidden" id="rnum" value="<%=tmp.getRnum()%>" />
 				</a>
 			</td>
 			<td><%=tmp.getRscore()%>/5</td>
 			<td><%=tmp.getRdate()%></td>
 		</tr>
 	<%}%>
-	
+	<script>
+			$(".reviewBtn").on("click",function() {
+				var rnum=$(this).children("#rnum").val();
+				
+				alert(rnum);
+				
+				$.ajax({
+					"method":"post",
+					"url":"viewReview.jsp",
+					"data":"rnum="+rnum,
+					"success": function(data) {
+						$(".modal-content").html(data);
+					},
+					"error": function(a,b,c) {
+						console.log(a+" "+b+" "+c);
+					}
+				});
+			});
+			
+			
+	</script>
 	
