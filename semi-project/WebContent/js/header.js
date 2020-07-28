@@ -11,6 +11,14 @@ $("#nav>a").on("click",function() {
 });
 
 $(document).ready(function() {
+	var value=$("#index").val();
+	
+	//alert(value);
+	if(value != "") { 
+		var index=$("#nav").children("a")[value];
+		$(index).addClass("menu_select");
+	}
+	
 	if(window.innerWidth<1200) {	
 		$("#login_status").children("span").hide();
 		$("#login status").children("a")
@@ -28,4 +36,3 @@ $(window).resize(function() {
 		$("#login_status").children("span").show();
 	}
 });
-

@@ -44,7 +44,9 @@
 <body> 
 
 	<!-- 헤더 -->
-	<jsp:include page="../include/header.jsp"></jsp:include>
+	<jsp:include page="../include/header.jsp">
+		<jsp:param value="4" name="nav_index"/>
+	</jsp:include>
 	<!-- Page Content -->
 	<div class="container my-4 ">
 		<!-- 상단로우 -->

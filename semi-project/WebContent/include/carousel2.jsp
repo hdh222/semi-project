@@ -30,7 +30,10 @@ img {
 			String story=tmp.getBstory().replace("*"," ");
 		%>
 
-		<div class="carousel-item <%if (act) {%>active<%act = false; }%>">
+		<div class="carousel-item bookInfo <%if (act) {%>active<%act = false; }%>">
+			<form action="${pageContext.request.contextPath}/book/book_info.jsp">
+				<input type="hidden" name="bnum" value="<%=tmp.getBnum() %>" />
+			</form>
 			<div class="media">
 				<img src="<%=tmp.getBimg()%>" class="shadow mx-3" alt="..." width="150px"
 					height="200px">

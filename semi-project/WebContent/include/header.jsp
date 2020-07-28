@@ -4,11 +4,19 @@
 <%
 	String id=(String)session.getAttribute("id");
 	
+	String index=request.getParameter("nav_index");
+	
+	if(index == null) {
+		index="";
+	}
 %>
 <style>
-.
+	.menu_select {
+		border-bottom: 5px solid rgba(144, 198, 230, 0.774);
+	}
 </style>
 <div class="container">
+	<input type="hidden" id="index" value="<%=index %>" />
 	<header class="blog-header py-3">
 		<div
 			class="row flex-nowrap justify-content-between align-items-center">

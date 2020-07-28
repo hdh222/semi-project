@@ -58,7 +58,9 @@
 <body>
 	<!-- 헤더 -->
 	<header>
-		<jsp:include page="../include/header.jsp"></jsp:include>
+		<jsp:include page="../include/header.jsp">
+			<jsp:param value="0" name="nav_index"/>
+		</jsp:include>
 	</header>
 	<div id="container">
 		<!-- 메뉴바 -->

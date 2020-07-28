@@ -48,6 +48,15 @@
 	.book_img {
 		width:148px;
 	}
+	
+	.list_info {
+		cursor: pointer;
+	}
+	.select-icon {
+		border-bottom: 5px solid tomato;
+		opacity: 1.5;
+		
+	}
 </style>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css" />
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/blog.css" />
@@ -55,7 +64,9 @@
 </head>
 <body>
 	
-	<jsp:include page="/include/header.jsp"></jsp:include>
+	<jsp:include page="/include/header.jsp">
+		<jsp:param value="0" name="nav_index"/>
+	</jsp:include>
 	<%@include file="search_action.jsp" %>
 	
 	<div class="container">
@@ -80,63 +91,62 @@
 		</div>	<!-- search -->
 	</form>	
 		
-		<div class="container card my-3">
-			<div class="row mt-5 mb-4" id="article">
-				<div class="col">
-					<a href="book_list.jsp?sort=1"><button class="btn btn-link w-100">
-						<img id="computer" class="menu_icon"
+		<div class="container card my-3">  <!-- sort -->
+			<div class="row px-3" id="article">
+				<div class="col px-0">
+					<a href="book_list.jsp?sort=1"><button class="btn btn-link w-100 px-0">
+						<img class="menu_icon my-3"
 							src="https://image.flaticon.com/icons/svg/867/867746.svg" alt="" />
-							<p class="mt-3 text-dark icon-text">컴퓨터/IT</p>
+						<p class="text-dark icon-text">컴퓨터/IT</p>
 					</button></a>
 				</div>
 
-				<div class="col">
-					<a href="book_list.jsp?sort=2"><button class="btn btn-link  w-100">
-						<img class="menu_icon"
+				<div class="col px-0">
+					<a href="book_list.jsp?sort=2"><button class="btn btn-link w-100 px-0">
+						<img class="menu_icon my-3"
 							src="https://image.flaticon.com/icons/svg/3164/3164118.svg"
 							alt="" />
-						<p class="mt-3 text-dark icon-text">경제/경영</p>
+						<p class="text-dark icon-text">경제/경영</p>
 					</button></a>
 				</div>
 
-				<div class="col">
-					<a href="book_list.jsp?sort=3"><button class="btn btn-link w-100">
-						<img class="menu_icon"
+				<div class="col px-0">
+					<a href="book_list.jsp?sort=3"><button class="btn btn-link w-100 px-0">
+						<img class="menu_icon my-3"
 							src="https://image.flaticon.com/icons/svg/2970/2970729.svg"
 							alt="" />
-						<p class="mt-3 text-dark icon-text">예술</p>
+						<p class="text-dark icon-text">예술</p>
 					</button></a>
 				</div>
-
-				<div class="col">
-					<a href="book_list.jsp?sort=4"><button class="btn btn-link w-100">
-						<img class="menu_icon"
+				<div class="col px-0">
+					<a href="book_list.jsp?sort=4"><button class="btn btn-link w-100 px-0">
+						<img class="menu_icon my-3"
 							src="https://image.flaticon.com/icons/svg/841/841988.svg" alt="" />
-						<p class="mt-3 text-dark icon-text">과학</p>
+						<p class="text-dark icon-text">과학</p>
 					</button></a>
 				</div>
 
-				<div class="col">
-					<a href="book_list.jsp?sort=5"><button class="btn btn-link w-100">
-						<img class="menu_icon"
+				<div class="col px-0">
+					<a href="book_list.jsp?sort=5"><button class="btn btn-link w-100 px-0">
+						<img class="menu_icon my-3"
 							src="https://cdn3.iconfinder.com/data/icons/eldorado-stroke-buildings/40/church-512.png"
 							alt="" />
-							<p class="mt-3 text-dark icon-text">종교</p>
+						<p class="text-dark icon-text">종교</p>
 					</button></a>
 				</div>
-
-				<div class="col">
-					<a href="book_list.jsp?sort=6"><button class="btn btn-link w-100">
-						<img class="menu_icon"
+		
+				<div class="col px-0">
+					<a href="book_list.jsp?sort=6"><button class="btn btn-link w-100 px-0">
+						<img class="menu_icon my-3"
 							src="https://cdns.iconmonstr.com/wp-content/assets/preview/2017/240/iconmonstr-time-17.png"
 							alt="" />
-						<p class="mt-3 text-dark icon-text">역사</p>
+						<p class="text-dark icon-text">역사</p>
 					</button></a>
 				</div>
 			</div>
 		</div>
 		
-		<div class="container my-3 card">
+		<div class="container my-3 card">   <!-- book list -->
 			<ul class="list-unstyled">
 			<%if(totalRow > 0){ %>
 				<%for(int i = 0; i < list.size(); i++){
@@ -144,13 +154,14 @@
 				%>
 				
 					<li class="media my-4 border rounded list_info">
+						<input type="hidden" id="bnum" value="<%=tmp.getBnum() %>" />
 						<img src="<%=tmp.getBimg() %>" class="mr-5 list_img border-right shadow book_img" alt="..." />
 						<div class="media-body my-auto mr-5">
 							<h5 class="mt-0 my-2">
-								<a class="text-dark" href="book_info.jsp?bnum=<%=tmp.getBnum()%>"><Strong><%=tmp.getBname() %></Strong></a>
+								<Strong><%=tmp.getBname() %></Strong>
 							</h5>
 							<small class="text-muted">저자 : <%=tmp.getBauthor() %> , 출판사 : <%=tmp.getBcompany() %> , 출간일 : <%=tmp.getBdate() %></small> <br />
-							<p id="story"><%=tmp.getBstory() %></p>
+							<p id="story"><%=tmp.getBstory().replace("*", " ") %></p>
 						</div>
 					</li>				
 				<%} %>
@@ -194,5 +205,16 @@
 
 	<script src="${pageContext.request.contextPath}/js/jquery-3.5.1.min.js"></script>
 	<script src="${pageContext.request.contextPath}/js/header.js"></script>
+	<script>
+		$(document).ready(function() {
+			var icon=$("#article").children(".col")[<%=(sort-1)%>];
+			$(icon).addClass("select-icon");
+		});
+		
+		$(".list_info").on("click",function() {
+			var bnum=$(this).children("#bnum").val();
+			location.href="book_info.jsp?bnum="+bnum;
+		});
+	</script>
 </body>
 </html>

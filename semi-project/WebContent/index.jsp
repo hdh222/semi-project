@@ -60,7 +60,11 @@ p,h1,h2,h3,h4,h5,strong,small,div{
 	width: 150px;
 	height: 200px;
 }
-
+.pic_img:hover {
+	width: 165px;
+	height: 220px;
+	transition:width 0.3s, height 0.3s;
+}
 .banner {
 	width: 100px;
 	height: 40px;
@@ -69,6 +73,9 @@ p,h1,h2,h3,h4,h5,strong,small,div{
 .banner>img {
 	width: 100%;
 	height: 100%;
+}
+.bookInfo {
+	cursor: pointer;
 }
 </style>
 <!-- Custom styles for this template -->
@@ -84,10 +91,9 @@ p,h1,h2,h3,h4,h5,strong,small,div{
 
 <body>
 	<jsp:include page="/include/header.jsp"></jsp:include>
-
+	
 	<div class="container">
 		<!-- <div class="w-980 mx-md-auto px-0"> -->
-
 		<div class="input-group my-3 w-50 container">
 			<input type="text" class="form-control"
 				placeholder="Recipient's username" aria-label="Recipient's username"
@@ -119,11 +125,12 @@ p,h1,h2,h3,h4,h5,strong,small,div{
 							<input type="hidden" name="bnum" value="<%=tmp.getBnum() %>" />
 						</form>
 						<picture class="shadow mb-3">
-						<source
-							srcset="<%=tmp.getBimg() %>"
-							type="image/svg+xml">
-						<img src="<%=tmp.getBimg() %>"
-							class="img-fluid img-thumbnail pic_img" alt="..."> </picture>
+							<source
+								srcset="<%=tmp.getBimg() %>"
+								type="image/svg+xml">
+							<img src="<%=tmp.getBimg() %>"
+								class="img-fluid img-thumbnail pic_img" alt="...">
+						</picture>
 						<div class="card-body">
 							<p class="card-title text-center"><strong><%=tmp.getBname() %></strong></p>
 						</div>
@@ -231,6 +238,10 @@ p,h1,h2,h3,h4,h5,strong,small,div{
 	 $(".bookInfo").on("click",function() {
      	$(this).children("form").submit();
      });
+	 /*
+	 $(".bookInfo").on("hover",function() {
+		$(this).children("picture").children(".pic_img").removeClass("pic_img").addClass()
+	 });*/
 	</script>
 </body>
 

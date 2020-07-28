@@ -2,20 +2,10 @@
 	.icon-text {
 		display: none;
 	}
-	#article {
-		overflow-x: auto;
-		overflow-y: hidden;
-	}
-	
 }
 
-@media ( min-width : 740px) {
+@media ( min-width : 780px) {
 	.icon-text {
 		display: block;
 	}
-	#article {
-		overflow-x: hidden;
-		overflow-y: hidden;
-	}
-	
 }
