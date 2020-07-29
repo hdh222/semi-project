@@ -81,25 +81,5 @@
 	    
 	}
 	/*리뷰 불러오기 로딩 이미지*/
-	.loader{
 
-		text-align: center; /* 이미지를 좌우로 가운데  정렬 */
-		z-index: 1000;
-		display: none; /* 일단 숨겨 놓기 */
-	}
-	#exampleModal{
-		height: 880px;
-	}
-	
-	.loader img{
-		width: 25px;
-		height:25px;
-		margin-bottom: 6px;
-	}
-	.modal-content{
-		text-align: center;
-	}
-	.modal-content img{
-		 max-width: 40%;
-	}
 	

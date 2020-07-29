@@ -10,6 +10,9 @@
 	CommentDto dto=new CommentDto(0,rnum,user_id,null,ccontent,0);
 	
 	boolean result=CommentDao.getInstance().insert(dto);
+	int totalCount=CommentDao.getInstance().getCount(rnum);
+	
+	int endPage=(int)Math.ceil(totalCount/5.0);
 %>
 
-{"isResult":"<%=result %>"}
+{"isResult":"<%=result %>","endPage":"<%=endPage%>"}

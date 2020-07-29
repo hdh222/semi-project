@@ -11,7 +11,6 @@
 	BookDto BookInfo=BookDao.getInstance().getData(dto.getBnum());
 	
 	int totalPageCount=CommentDao.getInstance().getCount(rnum);
-	
 	int endPage=(int)Math.ceil(totalPageCount/5.0);
 %>
 	<div class="modal-header">
@@ -121,7 +120,7 @@
 				var url=$("#commentForm").attr("action");
 				var method=$("#commentForm").attr("method");
 				var data=$("#commentForm").serialize();
-				alert(url);
+
 				$.ajax({
 					"method":method,
 					"url":url,
@@ -129,6 +128,7 @@
 					"success": function(d) {
 						if(d.isResult=="true") {
 							$("#commentForm").children("textarea").val("");
+							totalPage=d.endPage;
 							loadComment();
 						}
 					},
