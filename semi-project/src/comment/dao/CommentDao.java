@@ -44,6 +44,7 @@ public class CommentDao {
 				CommentDto tmp=new CommentDto();
 				tmp.setCnum(rset.getInt("cnum"));
 				tmp.setUser_id(id);
+				tmp.setRnum(rset.getInt("rnum"));
 				tmp.setCdate(rset.getString("c_date"));
 				tmp.setCcontent(rset.getString("ccontent"));
 				tmp.setCrecommend(rset.getInt("crecommend"));

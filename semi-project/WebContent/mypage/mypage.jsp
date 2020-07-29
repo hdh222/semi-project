@@ -124,7 +124,11 @@
 						</thead>
 						<%for(CommentDto tmp : commentList) { %>
 							<tr>
-								<td><%=tmp.getCcontent() %></td>
+								<td>
+									<a id="commentBtn" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">
+										<%=tmp.getCcontent() %>
+										<input type="hidden" id="rnum" value="<%=tmp.getRnum()%>" />
+									</a></td>
 								<td><%=tmp.getCdate() %></td>
 							</tr>
 						<%} %>
@@ -195,6 +199,22 @@
 		});
 		
 		$(".reviewBtn").on("click",function() {
+			var rnum=$(this).children("#rnum").val();
+			
+			$.ajax({
+				method:"post",
+				url:"${pageContext.request.contextPath}/book/viewReview.jsp",
+				data:"rnum="+rnum,
+				success: function(data) {
+					$(".modal-content").html(data);
+				},
+				error: function(a,b,c) {
+					console.log(a+" "+b+" "+c);
+				}
+			});
+		});
+		
+		$("#commentBtn").on("click",function() {
 			var rnum=$(this).children("#rnum").val();
 			
 			$.ajax({

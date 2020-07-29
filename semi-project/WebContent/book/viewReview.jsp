@@ -74,7 +74,7 @@
 						<h4 class="pt-3" id="comment_caption">댓글</h4>
 						<hr />
 						<div class="pb-3 mb-5 w-100">  <!-- 댓글 작성 창 -->
-							<form action="../comment/insert.jsp" method="post" id="commentForm">
+							<form action="${pageContext.request.contextPath }/comment/insert.jsp" method="post" id="commentForm">
 								<input type="hidden" name="rnum" value="<%=dto.getRnum() %>" />
 								<input type="hidden" name="id" value="<%=(String)session.getAttribute("id") %>" />
 								<textarea class="form-control mt-lg-5 mb-lg-2" name="review_comment" placeholder="댓글을 입력 해주세요.(300자 이하)"></textarea>
@@ -122,7 +122,7 @@
 				var url=$("#commentForm").attr("action");
 				var method=$("#commentForm").attr("method");
 				var data=$("#commentForm").serialize();
-				
+				alert(url);
 				$.ajax({
 					"method":method,
 					"url":url,
