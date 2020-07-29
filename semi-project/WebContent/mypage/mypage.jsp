@@ -39,6 +39,7 @@
 	href="${pageContext.request.contextPath }/css/carousel.css" />
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath }/css/blog.css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/font.css" />
 </head>
 
 <body> 

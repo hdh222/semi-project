@@ -1,1 +1,10 @@
-@font-face { font-family: 'Arita-buri-SemiBold'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/Arita-buri-SemiBold.woff') format('woff'); font-weight: normal; font-style: normal; }
+@font-face { font-family: 'NanumSquare'; src: url('../font/NanumSquareOTF.otf') format('opentype'); font-weight: normal; font-style: normal; }
+
+h1,h2,h3,h4,h5,strong,small,div,.container{
+	font-family: 'NanumSquare', sans-serif;
+	font-weight: 500;
+}
+p {
+	font-family: 'NanumSquare', sans-serif;
+	font-weight: 300;
+}

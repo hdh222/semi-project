@@ -32,12 +32,9 @@
 	rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Fascinate+Inline&family=Faster+One&family=Nanum+Myeongjo:wght@400;700&family=Song+Myung&display=swap" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@1.0/nanumsquare.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/font.css" />
 
 <style>
-p,h1,h2,h3,h4,h5,strong,small,div{
-	font-family: 'NanumSquare', sans-serif;
-	font-weight: 500;
-}
 #logo{
 	font-family:'Monoton', cursive;
 	font-size:30px;

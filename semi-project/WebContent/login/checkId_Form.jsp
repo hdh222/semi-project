@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/css/bootstrap.min.css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/font.css" />
 <style>
 	@media(min-width : 0px ) {
 		#label {
