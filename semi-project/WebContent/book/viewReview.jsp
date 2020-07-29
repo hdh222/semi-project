@@ -115,6 +115,7 @@
 			}
 			
 			$(document).ready(function() {
+				$(".comment_loader").hide();
 				loadComment();
 			});
 			
@@ -139,7 +140,7 @@
 				});
 			});
 			
-			$(".comment_loader").hide();
+			
 			
 			$("#comment_more").on("click", function() {
 				var displayRowNum=$("#commentField").children(".media").length;
