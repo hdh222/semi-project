@@ -1,4 +1,3 @@
-
 <%@page import="comment.dao.CommentDao"%>
 <%@page import="book.dao.BookDao"%>
 <%@page import="book.dto.BookDto"%>
@@ -8,7 +7,6 @@
     pageEncoding="UTF-8"%>
 <%
 	int rnum=Integer.parseInt(request.getParameter("rnum"));
-
 	ReviewDto dto=ReviewDao.getInstance().getdata(rnum);
 	BookDto BookInfo=BookDao.getInstance().getData(dto.getBnum());
 	
