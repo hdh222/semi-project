@@ -92,24 +92,24 @@
 	
 	<div class="container">
 		<!-- <div class="w-980 mx-md-auto px-0"> -->
-		<div class="input-group my-3 w-50 container">
-			<input type="text" class="form-control"
-				placeholder="Recipient's username" aria-label="Recipient's username"
-				aria-describedby="button-addon2">
-			<div class="input-group-append">
-				<button class="btn btn-outline-secondary" type="button"
-					id="button-addon2">
-					<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-						fill="none" stroke="currentColor" stroke-linecap="round"
-						stroke-linejoin="round" stroke-width="2" class="mx-3" role="img"
-						viewBox="0 0 24 24" focusable="false">
-            <title>Search</title>
-            <circle cx="10.5" cy="10.5" r="7.5" />
-            <path d="M21 21l-5.2-5.2" />
-          </svg>
-				</button>
-			</div>
+		<form action="book/book_list.jsp" method="get">
+			<div class="input-group my-3 w-50 container">
+				<input name="keyword" type="text" class="form-control" placeholder="찾으시는 책을 입력해주세요" aria-label="찾으시는 책을 입력해주세요" aria-describedby="button-addon2">
+				<div class="input-group-append">
+					<button class="btn btn-outline-secondary" type="submit"
+						id="button-addon2">
+						<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+							fill="none" stroke="currentColor" stroke-linecap="round"
+							stroke-linejoin="round" stroke-width="2" class="mx-3" role="img"
+							viewBox="0 0 24 24" focusable="false">
+				            <title>Search</title>
+				            <circle cx="10.5" cy="10.5" r="7.5" />
+				            <path d="M21 21l-5.2-5.2" />
+				         </svg>
+					</button>
+				</div>
 		</div>
+		</form>
 		<img src="image/index.jpg" alt="" style="height:auto; width:100%;"/>
 		<!-- 멀티 슬라이드 -->
 		<h3 class="p-0 mt-5">추천도서 - <%=sort[sortNum] %></h3><small class="text-muted">오늘의 책 도서를 추천 합니다.</small>

@@ -71,9 +71,9 @@
 	<%@include file="search_action.jsp" %>
 	
 	<div class="container">
-	<form action="book_list.jsp" method="get">
+	<form id="searchForm" action="book_list.jsp" method="get">
 		<div class="input-group my-3 w-50 container">
-						<input type="text" class="form-control"
+						<input id="searchKey" type="text" class="form-control"
 							placeholder="search book" aria-label="Recipient's username"
 							aria-describedby="button-addon2" name="keyword" value="<%=keyword %>">
 						<div class="input-group-append">
@@ -216,6 +216,17 @@
 			var bnum=$(this).children("#bnum").val();
 			location.href="book_info.jsp?bnum="+bnum;
 		});
+
+		
+	</script>
+	<script>
+	$(document).ready(function(){
+		$.ajax({
+			"method":"post",
+			"url":"search_action.jsp",
+			"data":"keyword="+"<%=keyword%>",	
+		})
+	});
 	</script>
 </body>
 </html>
