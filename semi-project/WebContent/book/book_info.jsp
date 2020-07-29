@@ -1,3 +1,4 @@
+<%@page import="java.net.URLEncoder"%>
 <%@page import="review.dao.ReviewDao"%>
 <%@page import="review.dto.ReviewDto"%>
 <%@page import="java.util.List"%>
@@ -154,15 +155,7 @@
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 	<script src="${pageContext.request.contextPath}/js/review.js"></script>
-	<script>
-	$(window).resize(function(){
-		var windWidth=$(window).innerWidth();
-		if(windWidth<550){
-			$("#backBtn").hide();
-		}else if(windWidth>550)
-			$("#backBtn").show();
-	})
-	</script>
+	<script src="${pageContext.request.contextPath}/js/book_info.js"></script>
 	
 	<!--modal 내용불러오기 -->
 	<script>
@@ -233,17 +226,26 @@
 	<!-- 북마크 처리   -->
 	<script>
 		$("#bookMarkBtn").on("click", function(){
-			$.ajax({
-				method : "get",
-				url : "bookmark.jsp",
-				data : {"id" : "<%=id%>", bnum : <%=num%>},
+			var id=<%=id%>;
+		
+			if(id != null) {
+				$.ajax({
+					method : "get",
+					url : "bookmark.jsp",
+					data : {"id" : "<%=id%>", bnum : <%=num%>},
+				
+					success : function(data){
+						alert(data.result);
+						
+					}
+				});
+				return false;
+			} else {
+				var url=encodeURIComponent(window.location.href.replace("http://localhost:8888",""));
+				alert("로그인 후에 이용 가능합니다.");
+				location.href="${pageContext.request.contextPath}/login/loginForm.jsp?url="+url;
+			}
 			
-				success : function(data){
-					alert(data.result);
-					
-				}
-			});
-			return false;
 		});
 	</script> 
 </body>

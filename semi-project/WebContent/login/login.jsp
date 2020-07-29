@@ -1,8 +1,13 @@
+<%@page import="java.net.URLEncoder"%>
 <%@page import="member.dao.MemberDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
 	request.setCharacterEncoding("utf-8");
+	
+	String url=request.getParameter("url");
+	String encodedUrl=URLEncoder.encode(url);
+	
 
 	String id=request.getParameter("email");    
 	String pwd=request.getParameter("pwd");
@@ -24,11 +29,11 @@
 			session.setAttribute("id", id);
 			session.setAttribute("name", name);
 			session.setMaxInactiveInterval(3000);
-			response.sendRedirect(request.getContextPath()+"/index.jsp");
+			response.sendRedirect(url);
 	    }else { %>	
 			<script>
 				alert('로그인에 실패하였습니다. 아이디 비밀번호를 확인 해주세요.');
-				history.go(-1);
+				location.href="loginform.jsp?url=";
 			</script>
     <%  } %>
 	%>

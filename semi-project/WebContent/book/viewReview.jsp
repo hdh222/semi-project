@@ -7,6 +7,8 @@
     pageEncoding="UTF-8"%>
 <%
 	int rnum=Integer.parseInt(request.getParameter("rnum"));
+	String id=(String)session.getAttribute("id");
+	
 	ReviewDto dto=ReviewDao.getInstance().getdata(rnum);
 	BookDto BookInfo=BookDao.getInstance().getData(dto.getBnum());
 	
@@ -117,25 +119,33 @@
 			});
 			
 			$("#commentBtn").on("click",function() {
-				var url=$("#commentForm").attr("action");
-				var method=$("#commentForm").attr("method");
-				var data=$("#commentForm").serialize();
-
-				$.ajax({
-					"method":method,
-					"url":url,
-					"data":data,
-					"success": function(d) {
-						if(d.isResult=="true") {
-							$("#commentForm").children("textarea").val("");
-							totalPage=d.endPage;
-							loadComment();
+				var id=<%=id%>
+				
+				if(id != null) {
+					var url=$("#commentForm").attr("action");
+					var method=$("#commentForm").attr("method");
+					var data=$("#commentForm").serialize();
+	
+					$.ajax({
+						"method":method,
+						"url":url,
+						"data":data,
+						"success": function(d) {
+							if(d.isResult=="true") {
+								$("#commentForm").children("textarea").val("");
+								totalPage=d.endPage;
+								loadComment();
+							}
+						},
+						"error": function(a,b,c) {
+							console.log(a+" "+b+" "+c);
 						}
-					},
-					"error": function(a,b,c) {
-						console.log(a+" "+b+" "+c);
-					}
-				});
+					});
+				} else {
+					var url=encodeURIComponent(window.location.href.replace("http://localhost:8888",""));
+					alert("로그인 후에 이용 가능합니다.");
+					location.href="${pageContext.request.contextPath}/login/loginForm.jsp?url="+url;
+				}
 			});
 			
 			

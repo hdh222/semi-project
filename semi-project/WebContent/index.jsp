@@ -1,3 +1,6 @@
+<%@page import="java.util.List"%>
+<%@page import="review.dao.ReviewDao"%>
+<%@page import="review.dto.ReviewDto"%>
 <%@page import="java.util.Random"%>
 <%@page import="book.dao.BookDao"%>
 <%@page import="book.dto.BookDto"%>
@@ -9,6 +12,7 @@
 	int sortNum=new Random().nextInt(6)+1;
 	ArrayList<BookDto> rndBook=BookDao.getInstance().getRecommantedList(sortNum);
 	ArrayList<BookDto> newBook=BookDao.getInstance().getNewList();
+	List<ReviewDto> newReview=ReviewDao.getInstance().getNewList();
 	
 %>
 <!doctype html>
@@ -175,7 +179,7 @@
 
 			<div class="col-md-6">
 				<div class="card">
-					<table class="table table-hover">
+					<table class="table table-hover text-center">
 						<legend class="p-2 border-bottom">
 							최근 리뷰
 							<button class="btn btn-outline-secondary btn-sm float-right mr-3">
@@ -184,37 +188,28 @@
 						</legend>
 						<thead>
 							<tr>
-								<th scope="col">#</th>
-								<th scope="col">First</th>
-								<th scope="col">Last</th>
-								<th scope="col">Handle</th>
+								<th scope="col">NO</th>
+								<th scope="col">리뷰 제목</th>
+								<th scope="col">작성일</th>
 							</tr>
 						</thead>
 						<tbody>
-							<tr>
-								<th scope="row">1</th>
-								<td>Mark</td>
-								<td>Otto</td>
-								<td>@mdo</td>
+						<%
+						int i=1;
+						for(ReviewDto tmp:newReview) { %>
+							<tr class="reviewRow" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">
+								<input type="hidden" id="rnum" value="<%=tmp.getRnum() %>" />
+								<th scope="row"><%=i %></th>
+								<td><%=tmp.getRname() %></td>
+								<td><%=tmp.getRdate() %></td>
 							</tr>
-							<tr>
-								<th scope="row">2</th>
-								<td>Jacob</td>
-								<td>Thornton</td>
-								<td>@fat</td>
-							</tr>
-							<tr>
-								<th scope="row">3</th>
-								<td colspan="2">Larry the Bird</td>
-								<td>@twitter</td>
-							</tr>
-							<tr>
-								<th scope="row">4</th>
-								<td colspan="2">Larry the Bird</td>
-								<td>@twitter</td>
-							</tr>
+						<%
+							i++;
+						} %>
 						</tbody>
 					</table>
+					
+					<jsp:include page="book/modal.jsp"></jsp:include>
 				</div>
 			</div>
 		</div>
@@ -228,7 +223,7 @@
 
 	<jsp:include page="include/footer.jsp"></jsp:include>
 
-	<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+	<script src="${pageContext.request.contextPath}/js/jquery-3.5.1.min.js"></script>
 	<script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
 	<script src="${pageContext.request.contextPath }/js/carousel.js"></script>
 	<script src="${pageContext.request.contextPath}/js/header.js"></script>
@@ -236,10 +231,22 @@
 	 $(".bookInfo").on("click",function() {
      	$(this).children("form").submit();
      });
-	 /*
-	 $(".bookInfo").on("hover",function() {
-		$(this).children("picture").children(".pic_img").removeClass("pic_img").addClass()
-	 });*/
+	 
+	 $(".reviewRow").on("click",function() {
+			var rnum=$(this).children("#rnum").val();
+			
+			$.ajax({
+				method:"post",
+				url:"${pageContext.request.contextPath}/book/viewReview.jsp",
+				data:"rnum="+rnum,
+				success: function(data) {
+					$(".modal-content").html(data);
+				},
+				error: function(a,b,c) {
+					console.log(a+" "+b+" "+c);
+				}
+			});
+		});
 	</script>
 </body>
 
