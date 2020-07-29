@@ -125,7 +125,7 @@
 						<%for(CommentDto tmp : commentList) { %>
 							<tr>
 								<td>
-									<a id="commentBtn" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">
+									<a class="commentBtn" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">
 										<%=tmp.getCcontent() %>
 										<input type="hidden" id="rnum" value="<%=tmp.getRnum()%>" />
 									</a></td>
@@ -214,7 +214,7 @@
 			});
 		});
 		
-		$("#commentBtn").on("click",function() {
+		$(".commentBtn").on("click",function() {
 			var rnum=$(this).children("#rnum").val();
 			
 			$.ajax({
