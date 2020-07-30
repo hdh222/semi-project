@@ -133,7 +133,7 @@
 									<tr>
 										<td><%=tmp.getUser_id()%></td>
 										<td>
-											<a class="reviewBtn" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">
+											<a class="reviewBtn text-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">
 												<%=tmp.getRname()%>
 												<input type="hidden" id="rnum" value="<%=tmp.getRnum()%>" />
 											</a>

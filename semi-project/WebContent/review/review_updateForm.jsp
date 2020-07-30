@@ -154,9 +154,19 @@
 			oEditors.getById["content"].setDefaultFont(sDefaultFont, nFontSize);
 		}
 </script>
-<!-- 별점기능 제이쿼리 -->
+
 <script>
-	
+<!-- 수정시 별점 불러오는 제이쿼리-->
+	$(document).ready(function(){
+		var getNum=<%=rdto.getRscore()%>;
+		if(getNum<5){
+			$('#star i').eq(getNum).prevAll().addClass("on");
+		}else{
+			$('#star i').addClass("on");
+		}	
+		$("strong").text(getNum);
+	})
+
 	$('#star i').on('click',function(){
 		$(this).parent().children("i").removeClass("on");
 		$(this).addClass("on").prevAll("i").addClass("on");
