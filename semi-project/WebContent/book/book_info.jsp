@@ -29,6 +29,10 @@
 	BookDao dao = BookDao.getInstance();
 	BookDto dto = dao.getData(num);
 	String id = (String) session.getAttribute("id");
+	
+	if(id == null) {
+		id="";
+	}
 
 	//한 페이지에 나타낼 row 의 갯수
 	final int PAGE_ROW_COUNT = 5;
@@ -228,11 +232,9 @@
 	<!-- 북마크 처리   -->
 	<script>
 		$("#bookMarkBtn").on("click", function(){
-<<<<<<< HEAD
-=======
-			var id=<%=id%>;
+			var id="<%=id%>";
 		
-			if(id != null) {
+			if(id != "") {
 				$.ajax({
 					method : "get",
 					url : "bookmark.jsp",
@@ -244,35 +246,13 @@
 					}
 				});
 				return false;
-			} else {
-				var url=encodeURIComponent(window.location.href.replace("http://localhost:8888",""));
-				alert("로그인 후에 이용 가능합니다.");
-				location.href="${pageContext.request.contextPath}/login/loginForm.jsp?url="+url;
-			}
->>>>>>> refs/remotes/origin/master
-			
-<<<<<<< HEAD
-			var id=<%=id%>;
-			
-			if(id != null) {
-				$.ajax({
-					method : "get",
-					url : "bookmark.jsp",
-					data : {"id" : "<%=id%>", bnum : <%=num%>},
 				
-					success : function(data){
-						alert(data.result);
-						
-					}
-				});
-				return false;
 			} else {
 				var url=encodeURIComponent(window.location.href.replace("http://localhost:8888",""));
 				alert("로그인 후에 이용 가능합니다.");
 				location.href="${pageContext.request.contextPath}/login/loginForm.jsp?url="+url;
 			}
-=======
->>>>>>> refs/remotes/origin/master
+			
 		});
 	</script> 
 </body>

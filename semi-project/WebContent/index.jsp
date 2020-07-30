@@ -223,11 +223,7 @@
 
 	<jsp:include page="include/footer.jsp"></jsp:include>
 
-<<<<<<< HEAD
 	<script src="${pageContext.request.contextPath}/js/jquery-3.5.1.min.js "></script>
-=======
-	<script src="${pageContext.request.contextPath}/js/jquery-3.5.1.min.js"></script>
->>>>>>> refs/remotes/origin/master
 	<script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
 	<script src="${pageContext.request.contextPath }/js/carousel.js"></script>
 	<script src="${pageContext.request.contextPath}/js/header.js"></script>

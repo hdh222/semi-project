@@ -8,11 +8,9 @@
 <%
 	int rnum=Integer.parseInt(request.getParameter("rnum"));
 	String id=(String)session.getAttribute("id");
-<<<<<<< HEAD
-
-=======
-	
->>>>>>> refs/remotes/origin/master
+	if(id == null) {
+		id="";
+	}
 	ReviewDto dto=ReviewDao.getInstance().getdata(rnum);
 	BookDto BookInfo=BookDao.getInstance().getData(dto.getBnum());
 	
@@ -101,7 +99,7 @@
 				</div>
 			</div>
 			
-			<script>
+			<script type="text/javascript">
 			var currentPage = 1;
 			var totalPage =<%=endPage%>;
 			
@@ -123,13 +121,9 @@
 			});
 			
 			$("#commentBtn").on("click",function() {
-<<<<<<< HEAD
-				var id=<%=id%>;
-=======
-				var id=<%=id%>
->>>>>>> refs/remotes/origin/master
-				
-				if(id != null) {
+				var id="<%=id%>";
+
+				if(id != "") {
 					var url=$("#commentForm").attr("action");
 					var method=$("#commentForm").attr("method");
 					var data=$("#commentForm").serialize();
@@ -149,11 +143,14 @@
 							console.log(a+" "+b+" "+c);
 						}
 					});
+					
+
 				} else {
 					var url=encodeURIComponent(window.location.href.replace("http://localhost:8888",""));
 					alert("로그인 후에 이용 가능합니다.");
 					location.href="${pageContext.request.contextPath}/login/loginForm.jsp?url="+url;
 				}
+				
 			});
 			
 			
