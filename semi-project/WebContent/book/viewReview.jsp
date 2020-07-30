@@ -75,7 +75,7 @@
 						aria-controls="profile" aria-selected="false">댓글</a></li>
 					<%if(id.equals(dto.getUser_id())) {%>
 						<li class="modify mr-4"><a href="">수정</a></li>
-						<li class="delete"><a href="">삭제</a></li>
+						<li class="delete"><a href="${pageContext.request.contextPath }/review/review_delete.jsp?rnum=<%=dto.getRnum()%>&bnum=<%=dto.getBnum()%>">삭제</a></li>
 					<%} %>
 				</ul>
 				<div class="tab-content" id="myTabContent">

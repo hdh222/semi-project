@@ -200,6 +200,42 @@ public class CommentDao {
 		}
 	}
 	
+	public boolean reviewDelete(int rnum) {
+		int result=-1;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+
+		try {
+			String sql = "DELETE FROM review_comment Where rnum=?";
+
+			conn = new DBconn().getConn();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, rnum);
+
+			result = pstmt.executeUpdate();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (conn != null) {
+					conn.close();
+				}
+				if (pstmt != null) {
+					pstmt.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+
+		if (result == -1) {
+			return false;
+		} else {
+			return true;
+		}
+	}
+	
 	public boolean delete(int cnum) {
 		int result=-1;
 		Connection conn = null;
