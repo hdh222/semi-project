@@ -228,7 +228,7 @@
 
 	<jsp:include page="include/footer.jsp"></jsp:include>
 
-	<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+	<script src="${pageContext.request.contextPath}/js/jquery-3.5.1.min.js "></script>
 	<script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
 	<script src="${pageContext.request.contextPath }/js/carousel.js"></script>
 	<script src="${pageContext.request.contextPath}/js/header.js"></script>
