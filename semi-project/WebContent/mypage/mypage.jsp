@@ -16,7 +16,7 @@
 	List<ReviewDto> list = ReviewDao.getInstance().getReviewList(id);
 	List<BookDto> markList = BookDao.getInstance().getMarkList(id);
 	List<CommentDto> commentList = CommentDao.getInstance().getList(id);
-	
+
 	ReviewDto data = null;
 %>
 <!DOCTYPE html>
@@ -41,8 +41,35 @@
 	href="${pageContext.request.contextPath }/css/blog.css" />
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/font.css" />
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/scroll.css" />
+<style>
+	.markImg{
+		width: 184px;
+		margin-left: 10px;
+		margin-right: 10px;
+		position: relative;
+	}
+	.prop {
+		position: absolute;
+		right:0%;
+		bottom:-10%;
+	}
+	
+	.h-210 {
+		height: 220px;
+	}
+	.r {
+		position: relative;
+		z-index:11;
+	}
+	
+	.h-55 {
+		height: 55px;
+	}
+</style>
 </head>
-
+	
+	
+	
 <body> 
 
 	<!-- 헤더 -->
@@ -54,24 +81,32 @@
 		<!-- 상단로우 -->
 		<!--제목 -->
 		<h1 class="border-bottom">MY PAGE</h1>
-		<div class="row">
-			<!-- 관심사 carousel 영역-->
-			<div class="col-lg-12 px-0">
-				<h4 class="my-4 ml-5">최근 관심사</h4>
-				<div class="row">
-					<% for(BookDto tmp : markList){ %>
-					<div class="col">
-						​<picture>
-						  <source srcset="..." type="image/svg+xml">
-						  <a href="../book/book_info.jsp?bnum=<%=tmp.getBnum() %>"><img src="<%=tmp.getBimg() %>" class="img-thumbnail" alt="..."></a>
-						</picture>
-					</div>
+		<h3 class="my-3">최근 관심사</h4>
+		<div class="d-flex justify-content-center mb-5 r">
+				<%if(markList.isEmpty()) { %>
+					<picture class="p-2 markImg">
+						<source srcset="..." type="image/svg+xml">
+						<a href="${pageContext.request.contextPath}/book/book_list.jsp">		
+							<img src="${pageContext.request.contextPath}/image/addBook.png" class="img-thumbnail w-100 h-210 r" alt="...">
+						</a>
+					</picture>
+				<%} else {
+					for(BookDto tmp : markList){ %>
+					<picture class="p-2 markImg">
+						<source srcset="..." type="image/svg+xml">
+						<a href="${pageContext.request.contextPath}/book/book_info.jsp?bnum=<%=tmp.getBnum() %>">		
+							<img src="<%=tmp.getBimg() %>" class="img-thumbnail w-100 h-210 r" alt="...">
+						</a>
+					</picture>
 					
-					<%} %>
-				</div>
-				
-			</div>
+				<%  }
+				} %>
+		<img src="${pageContext.request.contextPath}/image/prop.png" alt="" class="prop w-100 h-55" />
 		</div>
+		
+				
+			
+
 				<!--내가 쓴 리뷰,내가 쓴 댓글 row-->
 		<div class="row my-4">
 			<div class="col-md-6" id="listBox">
