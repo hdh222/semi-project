@@ -73,7 +73,7 @@ public class ReviewDao {
 			String sql = "DELETE FROM review WHERE rnum=?";
 			ps = conn.prepareStatement(sql);
 			ps.setInt(1, num);
-
+			
 			flag = ps.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -100,7 +100,7 @@ public class ReviewDao {
 		int flag = 0;
 		try {
 			conn = new DBconn().getConn();
-			String sql = "UPDATE review SET rname=? and rimg=? rcontent=? and rscore=?" + " WHERE rnum=? ";
+			String sql = "UPDATE review SET rname=? , rimg=? , rcontent=? , rscore=?" + " WHERE rnum=? ";
 			ps = conn.prepareStatement(sql);
 			ps.setString(1, dto.getRname());
 			ps.setString(2, dto.getRimg());

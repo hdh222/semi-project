@@ -18,6 +18,8 @@
 	List<CommentDto> commentList = CommentDao.getInstance().getList(id);
 
 	ReviewDto data = null;
+	
+	boolean isReload = false;
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -245,6 +247,9 @@
 				data:"rnum="+rnum,
 				success: function(data) {
 					$(".modal-content").html(data);
+					$('#exampleModal').on('hide.bs.modal', function (e) {
+						  location.reload(true);
+					})
 				},
 				error: function(a,b,c) {
 					console.log(a+" "+b+" "+c);
@@ -261,12 +266,20 @@
 				data:"rnum="+rnum,
 				success: function(data) {
 					$(".modal-content").html(data);
+					$('#exampleModal').on('hide.bs.modal', function (e) {
+						  location.reload(true);
+					})
+					
 				},
 				error: function(a,b,c) {
 					console.log(a+" "+b+" "+c);
 				}
 			});
 		});
+		
+		
+			
+		
 		
 	</script>
 </body>
