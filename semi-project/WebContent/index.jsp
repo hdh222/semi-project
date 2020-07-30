@@ -112,7 +112,7 @@
 						<form action="${pageContext.request.contextPath}/book/book_info.jsp">
 							<input type="hidden" name="bnum" value="<%=tmp.getBnum() %>" />
 						</form>
-						<picture class="shadow mb-3 pb-2">
+						<picture class="shadow mb-3">
 							<source
 								srcset="<%=tmp.getBimg() %>"
 								type="image/svg+xml">
@@ -166,7 +166,7 @@
 			<div class="col-md-6">
 				<div class="card">
 					<table class="table table-hover text-center">
-						<legend class="p-2 border-bottom">
+						<legend class="p-2 mb-0">
 							최근 리뷰
 							<button class="btn btn-outline-secondary btn-sm float-right mr-3">
 								<storng class="px-1">+</storng>

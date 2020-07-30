@@ -1,3 +1,4 @@
+<%@page import="org.apache.jasper.tagplugins.jstl.core.Remove"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -8,7 +9,8 @@
 </head>
 <body>
 	<%
-		session.invalidate();
+		session.removeAttribute("id");
+		session.removeAttribute("name");
 		response.sendRedirect(request.getContextPath()+"/index.jsp");
 	%>
 </body>

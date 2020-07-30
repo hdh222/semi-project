@@ -27,7 +27,6 @@
 	<%  if(result) {
 			session.setAttribute("id", id);
 			session.setAttribute("name", name);
-			session.setMaxInactiveInterval(3000);
 			response.sendRedirect(url);
 	    }else { %>	
 			<script>

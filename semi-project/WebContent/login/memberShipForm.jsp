@@ -74,7 +74,7 @@
                 <label for="sex" class="col-sm-2 col-form-label">성 별</label>
                 <div class="col-sm-6">
                     <div class="form-check form-check-inline" id="sex">
-                        <input class="form-check-input" type="radio" name="sex" id="man" value="1">
+                        <input class="form-check-input" type="radio" name="sex" id="man" value="1" checked="checked">
                         <label class="form-check-label" for="man">남</label>
                       </div>
                       <div class="form-check form-check-inline">

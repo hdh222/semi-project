@@ -43,7 +43,7 @@ public class LoginFilter implements Filter{
 			}else {
 				encodedUrl=URLEncoder.encode(url+"?"+query);
 			}
-			System.out.println(encodedUrl);
+			
 			HttpServletResponse res=(HttpServletResponse)response;
 			String cPath=req.getContextPath();
 			res.sendRedirect(cPath+"/login/loginForm.jsp?url="+encodedUrl);
