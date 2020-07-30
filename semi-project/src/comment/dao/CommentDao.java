@@ -242,7 +242,7 @@ public class CommentDao {
 		PreparedStatement pstmt = null;
 
 		try {
-			String sql = "UPDATE member SET crecommen=crecommend+1 WHERE cnum=?";
+			String sql = "UPDATE review_comment SET crecommend=crecommend+1 WHERE cnum=?";
 
 			conn = new DBconn().getConn();
 			pstmt = conn.prepareStatement(sql);
@@ -270,5 +270,43 @@ public class CommentDao {
 		} else {
 			return true;
 		}
+	}
+	
+	public int countRecommend(int cnum) {
+		int result=0;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset=null;
+		
+		try {
+			String sql = "SELECT crecommend FROM review_comment WHERE cnum=?";
+
+			conn = new DBconn().getConn();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, cnum);
+
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				result=rset.getInt("crecommend");
+			}
+			
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (conn != null) {
+					conn.close();
+				}
+				if (pstmt != null) {
+					pstmt.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+
+		return result;
 	}
 }
