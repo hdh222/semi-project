@@ -30,19 +30,13 @@
 
 <link rel="canonical"
 	href="https://getbootstrap.com/docs/4.5/examples/blog/">
-<link href="https://fonts.googleapis.com/css2?family=Monoton&display=swap" rel="stylesheet">
 <!-- Bootstrap core CSS -->
-<link href="${pageContext.request.contextPath }/css/bootstrap.css"
-	rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Fascinate+Inline&family=Faster+One&family=Nanum+Myeongjo:wght@400;700&family=Song+Myung&display=swap" rel="stylesheet">
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@1.0/nanumsquare.css">
+<link href="${pageContext.request.contextPath }/css/bootstrap.css" rel="stylesheet">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/font.css" />
+<link href="${pageContext.request.contextPath }/css/blog.css" rel="stylesheet" />
+<link href="${pageContext.request.contextPath }/css/carousel.css" rel="stylesheet" />
 
 <style>
-#logo{
-	font-family:'Monoton', cursive;
-	font-size:30px;
-}
 .bd-placeholder-img {
 	font-size: 1.125rem;
 	text-anchor: middle;
@@ -80,15 +74,7 @@
 	cursor: pointer;
 }
 </style>
-<!-- Custom styles for this template -->
-<link
-	href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900"
-	rel="stylesheet">
-<!-- Custom styles for this template -->
-<link href="${pageContext.request.contextPath }/css/blog.css"
-	rel="stylesheet" />
-<link href="${pageContext.request.contextPath }/css/carousel.css"
-	rel="stylesheet" />
+
 </head>
 
 <body>
@@ -126,7 +112,7 @@
 						<form action="${pageContext.request.contextPath}/book/book_info.jsp">
 							<input type="hidden" name="bnum" value="<%=tmp.getBnum() %>" />
 						</form>
-						<picture class="shadow mb-3">
+						<picture class="shadow mb-3 pb-2">
 							<source
 								srcset="<%=tmp.getBimg() %>"
 								type="image/svg+xml">

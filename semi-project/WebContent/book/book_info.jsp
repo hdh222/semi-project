@@ -101,9 +101,10 @@
 					</h2>
 					<p class="border-bottom border-success"><%=dto.getBcompany()%>,
 						<%=dto.getBdate()%></p>
-					<h3>줄거리</h3>
-					<p style="font-size: 13px" id="story"><%=dto.getBstory()%></p>
-
+					
+						<h3>줄거리</h3>
+						<div style="font-size: 13px" id="story" class="scroll-slim mb-1"><%=dto.getBstory().replace("*", "<br/>")%></div>
+						
 					<!-- 리뷰테이블 -->
 					<h3 class="border-bottom border-success">
 						리뷰
@@ -162,6 +163,7 @@
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 	<script src="${pageContext.request.contextPath}/js/review.js"></script>
 	<script src="${pageContext.request.contextPath}/js/book_info.js"></script>
+	<script src="${pageContext.request.contextPath}/js/header.js"></script>
 	
 	<!--modal 내용불러오기 -->
 	<script>

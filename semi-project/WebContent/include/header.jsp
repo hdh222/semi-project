@@ -48,9 +48,9 @@
 	
 	<nav class="nav d-flex justify-content-center bg-white" id="nav">
 		<a class="p-3 mx-lg-5 text-muted" href="${pageContext.request.contextPath }/book/book_list.jsp">Book</a> 
-		<a class="p-3 mx-lg-5 text-muted" href="#">U.S.</a>
-		<a class="p-3 mx-lg-5 text-muted" href="#">Technology</a> 
-		<a class="p-3 mx-lg-5 text-muted" href="#">Design</a>
+		<a class="p-3 mx-lg-5 text-muted" href="${pageContext.request.contextPath}/emptyPage/movie.jsp">Movie</a>
+		<a class="p-3 mx-lg-5 text-muted" href="${pageContext.request.contextPath}/emptyPage/music.jsp">Musical</a> 
+		<a class="p-3 mx-lg-5 text-muted" href="${pageContext.request.contextPath}/emptyPage/FAQ.jsp">FAQ</a>
 		<a class="p-3 mx-lg-5 text-muted" href="${pageContext.request.contextPath}/mypage/mypage.jsp">My Page</a>
 	</nav>
 </div>

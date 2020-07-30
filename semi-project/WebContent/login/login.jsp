@@ -32,10 +32,8 @@
 	    }else { %>	
 			<script>
 				alert('로그인에 실패하였습니다. 아이디 비밀번호를 확인 해주세요.');
-				
-				location.href="loginform.jsp?url="+encodedUrl;
+				location.href="loginForm.jsp?url=<%=encodedUrl%>";
 			</script>
     <%  } %>
-	%>
 </body>
 </html>

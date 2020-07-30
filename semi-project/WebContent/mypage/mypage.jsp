@@ -40,6 +40,7 @@
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath }/css/blog.css" />
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/font.css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/scroll.css" />
 </head>
 
 <body> 
@@ -75,7 +76,7 @@
 		<div class="row my-4">
 			<div class="col-md-6" id="listBox">
 				<div class="card">
-					<div class="card-body"  style="overflow-y: scroll; height : 300px;">
+					<div class="card-body text-center scroll-slim"  style="overflow-y: scroll; height : 300px;">
 						<h4 class="card-title">
 							<a href="#">내가 쓴 리뷰</a>
 						</h4>
@@ -111,30 +112,31 @@
 
 			<div class="col-md-6" id="listBox">
 				<div class="card">
-					<div class="card-body"  style="overflow-y: scroll; height : 300px;">
+					<div class="card-body text-center scroll-slim"  style="overflow-y: scroll; height : 300px;">
 						<h4 class="card-title">
-							<a href="#">내가 쓴 리뷰</a>
+							<a href="#">내가 쓴 댓글</a>
 						</h4>
 						<div class="table-responsiv">
 							<table class="table table-light">
-						<thead>
-							<tr>
-								<th class="text-center">내용</th>
-								<th class="text-center">작성일</th>
-							</tr>
-						</thead>
-						<%for(CommentDto tmp : commentList) { %>
-							<tr>
-								<td>
-									<a class="commentBtn" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">
-										<%=tmp.getCcontent() %>
-										<input type="hidden" id="rnum" value="<%=tmp.getRnum()%>" />
-									</a></td>
-								<td><%=tmp.getCdate() %></td>
-							</tr>
-						<%} %>
-						
-						</table>
+								<thead>
+									<tr>
+										<th class="text-center">내용</th>
+										<th class="text-center">작성일</th>
+									</tr>
+								</thead>
+								<tbody>
+								<%for(CommentDto tmp : commentList) { %>
+									<tr>
+										<td>
+											<a class="commentBtn" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">
+												<%=tmp.getCcontent() %>
+												<input type="hidden" id="rnum" value="<%=tmp.getRnum()%>" />
+											</a></td>
+										<td><%=tmp.getCdate() %></td>
+									</tr>
+								<%} %>
+								</tbody>
+							</table>
 						</div>
 						
 					</div>

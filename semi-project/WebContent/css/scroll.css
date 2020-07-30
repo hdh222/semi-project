@@ -13,3 +13,20 @@
     border-radius: 10px;
     box-shadow: inset 0px 0px 5px white;
   }
+  
+  
+   .scroll-slim::-webkit-scrollbar {
+    width: 10px;
+  }
+   .scroll-slim::-webkit-scrollbar-thumb {
+    background-color:rgba(144, 198, 230, 0.774);
+    border-radius: 10px;
+    background-clip: padding-box;
+    border: 2px solid transparent;
+  }
+   .scroll-slim::-webkit-scrollbar-track {
+    background-color:#fff;
+    border-radius: 10px;
+    box-shadow: inset 0px 0px 5px white;
+  }
+  

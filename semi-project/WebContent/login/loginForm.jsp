@@ -58,13 +58,13 @@
                 <div id="carouselExampleSlidesOnly" class="carousel slide card px-2 py-5" data-ride="carousel" data-interval="2000">
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                            <img src="http://image.kyobobook.co.kr/ink/images/prom/2020/banner/200723/bnL_w01.jpg" class="d-block w-100" alt="...">
+                            <img src="${pageContext.request.contextPath}/image/pn1.png" class="d-block w-100" alt="...">
                         </div>
                         <div class="carousel-item">
-                            <img src="${pageContext.request.contextPath}/image/img.jpg" class="d-block w-100" alt="...">
+                            <img src="${pageContext.request.contextPath}/image/pn2.png" class="d-block w-100" alt="...">
                         </div>
                         <div class="carousel-item">
-                            <img src="${pageContext.request.contextPath}/image/img.jpg" class="d-block w-100" alt="...">
+                            <img src="${pageContext.request.contextPath}/image/pn3.png" class="d-block w-100" alt="...">
                         </div>
                     </div>
                 </div>

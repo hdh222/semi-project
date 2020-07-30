@@ -4,7 +4,7 @@ h1,h2,h3,h4,h5,strong,small,div,.container{
 	font-family: 'NanumSquare', sans-serif;
 	font-weight: 500;
 }
-p {
+p,span {
 	font-family: 'NanumSquare', sans-serif;
 	font-weight: 300;
 }

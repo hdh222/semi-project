@@ -1,9 +1,4 @@
-@charset "UTF-8";
 
-@font-face { font-family: 'Arita-buri-SemiBold'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/Arita-buri-SemiBold.woff') format('woff'); font-weight: normal; font-style: normal; }
-	body*{
-	background-color: rgba(144, 198, 230, 0.774);
-	}
 	#backBtn{
 		position:absolute; 
 		right:1%; 
@@ -15,7 +10,7 @@
 		right:2%;
 		top:3%;
 		color:tomato;
-		}
+	}
 	
 	/*리뷰 테이블 */
 	.table td, .table th {
@@ -23,12 +18,7 @@
     vertical-align: top;
     border-top: 0px ;
 	}
-	/*컨테이너 */
-	
-	.container{
-		font-family:'Arita-buri-SemiBold'; 
-	 	border:2px solid eee;
-	}
+
 
 	/*컨테이너 오른쪽 col-6에 내용 부분*/
 	.right{
@@ -50,15 +40,9 @@
 	}
 	/*줄거리 부분*/
 	#story{
-		width:470px;
-		overflow: hidden;
-		text-overflow: ellipsis;
-		display: -webkit-box;
-		-webkit-line-clamp: 9; /* 라인수 */
-		-webkit-box-orient: vertical;
-		word-wrap:break-word; 
-		line-height: 1.5em;
-		height: 13.5em; /* line-height 가 1.2em 이고 3라인을 자르기 때문에 height는 1.2em * 3 = 3.6em */
+		width:100%;
+		height: 220px;
+		overflow-y:scroll;
 	}
 	/*리뷰 제목링크 부분*/
 	.reviewBtn{
@@ -68,6 +52,7 @@
 		white-space  : nowrap;    /* 줄바꿈을 하지 않습니다. */
 		overflow     : hidden;    /* 내용이 길면 감춤니다 */
 		display      : block;     /* ie6이상 현재요소를 블럭처리합니다. */
+		cursor: pointer;
 		
 	}
 	/*책 이미지 부분*/
@@ -78,6 +63,7 @@
 	    border-radius: 0.25rem;
 	    max-width: 100%;
 	    margin-top:23px;
+	    margin-bottom:23px;
 	    
 	}
 	/*리뷰 불러오기 로딩 이미지*/
