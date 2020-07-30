@@ -235,17 +235,26 @@
 	<!-- 북마크 처리   -->
 	<script>
 		$("#bookMarkBtn").on("click", function(){
-			$.ajax({
-				method : "get",
-				url : "bookmark.jsp",
-				data : {"id" : "<%=id%>", bnum : <%=num%>},
 			
-				success : function(data){
-					alert(data.result);
-					
-				}
-			});
-			return false;
+			var id=<%=id%>;
+			
+			if(id != null) {
+				$.ajax({
+					method : "get",
+					url : "bookmark.jsp",
+					data : {"id" : "<%=id%>", bnum : <%=num%>},
+				
+					success : function(data){
+						alert(data.result);
+						
+					}
+				});
+				return false;
+			} else {
+				var url=encodeURIComponent(window.location.href.replace("http://localhost:8888",""));
+				alert("로그인 후에 이용 가능합니다.");
+				location.href="${pageContext.request.contextPath}/login/loginForm.jsp?url="+url;
+			}
 		});
 	</script> 
 </body>
