@@ -85,7 +85,7 @@
 				</a>
 			</div>
 			<div class="col-sm-auto">
-				<img id="bookImg"src="<%=dto.getBimg()%>" alt="bookimg" class="mt-4 ml-xl-5 ml-sm-3 border border-success" />	
+				<img id="bookImg"src="<%=dto.getBimg()%>" alt="bookimg" class="my-4 ml-xl-5 ml-sm-3 border border-success" />	
 				<a id ="bookMarkBtn" class="btn mt-2 py-1 float-right" >
 					<svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-bookmark-plus" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
 						<path fill-rule="evenodd" d="M4.5 2a.5.5 0 0 0-.5.5v11.066l4-2.667 4 2.667V8.5a.5.5 0 0 1 1 0v6.934l-5-3.333-5 3.333V2.5A1.5 1.5 0 0 1 4.5 1h4a.5.5 0 0 1 0 1h-4zm9-1a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1H13V1.5a.5.5 0 0 1 .5-.5z"/>

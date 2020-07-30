@@ -73,7 +73,7 @@ public class ReviewDao {
 			String sql = "DELETE FROM review WHERE rnum=?";
 			ps = conn.prepareStatement(sql);
 			ps.setInt(1, num);
-
+			
 			flag = ps.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
