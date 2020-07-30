@@ -10,17 +10,15 @@
 <footer class="footer-distributed">
 	<div class="container">
 	<div class="footer-left">
-
-		<h3>
-			<span>Book</span> Company
-		</h3>
-
+		<div >	
+			<img src="${pageContext.request.contextPath}/image/logoW.png" alt="" / style="width:150px; height:auto;"> 
+		</div>
 		<p class="footer-links">
 			<a href="#">Home</a> ， <a href="#">Blog</a> ， <a href="#">Pricing</a>
 			， <a href="#">About</a> ， <a href="#">Faq</a> ， <a href="#">Contact</a>
 		</p>
 
-		<p class="footer-company-name">Book Company &copy; 2020</p>
+		<p class="footer-company-name">Check this out! &copy; 2020</p>
 	</div>
 
 	<div class="footer-center">
@@ -56,7 +54,6 @@
 		</p>
 
 		<div class="footer-icons">
-
 			<a href="#"><i class="fa fa-facebook"></i></a> <a href="#"><i
 				class="fa fa-twitter"></i></a> <a href="#"><i class="fa fa-linkedin"></i></a>
 			<a href="#"><i class="fa fa-github"></i></a>
