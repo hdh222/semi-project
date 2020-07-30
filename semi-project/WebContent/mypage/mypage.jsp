@@ -255,7 +255,6 @@
 		$(".commentBtn").on("click",function() {
 			var rnum=$(this).children("#rnum").val();
 			
-			
 			$.ajax({
 				method:"post",
 				url:"${pageContext.request.contextPath}/book/viewReview.jsp",
