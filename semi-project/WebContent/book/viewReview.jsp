@@ -17,6 +17,21 @@
 	int totalPageCount=CommentDao.getInstance().getCount(rnum);
 	int endPage=(int)Math.ceil(totalPageCount/5.0);
 %>
+	<style>
+		#myTab{
+			position: relative;
+		}
+		.modify{
+			position: absolute;
+			right:40px;
+			top:0px
+		}
+		.delete{
+			position: absolute;
+			right:20px;
+			top:0px
+		}
+	</style>
 	<div class="modal-header">
 
 				<span><strong id="caption"><%=dto.getUser_id()%>님의 리뷰</strong></span>
@@ -52,11 +67,16 @@
 				<ul class="nav nav-tabs mt-lg-5" id="myTab" role="tablist">
 					<li class="nav-item" role="presentation"><a
 						class="nav-link active" id="home-tab" data-toggle="tab"
-						href="#home" role="tab" aria-controls="home" aria-selected="true">책
-							소개</a></li>
+						href="#home" role="tab" aria-controls="home" aria-selected="true">
+						리뷰
+						</a></li>
 					<li class="nav-item" role="presentation"><a class="nav-link"
 						id="profile-tab" data-toggle="tab" href="#profile" role="tab"
 						aria-controls="profile" aria-selected="false">댓글</a></li>
+					<%if(id.equals(dto.getUser_id())) {%>
+						<li class="modify mr-4"><a href="">수정</a></li>
+						<li class="delete"><a href="">삭제</a></li>
+					<%} %>
 				</ul>
 				<div class="tab-content" id="myTabContent">
 					<div class="tab-pane fade show active" id="home" role="tabpanel"
