@@ -4,6 +4,10 @@
     pageEncoding="UTF-8"%>
 <%
 	request.setCharacterEncoding("utf-8");
+	
+	String url=request.getParameter("url");
+	String encodedUrl=URLEncoder.encode(url);
+	
 
 	String url=request.getParameter("url");
 	String encodedUrl=URLEncoder.encode(url);	
@@ -32,7 +36,11 @@
 	    }else { %>	
 			<script>
 				alert('로그인에 실패하였습니다. 아이디 비밀번호를 확인 해주세요.');
+<<<<<<< HEAD
 				location.href="loginform.jsp?url="+encodedUrl;
+=======
+				location.href="loginform.jsp?url=";
+>>>>>>> refs/remotes/origin/master
 			</script>
     <%  } %>
 	%>

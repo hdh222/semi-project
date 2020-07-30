@@ -8,7 +8,11 @@
 <%
 	int rnum=Integer.parseInt(request.getParameter("rnum"));
 	String id=(String)session.getAttribute("id");
+<<<<<<< HEAD
 
+=======
+	
+>>>>>>> refs/remotes/origin/master
 	ReviewDto dto=ReviewDao.getInstance().getdata(rnum);
 	BookDto BookInfo=BookDao.getInstance().getData(dto.getBnum());
 	
@@ -119,7 +123,11 @@
 			});
 			
 			$("#commentBtn").on("click",function() {
+<<<<<<< HEAD
 				var id=<%=id%>;
+=======
+				var id=<%=id%>
+>>>>>>> refs/remotes/origin/master
 				
 				if(id != null) {
 					var url=$("#commentForm").attr("action");

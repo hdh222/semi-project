@@ -163,6 +163,8 @@ public class ReviewDao {
 		}
 		return dto;
 	}
+	
+	
 
 	public List<ReviewDto> getList(int bnum) {
 		List<ReviewDto> list = new ArrayList<>();
@@ -186,6 +188,41 @@ public class ReviewDao {
 				dto.setRimg(rs.getString("rimg"));
 				dto.setRcontent(rs.getString("rcontent"));
 				dto.setRscore(rs.getInt("rscore"));
+				list.add(dto);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null)
+					rs.close();
+				if (ps != null)
+					ps.close();
+				if (conn != null)
+					conn.close();
+			} catch (Exception e2) {
+			}
+		}
+		return list;
+	}
+	
+	public List<ReviewDto> getNewList() {
+		List<ReviewDto> list = new ArrayList<>();
+		Connection conn = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		ReviewDto dto = null;
+		try {
+			conn = new DBconn().getConn();
+			String sql = "SELECT * FROM (SELECT T.*,rownum FROM (SELECT rnum,rname,to_char(rdate,'yyyy-mm-dd hh:mi') as rdate FROM review ORDER BY rnum DESC) T) WHERE rownum <=4";
+			ps = conn.prepareStatement(sql);
+			rs = ps.executeQuery();
+			while (rs.next()) {
+				dto = new ReviewDto();
+				dto.setRnum(rs.getInt("rnum"));
+				dto.setRname(rs.getString("rname"));
+				dto.setRdate(rs.getString("rdate"));
+
 				list.add(dto);
 			}
 		} catch (Exception e) {
