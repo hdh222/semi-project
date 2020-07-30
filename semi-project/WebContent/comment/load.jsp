@@ -28,6 +28,9 @@
 		 	<br />
 	 	<small class="text-muted"><%=tmp.getCdate()%></small><br />
 	 	<%=tmp.getCcontent()%>
+	 	<a class="float-right">
+	 		<img src="${pageContext.request.contextPath}/image/good.png" alt="" style="width: 20px;" /><span class="mx-3"><%=tmp.getCrecommend() %></span>
+	 	</a>
 	</div>
 </div>
 <%}%>
