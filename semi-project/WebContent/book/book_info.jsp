@@ -129,19 +129,17 @@
 									<th>작성일</th>
 								</tr>
 							</thead>
+							<tbody>
 								<%for (ReviewDto tmp : list) {%>
-									<tr>
+									<tr class="reviewBtn" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">
+										<input type="hidden" id="rnum" value="<%=tmp.getRnum()%>" />
 										<td><%=tmp.getUser_id()%></td>
-										<td>
-											<a class="reviewBtn text-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">
-												<%=tmp.getRname()%>
-												<input type="hidden" id="rnum" value="<%=tmp.getRnum()%>" />
-											</a>
-										</td>
+										<td class="nameContent"><%=tmp.getRname()%></td>
 										<td><%=tmp.getRscore()%>/5</td>
 										<td><%=tmp.getRdate()%></td>
 									</tr>
 								<%}%>
+							</tbody>
 						</table>				
 						<!-- 리뷰 더보기 버튼 -->
 						<div class="text-center">

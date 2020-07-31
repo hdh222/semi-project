@@ -69,7 +69,7 @@
 				data:"cnum="+cnum,
 				success:function(data) {
 					if(data.Recommend == "0") {
-						alert("이미 추천한 댓글 입니다.");
+						alert("7일 이내에 추천한 댓글 입니다.");
 					} else {
 					alert(field.parent().prevAll("strong").text()+"님을 추천하였습니다.");
 					field.text(data.Recommend);

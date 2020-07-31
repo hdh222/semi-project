@@ -42,7 +42,7 @@
 			</div>
 			<div class="modal-body">
 
-				<h3 class="border-bottom border-success"><%=BookInfo.getBname()%></h3>
+				<h3 class="border-bottom border-success"><%=dto.getRname()%><small class="text-muted">(<%=BookInfo.getBname() %>)</small></h3>
 
 				<p class="small my-1" id="id">
 					글쓴이 :

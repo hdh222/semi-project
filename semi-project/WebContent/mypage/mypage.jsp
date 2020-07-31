@@ -67,6 +67,24 @@
 	.h-55 {
 		height: 55px;
 	}
+	.reviewBtn,.commentBtn {
+		cursor: pointer;
+	}
+	.reviewContent {
+		width        : 204px;     /* 너비는 변경될수 있습니다. */
+		text-overflow: ellipsis;  /* 위에 설정한 100px 보다 길면 말줄임표처럼 표시합니다. */
+		white-space  : nowrap;    /* 줄바꿈을 하지 않습니다. */
+		overflow     : hidden;    /* 내용이 길면 감춤니다 */
+		display      : block;     /* ie6이상 현재요소를 블럭처리합니다. */
+	}
+	.commentContent {
+		width        : 175px;     /* 너비는 변경될수 있습니다. */
+		text-overflow: ellipsis;  /* 위에 설정한 100px 보다 길면 말줄임표처럼 표시합니다. */
+		white-space  : nowrap;    /* 줄바꿈을 하지 않습니다. */
+		overflow     : hidden;    /* 내용이 길면 감춤니다 */
+		display      : block;     /* ie6이상 현재요소를 블럭처리합니다. */
+	}
+	
 </style>
 </head>
 	
@@ -114,11 +132,11 @@
 			<div class="col-md-6" id="listBox">
 				<div class="card">
 					<div class="card-body text-center scroll-slim"  style="overflow-y: scroll; height : 300px;">
-						<h4 class="card-title">
+						<h4 class="card-title border-bottom pb-3">
 							<a href="#">내가 쓴 리뷰</a>
 						</h4>
 						<div class="table-responsiv">
-							<table class="table table-light">
+							<table class="table table-light text-center">
 						<thead>
 							<tr>
 								<th class="text-center">평점</th>
@@ -127,16 +145,11 @@
 							</tr>
 						</thead>
 						<%for(ReviewDto tmp : list){ %>
-							<tr>
-								<td class="text-center"><%=tmp.getRscore() %></td>
-								<td>
-									<a class="reviewBtn" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">
-										<%=tmp.getRname()%>
-										<input type="hidden" id="rnum" value="<%=tmp.getRnum()%>" />
-									</a>
-								
-								</td>
-								<td class="text-center"><%=tmp.getRdate() %></td>
+							<tr class="reviewBtn" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">
+								<input type="hidden" id="rnum" value="<%=tmp.getRnum()%>" />
+								<td><%=tmp.getRscore() %></td>
+								<td class="reviewContent"><%=tmp.getRname()%></td>
+								<td><%=tmp.getRdate() %></td>
 							</tr>
 						<%} %>
 						</table>
@@ -150,7 +163,7 @@
 			<div class="col-md-6" id="listBox">
 				<div class="card">
 					<div class="card-body text-center scroll-slim"  style="overflow-y: scroll; height : 300px;">
-						<h4 class="card-title">
+						<h4 class="card-title border-bottom pb-3">
 							<a href="#">내가 쓴 댓글</a>
 						</h4>
 						<div class="table-responsiv">
@@ -163,12 +176,9 @@
 								</thead>
 								<tbody>
 								<%for(CommentDto tmp : commentList) { %>
-									<tr>
-										<td>
-											<a class="commentBtn" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">
-												<%=tmp.getCcontent() %>
-												<input type="hidden" id="rnum" value="<%=tmp.getRnum()%>" />
-											</a></td>
+									<tr class="commentBtn" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">
+										<input type="hidden" id="rnum" value="<%=tmp.getRnum()%>" />
+										<td class="commentContent"><%=tmp.getCcontent() %></td>
 										<td><%=tmp.getCdate() %></td>
 									</tr>
 								<%} %>
