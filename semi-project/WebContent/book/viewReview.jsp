@@ -178,7 +178,7 @@
 			$("#comment_more").on("click", function() {
 				var displayRowNum=$("#commentField").children(".media").length;
 				
-				if (currentPage == totalPage ||<%=totalPageCount%>==0) {
+				if (currentPage == totalPage) {
 					return;
 				}
 				
